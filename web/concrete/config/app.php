@@ -122,6 +122,7 @@ return array(
         'core_devices'      => '\Concrete\Core\Device\DeviceServiceProvider',
         'core_imageeditor'  => '\Concrete\Core\ImageEditor\EditorServiceProvider',
         'core_user'  => '\Concrete\Core\User\UserServiceProvider',
+        'core_server' => '\Concrete\Core\Server\ServerServiceProvider',
 
         // Authentication
         'core_oauth'          => '\Concrete\Core\Authentication\Type\OAuth\ServiceProvider',
