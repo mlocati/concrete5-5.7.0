@@ -105,4 +105,21 @@ class ServiceManager implements ManagerInterface
         return $resolved;
     }
 
+    /**
+     * Loops through the bound services and returns the ones that are active
+     * @return ServiceInterface[]
+     */
+    public function getActiveServices()
+    {
+        $active = array();
+        foreach ($this->getExtensions() as $handle) {
+            $service = $this->getService($handle);
+            if ($service->getDetector()->detect()) {
+                $active[] = $service;
+            }
+        }
+
+        return $active;
+    }
+
 }

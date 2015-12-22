@@ -35,4 +35,10 @@ interface ManagerInterface
      */
     public function getService($handle);
 
+    /**
+     * Loops through the bound services and returns the ones that are active
+     * @return ServiceInterface[]
+     */
+    public function getActiveServices();
+
 }
