@@ -2,22 +2,33 @@
 
 namespace Concrete\Core\Service\Detector\HTTP;
 
+use Concrete\Core\Http\Request;
 use Concrete\Core\Service\Detector\DetectorInterface;
+use Symfony\Component\HttpFoundation\ServerBag;
 
 class NginxDetector implements DetectorInterface
 {
 
+    protected $request;
+
+    /**
+     * ApacheDetector constructor.
+     * @param \Concrete\Core\Http\Request $request
+     */
+    public function __construct(Request $request)
+    {
+        $this->request = $request;
+    }
+
     /**
      * Determine whether this environment matches the expected service environment
      * @return bool
-     *
-     * @todo remove `$_SERVER` superglobal references
      */
     public function detect()
     {
         $result = false;
-        if (!$result && isset($_SERVER['SERVER_SOFTWARE'])) {
-            $result = $this->detectFromServer($_SERVER);
+        if (!$result && $this->request->server->has('SERVER_SOFTWARE')) {
+            $result = $this->detectFromServer($this->request->server);
         }
         if (!$result && function_exists('apache_get_version')) {
             $result = $this->detectFromSPL();
@@ -31,12 +42,12 @@ class NginxDetector implements DetectorInterface
 
     /**
      * Detect using the superglobal server array
-     * @param $server
+     * @param ServerBag $server
      * @return bool
      */
-    private function detectFromServer($server)
+    private function detectFromServer(ServerBag $server)
     {
-        return !!preg_match('/\bnginx\//i', $server['SERVER_SOFTWARE']);
+        return !!preg_match('/\bnginx\//i', $server->get('SERVER_SOFTWARE'));
     }
 
     /**

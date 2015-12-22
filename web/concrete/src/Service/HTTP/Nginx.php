@@ -10,10 +10,10 @@ class Nginx implements ServiceInterface
 {
 
     /** @var string The class to use for our detector */
-    protected $detector_class = 'Concrete\Core\Application\Service\Detector\HTTP\NginxDetector';
+    protected $detector_class = 'Concrete\Core\Service\Detector\HTTP\NginxDetector';
 
     /** @var string The class to use for our generator */
-    protected $generator_class = 'Concrete\Core\Application\Service\Configuration\HTTP\NginxGenerator';
+    protected $generator_class = 'Concrete\Core\Service\Configuration\HTTP\NginxGenerator';
 
     /** @var DetectorInterface */
     protected $detector;

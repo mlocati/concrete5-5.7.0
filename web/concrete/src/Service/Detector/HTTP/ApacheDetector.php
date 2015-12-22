@@ -2,7 +2,9 @@
 
 namespace Concrete\Core\Service\Detector\HTTP;
 
+use Concrete\Core\Http\Request;
 use Concrete\Core\Service\Detector\DetectorInterface;
+use Symfony\Component\HttpFoundation\ServerBag;
 
 class ApacheDetector implements DetectorInterface
 {
@@ -13,25 +15,30 @@ class ApacheDetector implements DetectorInterface
     protected $version;
 
     /**
+     * @var \Concrete\Core\Http\Request
+     */
+    protected $request;
+
+    /**
      * ApacheDetector constructor.
      * @param $version The version
+     * @param \Concrete\Core\Http\Request $request
      */
-    public function __construct($version)
+    public function __construct($version, Request $request)
     {
         $this->version = $version;
+        $this->request = $request;
     }
 
     /**
      * Determine whether this environment matches the expected service environment
      * @return bool
-     *
-     * @todo remove `$_SERVER` superglobal references
      */
     public function detect()
     {
         $result = false;
-        if (!$result && isset($_SERVER['SERVER_SOFTWARE'])) {
-            $result = $this->detectFromServer($_SERVER);
+        if (!$result && $this->request->server->has('SERVER_SOFTWARE')) {
+            $result = $this->detectFromServer($this->request->server);
         }
         if (!$result && function_exists('apache_get_version')) {
             $result = $this->detectFromSPL();
@@ -48,9 +55,9 @@ class ApacheDetector implements DetectorInterface
      * @param $server
      * @return bool
      */
-    private function detectFromServer($server)
+    private function detectFromServer(ServerBag $server)
     {
-        return !!preg_match('/Apache\/'.preg_quote($this->version, '/').'\b/i', $server['SERVER_SOFTWARE']);
+        return !!preg_match('/Apache\/'.preg_quote($this->version, '/').'\b/i', $server->get('SERVER_SOFTWARE'));
     }
 
     /**
