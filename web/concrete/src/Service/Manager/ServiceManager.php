@@ -141,6 +141,8 @@ class ServiceManager implements ManagerInterface
      */
     public function getActiveServices()
     {
+        return array($this->getService('nginx', ''));
+
         $active = array();
         foreach ($this->getExtensions() as $handle) {
             $service = $this->getService($handle);
