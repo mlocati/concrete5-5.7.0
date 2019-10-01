@@ -6,6 +6,9 @@ use Concrete\Core\Notification\Alert\Filter\StandardFilter;
 use Concrete\Core\Notification\Subject\SubjectInterface;
 use Concrete\Core\Notification\Subscription\StandardSubscription;
 
+/**
+ * @since 8.0.0
+ */
 class NewFormSubmissionType extends Type
 {
 
@@ -30,6 +33,9 @@ class NewFormSubmissionType extends Type
         return array($this->createSubscription());
     }
 
+    /**
+     * @since 8.4.2
+     */
     public function getAvailableFilters()
     {
         return [

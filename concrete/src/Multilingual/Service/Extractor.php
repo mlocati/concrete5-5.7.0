@@ -19,6 +19,9 @@ use C5TL\Parser\Dynamic as C5TLParserDynamic;
 
 defined('C5_EXECUTE') or die("Access Denied.");
 
+/**
+ * @since 5.7.3
+ */
 class Extractor
 {
     /**
@@ -154,6 +157,9 @@ class Extractor
         }
     }
 
+    /**
+     * @since 5.7.4
+     */
     public function mergeTranslationsWithPackages(Section $section, Translations $translations)
     {
         foreach (PackageList::get()->getPackages() as $package) {

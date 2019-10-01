@@ -6,6 +6,9 @@ use Concrete\Core\Support\Manager as CoreManager;
 
 defined('C5_EXECUTE') or die("Access Denied.");
 
+/**
+ * @since 8.0.0
+ */
 class Manager extends CoreManager
 {
     public function createCoreUpdateDriver()
@@ -17,6 +20,7 @@ class Manager extends CoreManager
      * Create a user deactivated type
      *
      * @return \Concrete\Core\Notification\Type\UserDeactivatedType
+     * @since 8.5.0
      */
     public function createUserDeactivatedDriver()
     {

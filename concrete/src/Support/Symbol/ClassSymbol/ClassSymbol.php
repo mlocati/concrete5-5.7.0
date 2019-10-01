@@ -17,6 +17,7 @@ class ClassSymbol
      * If the class is a facade, here we have the facade ReflectionClass, otherwise it's null.
      *
      * @var ReflectionClass|null
+     * @since 5.7.3
      */
     protected $facade;
 
@@ -31,6 +32,7 @@ class ClassSymbol
      * Namespace of the alias
      *
      * @var string
+     * @since 8.3.0
      */
     protected $aliasNamespace;
 
@@ -38,6 +40,7 @@ class ClassSymbol
      * Base name of the alias (that is, without namespace)
      *
      * @var string
+     * @since 8.3.0
      */
     protected $aliasBasename;
 
@@ -118,6 +121,7 @@ class ClassSymbol
 
     /**
      * @return bool
+     * @since 5.7.3
      */
     public function isFacade()
     {
@@ -126,6 +130,7 @@ class ClassSymbol
 
     /**
      * @return ReflectionClass|null
+     * @since 5.7.4
      */
     public function getFacadeReflectionClass()
     {
@@ -181,6 +186,7 @@ class ClassSymbol
      * Get the namespace of the alias.
      *
      * @return string
+     * @since 8.3.0
      */
     public function getAliasNamespace()
     {

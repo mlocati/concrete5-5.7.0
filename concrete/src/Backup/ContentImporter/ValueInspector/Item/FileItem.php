@@ -3,10 +3,19 @@ namespace Concrete\Core\Backup\ContentImporter\ValueInspector\Item;
 
 use Concrete\Core\File\File;
 
+/**
+ * @since 5.7.5.3
+ */
 class FileItem implements ItemInterface
 {
 
+    /**
+     * @since 8.3.1
+     */
     protected $filename;
+    /**
+     * @since 8.3.1
+     */
     protected $prefix;
 
     /**
@@ -32,6 +41,7 @@ class FileItem implements ItemInterface
 
     /**
      * @return mixed
+     * @since 8.3.1
      */
     public function getFilename()
     {
@@ -40,6 +50,7 @@ class FileItem implements ItemInterface
 
     /**
      * @return null
+     * @since 8.3.1
      */
     public function getPrefix()
     {

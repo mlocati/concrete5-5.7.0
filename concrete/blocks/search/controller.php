@@ -65,6 +65,7 @@ class Controller extends BlockController
      * Set this to true if the data sent to the save/performSave methods can contain NULL values that should be persisted.
      *
      * @var bool
+     * @since 8.2.0
      */
     protected $supportSavingNullValues = true;
 
@@ -288,6 +289,7 @@ class Controller extends BlockController
 
     /**
      * Method called when the "add block" dialog is going to be shown.
+     * @since 8.3.0
      */
     public function add()
     {
@@ -296,6 +298,7 @@ class Controller extends BlockController
 
     /**
      * Method called when the "edit block" dialog is going to be shown.
+     * @since 8.3.0
      */
     public function edit()
     {

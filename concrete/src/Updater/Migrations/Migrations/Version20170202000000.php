@@ -9,6 +9,9 @@ use Concrete\Core\Updater\Migrations\RepeatableMigrationInterface;
 use Concrete\Core\Updater\Migrations\Routine\AddPageDraftsBooleanTrait;
 use Doctrine\DBAL\Schema\Schema;
 
+/**
+ * @since 8.2.0
+ */
 class Version20170202000000 extends AbstractMigration implements RepeatableMigrationInterface
 {
     use AddPageDraftsBooleanTrait;
@@ -17,6 +20,7 @@ class Version20170202000000 extends AbstractMigration implements RepeatableMigra
      * {@inheritdoc}
      *
      * @see \Concrete\Core\Updater\Migrations\AbstractMigration::upgradeSchema()
+     * @since 8.3.2
      */
     public function upgradeSchema(Schema $schema)
     {
@@ -27,6 +31,7 @@ class Version20170202000000 extends AbstractMigration implements RepeatableMigra
      * {@inheritdoc}
      *
      * @see \Concrete\Core\Updater\Migrations\AbstractMigration::upgradeDatabase()
+     * @since 8.3.2
      */
     public function upgradeDatabase()
     {

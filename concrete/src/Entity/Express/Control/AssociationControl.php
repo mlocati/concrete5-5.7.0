@@ -10,10 +10,17 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="ExpressFormFieldSetAssociationControls")
+ * @since 8.0.0
  */
 class AssociationControl extends Control
 {
+    /**
+     * @since 8.5.0
+     */
     const TYPE_HTML_INPUT = 0;
+    /**
+     * @since 8.5.0
+     */
     const TYPE_ENTRY_SELECTOR = 5;
 
     /**
@@ -33,6 +40,7 @@ class AssociationControl extends Control
      * @ORM\Column(type="integer", options={"unsigned": true, "default": 0})
      *
      * @var int
+     * @since 8.5.0
      */
     protected $entry_selector_mode;
 
@@ -40,10 +48,14 @@ class AssociationControl extends Control
      * Does the control give us the ability to reorder entries in the association?
      *
      * @ORM\Column(type="boolean")
+     * @since 8.5.0
      */
     protected $enable_entry_reordering = false;
 
 
+    /**
+     * @since 8.5.0
+     */
     public function __construct()
     {
         $this->entry_selector_mode = self::TYPE_HTML_INPUT;
@@ -57,6 +69,9 @@ class AssociationControl extends Control
         return $this->association_entity_label_mask;
     }
 
+    /**
+     * @since 8.2.0
+     */
     public function getControlView(ContextInterface $context)
     {
         $registry = \Core::make(ControlRegistry::class);
@@ -76,6 +91,7 @@ class AssociationControl extends Control
 
     /**
      * @return int
+     * @since 8.5.0
      */
     public function getEntrySelectorMode()
     {
@@ -84,6 +100,7 @@ class AssociationControl extends Control
 
     /**
      * @param int $entry_selector_mode
+     * @since 8.5.0
      */
     public function setEntrySelectorMode($entry_selector_mode)
     {
@@ -128,6 +145,7 @@ class AssociationControl extends Control
 
     /**
      * @return mixed
+     * @since 8.5.0
      */
     public function enableEntryReordering()
     {
@@ -136,6 +154,7 @@ class AssociationControl extends Control
 
     /**
      * @param mixed $enable_entry_reordering
+     * @since 8.5.0
      */
     public function setEnableEntryReordering($enable_entry_reordering)
     {

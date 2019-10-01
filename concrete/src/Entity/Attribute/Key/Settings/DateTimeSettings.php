@@ -6,11 +6,13 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="atDateTimeSettings")
+ * @since 8.0.0
  */
 class DateTimeSettings extends Settings
 {
     /**
      * @ORM\Column(type="boolean", nullable=false, options={"default": false})
+     * @since 8.2.0
      */
     protected $akUseNowIfEmpty = false;
 
@@ -21,16 +23,19 @@ class DateTimeSettings extends Settings
 
     /**
      * @ORM\Column(type="text", nullable=false, options={"default": "", "comment": "Custom format for text inputs"})
+     * @since 8.3.0
      */
     protected $akTextCustomFormat = '';
 
     /**
      * @ORM\Column(type="integer", nullable=false, options={"default": 60, "unsigned": true, "comment": "Time resolution (in seconds)"})
+     * @since 8.2.0
      */
     protected $akTimeResolution = 60;
 
     /**
      * @return bool
+     * @since 8.2.0
      */
     public function getUseNowIfEmpty()
     {
@@ -39,6 +44,7 @@ class DateTimeSettings extends Settings
 
     /**
      * @param bool $value
+     * @since 8.2.0
      */
     public function setUseNowIfEmpty($value)
     {
@@ -63,6 +69,7 @@ class DateTimeSettings extends Settings
 
     /**
      * @return string
+     * @since 8.3.0
      */
     public function getTextCustomFormat()
     {
@@ -71,6 +78,7 @@ class DateTimeSettings extends Settings
 
     /**
      * @param string $textCustomFormat
+     * @since 8.3.0
      */
     public function setTextCustomFormat($textCustomFormat)
     {
@@ -81,6 +89,7 @@ class DateTimeSettings extends Settings
      * Get the time resolution (in seconds).
      *
      * @return int
+     * @since 8.2.0
      */
     public function getTimeResolution()
     {
@@ -91,6 +100,7 @@ class DateTimeSettings extends Settings
      * Set the time resolution (in seconds).
      *
      * @param int $value
+     * @since 8.2.0
      */
     public function setTimeResolution($value)
     {

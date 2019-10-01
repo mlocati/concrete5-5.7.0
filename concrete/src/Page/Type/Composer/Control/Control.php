@@ -17,11 +17,20 @@ abstract class Control extends ConcreteObject
     protected $ptComposerControlIdentifier;
     protected $ptComposerControlName;
     protected $ptComposerControlIconSRC;
+    /**
+     * @since 8.0.0
+     */
     protected $ptComposerControlIconFormatter;
     protected $ptComposerControl;
     protected $ptComposerControlRequiredByDefault = false;
     protected $ptComposerControlRequiredOnThisRequest = false;
+    /**
+     * @since 5.7.5.7
+     */
     protected $ptComposerControlCustomLabel;
+    /**
+     * @since 5.7.5.7
+     */
     protected $ptComposerControlDescription;
 
     abstract public function getPageTypeComposerControlCustomTemplates();
@@ -40,6 +49,9 @@ abstract class Control extends ConcreteObject
         return false;
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function onPageDraftCreate(Page $c)
     {
         return false;
@@ -55,21 +67,33 @@ abstract class Control extends ConcreteObject
         $this->ptComposerControlRequiredOnThisRequest = $req;
     }
 
+    /**
+     * @since 5.7.5.7
+     */
     public function setPageTypeComposerControlCustomLabel($label)
     {
         $this->ptComposerControlCustomLabel = $label;
     }
 
+    /**
+     * @since 5.7.5.7
+     */
     public function getPageTypeComposerControlCustomLabel()
     {
         return $this->ptComposerControlCustomLabel;
     }
 
+    /**
+     * @since 5.7.5.7
+     */
     public function setPageTypeComposerControlDescription($description)
     {
         $this->ptComposerControlDescription = $description;
     }
 
+    /**
+     * @since 5.7.5.7
+     */
     public function getPageTypeComposerControlDescription()
     {
         return $this->ptComposerControlDescription;
@@ -85,11 +109,17 @@ abstract class Control extends ConcreteObject
         return $this->page;
     }
 
+    /**
+     * @since 5.7.3
+     */
     public function setTargetParentPageID($ptTargetParentPageID)
     {
         $this->ptTargetParentPageID = $ptTargetParentPageID;
     }
 
+    /**
+     * @since 5.7.3
+     */
     public function getTargetParentPageID()
     {
         return $this->ptTargetParentPageID;
@@ -105,6 +135,9 @@ abstract class Control extends ConcreteObject
         return $this->ptComposerControlName;
     }
 
+    /**
+     * @since 5.7.0.1
+     */
     public function getPageTypeComposerControlDisplayName($format = 'html')
     {
         $value = $this->getPageTypeComposerControlName();
@@ -122,11 +155,17 @@ abstract class Control extends ConcreteObject
         $this->ptComposerControlIconSRC = $ptComposerControlIconSRC;
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function setPageTypeComposerControlIconFormatter($ptComposerControlIconFormatter)
     {
         $this->ptComposerControlIconFormatter = $ptComposerControlIconFormatter;
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function getPageTypeComposerControlIcon()
     {
         if (isset($this->ptComposerControlIconSRC)) {
@@ -243,11 +282,17 @@ abstract class Control extends ConcreteObject
         return $controls;
     }
 
+    /**
+     * @since 5.7.4.1
+     */
     public function isPageTypeComposerControlRequiredByDefault()
     {
         return $this->ptComposerControlRequiredByDefault;
     }
 
+    /**
+     * @since 5.7.5
+     */
     public function objectExists()
     {
         return true;

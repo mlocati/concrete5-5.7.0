@@ -14,6 +14,9 @@ use Concrete\Core\User\UserList;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Concrete\Core\Entity\Search\SavedUserSearch;
 
+/**
+ * @since 8.0.0
+ */
 class SearchProvider extends AbstractSearchProvider
 {
 
@@ -99,6 +102,9 @@ class SearchProvider extends AbstractSearchProvider
         return $result;
     }
     
+    /**
+     * @since 8.2.0
+     */
     public function getSavedSearch()
     {
         return new SavedUserSearch();

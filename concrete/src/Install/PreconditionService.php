@@ -8,6 +8,7 @@ use Exception;
 
 /**
  * Service class for installation preconditions.
+ * @since 8.3.0
  */
 class PreconditionService
 {
@@ -62,6 +63,7 @@ class PreconditionService
      * Get the post-configuration preconditions.
      *
      * @return OptionsPreconditionInterface[]
+     * @since 8.4.0
      */
     public function getOptionsPreconditions()
     {

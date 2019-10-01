@@ -7,6 +7,9 @@ use Concrete\Core\Tree\Node\Type\Category;
 use Concrete\Core\Tree\Node\Type\ExpressEntryCategory;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
+/**
+ * @since 8.0.0
+ */
 class Add extends Node
 {
     protected $viewPath = '/dialogs/tree/node/category/add';
@@ -27,6 +30,9 @@ class Add extends Node
         }
     }
 
+    /**
+     * @since 8.2.0
+     */
     protected function getCategoryClass(Category $category)
     {
         if ($category instanceof ExpressEntryCategory) {

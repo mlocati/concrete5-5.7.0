@@ -11,6 +11,9 @@ class ContentImporter
 
     protected static $mcBlockIDs = array();
     protected static $ptComposerOutputControlIDs = array();
+    /**
+     * @since 8.0.0
+     */
     protected $home;
 
     public function importContentFile($file)
@@ -19,6 +22,9 @@ class ContentImporter
         $this->import($sx);
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function setHomePage($c)
     {
         $this->home = $c;
@@ -30,11 +36,17 @@ class ContentImporter
         $this->import($sx);
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function importXml(\SimpleXMLElement $xml)
     {
         $this->import($xml);
     }
 
+    /**
+     * @since 8.0.0
+     */
     protected function import(\SimpleXMLElement $element)
     {
         $manager = Core::make('import/item/manager');
@@ -51,6 +63,9 @@ class ContentImporter
         }
     }
 
+    /**
+     * @since 8.0.0
+     */
     public static function getMasterCollectionTemporaryBlockIDs()
     {
         return self::$mcBlockIDs;
@@ -80,6 +95,9 @@ class ContentImporter
         }
     }
 
+    /**
+     * @since 5.7.4
+     */
     public function importFiles($fromPath, $computeThumbnails = true)
     {
         $fh = new Importer();

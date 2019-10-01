@@ -40,6 +40,9 @@ use Doctrine\ORM\Id\UuidGenerator;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Concrete\Core\Permission\Checker;
 
+/**
+ * @since 8.0.0
+ */
 class Controller extends BlockController implements NotificationProviderInterface
 {
     protected $btInterfaceWidth = 640;
@@ -48,9 +51,21 @@ class Controller extends BlockController implements NotificationProviderInterfac
     protected $btTable = 'btExpressForm';
     protected $btExportPageColumns = ['redirectCID'];
 
+    /**
+     * @since 8.2.0
+     */
     public $notifyMeOnSubmission;
+    /**
+     * @since 8.2.0
+     */
     public $recipientEmail;
+    /**
+     * @since 8.2.0
+     */
     public $replyToEmailControlID;
+    /**
+     * @since 8.4.4
+     */
     public $storeFormSubmission = 1;
 
     const FORM_RESULTS_CATEGORY_NAME = 'Forms';
@@ -121,6 +136,9 @@ class Controller extends BlockController implements NotificationProviderInterfac
         $this->set('displayCaptcha', 1);
     }
 
+    /**
+     * @since 8.4.4
+     */
     protected function areFormSubmissionsStored()
     {
         $config = $this->getFormSubmissionConfigValue();
@@ -135,12 +153,18 @@ class Controller extends BlockController implements NotificationProviderInterfac
         return false;
     }
 
+    /**
+     * @since 8.4.4
+     */
     protected function getFormSubmissionConfigValue()
     {
         $config = $this->app->make('config');
         return $config->get('concrete.form.store_form_submissions');
     }
 
+    /**
+     * @since 8.2.0
+     */
     public function getNotifications()
     {
         $notifications = [new FormBlockSubmissionEmailNotification($this->app, $this)];

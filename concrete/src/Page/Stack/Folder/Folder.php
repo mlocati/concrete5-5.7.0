@@ -8,6 +8,9 @@ use Concrete\Core\Page\Page;
 use Concrete\Core\Permission\AssignableObjectInterface;
 use Concrete\Core\Permission\Key\Key;
 
+/**
+ * @since 8.0.0
+ */
 class Folder implements ExportableInterface, AssignableObjectInterface
 {
 
@@ -20,16 +23,25 @@ class Folder implements ExportableInterface, AssignableObjectInterface
         $this->page = $page;
     }
 
+    /**
+     * @since 8.2.0
+     */
     public function setChildPermissionsToOverride()
     {
         $this->page->setChildPermissionsToOverride();
     }
 
+    /**
+     * @since 8.2.0
+     */
     public function setPermissionsToOverride()
     {
         $this->page->setPermissionsToOverride();
     }
 
+    /**
+     * @since 8.2.0
+     */
     public function assignPermissions(
         $userOrGroup,
         $permissions,

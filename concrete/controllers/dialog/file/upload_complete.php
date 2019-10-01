@@ -3,10 +3,16 @@ namespace Concrete\Controller\Dialog\File;
 
 use Concrete\Controller\Dialog\File\Bulk\Properties as BulkPropertiesController;
 
+/**
+ * @since 5.7.4
+ */
 class UploadComplete extends BulkPropertiesController
 {
     protected $viewPath = '/dialogs/file/upload_complete';
 
+    /**
+     * @since 8.1.0
+     */
     protected function checkPermissions($file)
     {
         $fp = new \Permissions($file);

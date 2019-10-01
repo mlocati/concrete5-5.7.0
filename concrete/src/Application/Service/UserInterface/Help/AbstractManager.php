@@ -1,6 +1,9 @@
 <?php
 namespace Concrete\Core\Application\Service\UserInterface\Help;
 
+/**
+ * @since 5.7.4
+ */
 class AbstractManager implements ManagerInterface, RegistryInterface
 {
     protected $messages;
@@ -25,6 +28,9 @@ class AbstractManager implements ManagerInterface, RegistryInterface
         $this->setMessage($identifier, $m);
     }
 
+    /**
+     * @since 5.7.5
+     */
     public function setMessage($identifier, MessageInterface $message)
     {
         $this->messages[$identifier] = $message;

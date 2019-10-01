@@ -5,6 +5,9 @@ namespace Concrete\Core\Database;
 use Concrete\Core\Application\Application;
 use Doctrine\ORM\EntityManager;
 
+/**
+ * @since 5.7.4
+ */
 class DatabaseManagerORM
 {
     /**
@@ -14,6 +17,9 @@ class DatabaseManagerORM
      */
     protected $app;
 
+    /**
+     * @since 8.0.0
+     */
     protected $entityManager;
 
     /**

@@ -11,6 +11,9 @@ use Concrete\Core\Tree\Node\Node;
 use Concrete\Core\Tree\Node\Type\SearchPreset;
 use Symfony\Component\HttpFoundation\Session\Session;
 
+/**
+ * @since 8.0.0
+ */
 abstract class AbstractSearchProvider implements ProviderInterface, SessionQueryProviderInterface
 {
     protected $session;
@@ -105,6 +108,7 @@ abstract class AbstractSearchProvider implements ProviderInterface, SessionQuery
      * Gets items per page from the current preset or from the session.
      *
      * @return int
+     * @since 8.2.0
      */
     public function getItemsPerPage()
     {
@@ -116,6 +120,7 @@ abstract class AbstractSearchProvider implements ProviderInterface, SessionQuery
 
     /**
      * @return array
+     * @since 8.2.0
      */
     public function getItemsPerPageOptions()
     {

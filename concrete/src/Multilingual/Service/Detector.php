@@ -10,6 +10,9 @@ use Concrete\Core\User\User;
 
 defined('C5_EXECUTE') or die('Access Denied.');
 
+/**
+ * @since 5.7.3
+ */
 class Detector
 {
     /**
@@ -154,6 +157,7 @@ class Detector
      * @return bool
      *
      * @throws \Exception
+     * @since 5.7.5
      */
     public function isEnabled()
     {
@@ -180,6 +184,7 @@ class Detector
 
     /**
      * @return bool
+     * @since 8.5.0
      */
     protected function canSetSessionValue()
     {

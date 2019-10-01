@@ -34,6 +34,9 @@ class BlockView extends AbstractView
     protected $viewToRender = false;
     protected $viewPerformed = false;
     protected $showControls = true;
+    /**
+     * @since 5.7.1
+     */
     protected $didPullFromOutputCache = false;
 
     /**
@@ -394,6 +397,9 @@ class BlockView extends AbstractView
         return $field;
     }
 
+    /**
+     * @since 5.7.5
+     */
     public function usedBlockCacheDuringRender()
     {
         return $this->didPullFromOutputCache;
@@ -465,7 +471,6 @@ class BlockView extends AbstractView
      * Custom code can modify the block contents before
      * the block contents are 'echoed' out on the page.
      *
-     * @since 8.4.1
      */
     private function fireOnBlockOutputEvent()
     {

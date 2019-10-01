@@ -5,6 +5,9 @@ use Concrete\Core\Permission\Key\Key;
 use Concrete\Core\Permission\Registry\Entry\Access\Entity\EntityInterface;
 use Concrete\Core\Workflow\Workflow;
 
+/**
+ * @since 8.0.0
+ */
 class WorkflowEntry implements EntryInterface
 {
 
@@ -29,6 +32,9 @@ class WorkflowEntry implements EntryInterface
         }
     }
 
+    /**
+     * @since 8.2.0
+     */
     public function remove($mixed)
     {
         $workflow = Workflow::getByName($this->workflowName);

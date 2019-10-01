@@ -25,6 +25,7 @@ abstract class Asset implements AssetInterface
      * The position of this asset (\Concrete\Core\Asset\AssetInterface::ASSET_POSITION_HEADER or \Concrete\Core\Asset\AssetInterface::ASSET_POSITION_FOOTER).
      *
      * @var string
+     * @since 8.3.2
      */
     protected $position;
 
@@ -53,6 +54,7 @@ abstract class Asset implements AssetInterface
      * The location of the asset (used to build the path & URL).
      *
      * @var string
+     * @since 8.2.0
      */
     protected $location;
 
@@ -74,6 +76,7 @@ abstract class Asset implements AssetInterface
      * Does the URL/path have already been resolved (starting from the location) for this (local) assets?
      *
      * @var bool
+     * @since 8.2.0
      */
     protected $assetHasBeenMapped = false;
 
@@ -81,6 +84,7 @@ abstract class Asset implements AssetInterface
      * The name of the file of this asset.
      *
      * @var string
+     * @since 5.7.4
      */
     protected $filename;
 
@@ -150,6 +154,7 @@ abstract class Asset implements AssetInterface
      * {@inheritdoc}
      *
      * @see \Concrete\Core\Asset\AssetInterface::getOutputAssetType()
+     * @since 5.7.4
      */
     public function getOutputAssetType()
     {
@@ -220,6 +225,7 @@ abstract class Asset implements AssetInterface
      * Set the location of this asset.
      *
      * @param string $location
+     * @since 8.2.0
      */
     public function setAssetLocation($location)
     {
@@ -315,6 +321,7 @@ abstract class Asset implements AssetInterface
      * Does the URL/path have already been resolved (starting from the location) for this (local) assets?
      *
      * @return bool
+     * @since 8.2.0
      */
     public function hasAssetBeenMapped()
     {
@@ -345,6 +352,7 @@ abstract class Asset implements AssetInterface
      * {@inheritdoc}
      *
      * @see \Concrete\Core\Asset\AssetInterface::getAssetHashKey()
+     * @since 5.7.4
      */
     public function getAssetHashKey()
     {
@@ -411,6 +419,7 @@ abstract class Asset implements AssetInterface
      * {@inheritdoc}
      *
      * @see \Concrete\Core\Asset\AssetInterface::getAssetContents()
+     * @since 5.7.4
      */
     public function getAssetContents()
     {
@@ -433,6 +442,7 @@ abstract class Asset implements AssetInterface
      * {@inheritdoc}
      *
      * @see \Concrete\Core\Asset\AssetInterface::register()
+     * @since 5.7.4
      */
     public function register($filename, $args, $pkg = false)
     {
@@ -470,6 +480,7 @@ abstract class Asset implements AssetInterface
      * {@inheritdoc}
      *
      * @see \Concrete\Core\Asset\AssetInterface::process()
+     * @since 5.7.4
      */
     public static function process($assets)
     {
@@ -480,6 +491,7 @@ abstract class Asset implements AssetInterface
      * Get an AssetPointer instance that identifies this asset.
      *
      * @return \Concrete\Core\Asset\AssetPointer
+     * @since 8.0.0
      */
     public function getAssetPointer()
     {
@@ -494,6 +506,7 @@ abstract class Asset implements AssetInterface
      * @param string $route
      *
      * @return string|null
+     * @since 5.7.4
      */
     protected static function getAssetContentsByRoute($route)
     {
@@ -546,6 +559,7 @@ abstract class Asset implements AssetInterface
      * @param string $noCacheValue
      *
      * @return string
+     * @since 8.5.0
      */
     protected function obfuscateNoCacheValue($noCacheValue)
     {

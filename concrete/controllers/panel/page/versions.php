@@ -213,6 +213,9 @@ class Versions extends BackendInterfacePageController
         }
     }
 
+    /**
+     * @since 8.4.0
+     */
     public function unapprove()
     {
         $c = $this->page;

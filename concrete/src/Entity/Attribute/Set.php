@@ -17,6 +17,7 @@ use Concrete\Core\Export\Item\AttributeSet;
  *     @ORM\Index(name="pkgID", columns={"pkgID"})
  *     }
  * )
+ * @since 8.0.0
  */
 class Set implements ExportableInterface
 {
@@ -73,6 +74,9 @@ class Set implements ExportableInterface
         return $this->keys;
     }
 
+    /**
+     * @since 8.2.0
+     */
     public function getExporter()
     {
         return new AttributeSet();
@@ -220,6 +224,9 @@ class Set implements ExportableInterface
         $this->keys->add($setKey);
     }
 
+    /**
+     * @since 8.3.0
+     */
     public function __toString()
     {
         return (string) $this->getAttributeSetID();

@@ -9,6 +9,9 @@ use Doctrine\ORM\EntityManager;
 use FilePermissions;
 use URL;
 
+/**
+ * @since 8.0.0
+ */
 class AdvancedSearch extends AdvancedSearchController
 {
     protected function canAccess()
@@ -26,6 +29,9 @@ class AdvancedSearch extends AdvancedSearchController
         return $this->app->make('Concrete\Core\File\Search\SearchProvider');
     }
 
+    /**
+     * @since 8.4.1
+     */
     public function getSavedSearchEntity()
     {
         $em = $this->app->make(EntityManager::class);
@@ -73,11 +79,17 @@ class AdvancedSearch extends AdvancedSearchController
         return (string) URL::to('/ccm/system/search/files/basic');
     }
 
+    /**
+     * @since 8.4.1
+     */
     public function getSavedSearchDeleteURL(SavedSearch $search)
     {
         return (string) URL::to('/ccm/system/dialogs/file/advanced_search/preset/delete?presetID=' . $search->getID());
     }
 
+    /**
+     * @since 8.4.1
+     */
     public function getSavedSearchEditURL(SavedSearch $search)
     {
         return (string) URL::to('/ccm/system/dialogs/file/advanced_search/preset/edit?presetID=' . $search->getID());

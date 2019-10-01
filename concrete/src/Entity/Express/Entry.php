@@ -20,11 +20,15 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="\Concrete\Core\Entity\Express\EntryRepository")
  * @ORM\Table(name="ExpressEntityEntries")
  * @ORM\EntityListeners({"\Concrete\Core\Express\Entry\Listener"})
+ * @since 8.0.0
  */
 class Entry implements \JsonSerializable, PermissionObjectInterface, AttributeObjectInterface, ExportableInterface
 {
     use ObjectTrait;
 
+    /**
+     * @since 8.2.1
+     */
     protected $entryFormatter;
 
     /**
@@ -78,6 +82,7 @@ class Entry implements \JsonSerializable, PermissionObjectInterface, AttributeOb
      * @param $entityHandle
      *
      * @return bool
+     * @since 8.5.0
      */
     public function is($entityHandle)
     {
@@ -166,6 +171,7 @@ class Entry implements \JsonSerializable, PermissionObjectInterface, AttributeOb
     /**
      * @ORM\ManyToOne(targetEntity="Concrete\Core\Entity\User\User")
      * @ORM\JoinColumn(name="uID", referencedColumnName="uID")
+     * @since 8.5.0
      */
     protected $author;
 
@@ -187,6 +193,7 @@ class Entry implements \JsonSerializable, PermissionObjectInterface, AttributeOb
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @since 8.5.0
      */
     protected $exEntryDateModified;
 
@@ -216,6 +223,7 @@ class Entry implements \JsonSerializable, PermissionObjectInterface, AttributeOb
 
     /**
      * @param mixed $exEntryID
+     * @since 8.2.1
      */
     public function setID($exEntryID)
     {
@@ -308,6 +316,7 @@ class Entry implements \JsonSerializable, PermissionObjectInterface, AttributeOb
      * @param \Concrete\Core\Entity\Express\Association $association
      *
      * @return \Concrete\Core\Entity\Express\Entry\Association|null
+     * @since 8.2.0
      */
     public function getEntryAssociation(Association $association)
     {
@@ -352,6 +361,7 @@ class Entry implements \JsonSerializable, PermissionObjectInterface, AttributeOb
     /**
      * Updates the entity dateModified field
      * Normally called by ExpressValue Entity.
+     * @since 8.5.0
      */
     public function updateDateModified()
     {
@@ -395,6 +405,7 @@ class Entry implements \JsonSerializable, PermissionObjectInterface, AttributeOb
 
     /**
      * @return \DateTime
+     * @since 8.5.0
      */
     public function getDateModified()
     {
@@ -403,6 +414,7 @@ class Entry implements \JsonSerializable, PermissionObjectInterface, AttributeOb
 
     /**
      * @param mixed $exEntryDateModified
+     * @since 8.5.0
      */
     public function setDateModified($exEntryDateModified)
     {
@@ -427,6 +439,7 @@ class Entry implements \JsonSerializable, PermissionObjectInterface, AttributeOb
 
     /**
      * @return mixed
+     * @since 8.1.0
      */
     public function associateEntries()
     {
@@ -435,6 +448,7 @@ class Entry implements \JsonSerializable, PermissionObjectInterface, AttributeOb
 
     /**
      * @return \Concrete\Core\Export\Item\ItemInterface
+     * @since 8.3.1
      */
     public function getExporter()
     {
@@ -443,6 +457,7 @@ class Entry implements \JsonSerializable, PermissionObjectInterface, AttributeOb
 
     /**
      * @return \Concrete\Core\Entity\User\User
+     * @since 8.5.0
      */
     public function getAuthor()
     {
@@ -451,6 +466,7 @@ class Entry implements \JsonSerializable, PermissionObjectInterface, AttributeOb
 
     /**
      * @param mixed $author
+     * @since 8.5.0
      */
     public function setAuthor($author)
     {

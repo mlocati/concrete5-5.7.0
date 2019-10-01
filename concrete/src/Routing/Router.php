@@ -15,6 +15,7 @@ class Router implements RouterInterface
 {
     /**
      * @var RouteActionFactoryInterface
+     * @since 8.5.0
      */
     protected $actionFactory;
 
@@ -31,6 +32,9 @@ class Router implements RouterInterface
         $this->actionFactory = $actionFactory;
     }
 
+    /**
+     * @since 8.5.0
+     */
     public function buildGroup()
     {
         return new RouteGroupBuilder($this);
@@ -40,7 +44,7 @@ class Router implements RouterInterface
      * @param string $path
      * @param string $action
      *
-     * @since 8.5.0a2
+     * @since 8.5.0
      *
      * @return \Concrete\Core\Routing\RouteBuilder
      */
@@ -53,7 +57,7 @@ class Router implements RouterInterface
      * @param string $path
      * @param string $action
      *
-     * @since 8.5.0a2
+     * @since 8.5.0
      *
      * @return \Concrete\Core\Routing\RouteBuilder
      */
@@ -66,7 +70,7 @@ class Router implements RouterInterface
      * @param string $path
      * @param string $action
      *
-     * @since 8.5.0a2
+     * @since 8.5.0
      *
      * @return \Concrete\Core\Routing\RouteBuilder
      */
@@ -79,7 +83,7 @@ class Router implements RouterInterface
      * @param string $path
      * @param string $action
      *
-     * @since 8.5.0a2
+     * @since 8.5.0
      *
      * @return \Concrete\Core\Routing\RouteBuilder
      */
@@ -92,7 +96,7 @@ class Router implements RouterInterface
      * @param string $path
      * @param string $action
      *
-     * @since 8.5.0a2
+     * @since 8.5.0
      *
      * @return \Concrete\Core\Routing\RouteBuilder
      */
@@ -105,7 +109,7 @@ class Router implements RouterInterface
      * @param string $path
      * @param string $action
      *
-     * @since 8.5.0a2
+     * @since 8.5.0
      *
      * @return \Concrete\Core\Routing\RouteBuilder
      */
@@ -118,7 +122,7 @@ class Router implements RouterInterface
      * @param string $path
      * @param string $action
      *
-     * @since 8.5.0a2
+     * @since 8.5.0
      *
      * @return \Concrete\Core\Routing\RouteBuilder
      */
@@ -131,7 +135,7 @@ class Router implements RouterInterface
      * @param string $path
      * @param string $action
      *
-     * @since 8.5.0a2
+     * @since 8.5.0
      *
      * @return \Concrete\Core\Routing\RouteBuilder
      */
@@ -146,6 +150,7 @@ class Router implements RouterInterface
      * @param Route $route
      *
      * @return RouteActionInterface
+     * @since 8.5.0
      */
     public function resolveAction(Route $route)
     {
@@ -154,6 +159,7 @@ class Router implements RouterInterface
 
     /**
      * @return RouteCollection
+     * @since 8.5.0
      */
     public function getRoutes()
     {
@@ -162,12 +168,16 @@ class Router implements RouterInterface
 
     /**
      * @return RouteActionFactoryInterface
+     * @since 8.5.0
      */
     public function getActionFactory()
     {
         return $this->actionFactory;
     }
 
+    /**
+     * @since 8.5.0
+     */
     public function addRoute(Route $route)
     {
         $this->routes->add($route->getName(), $route);
@@ -177,6 +187,7 @@ class Router implements RouterInterface
      * {@inheritdoc}
      *
      * @see \Concrete\Core\Routing\RouterInterface::getRouteByPath()
+     * @since 8.5.0
      */
     public function getRouteByPath($path, RequestContext $context, array &$routeAttributes = [])
     {
@@ -192,6 +203,7 @@ class Router implements RouterInterface
      * {@inheritdoc}
      *
      * @see \Concrete\Core\Routing\RouterInterface::matchRoute()
+     * @since 8.5.0
      */
     public function matchRoute(Request $request)
     {
@@ -203,6 +215,9 @@ class Router implements RouterInterface
         return new MatchedRoute($route, $attributes);
     }
 
+    /**
+     * @since 8.5.0
+     */
     public function loadRouteList(RouteListInterface $list)
     {
         $list->loadRoutes($this);

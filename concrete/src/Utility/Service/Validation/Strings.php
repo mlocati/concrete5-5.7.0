@@ -12,9 +12,13 @@ class Strings
 {
     /**
      * @var \Concrete\Core\Application\Application
+     * @since 8.4.2
      */
     protected $app;
 
+    /**
+     * @since 8.4.2
+     */
     public function __construct(Application $app)
     {
         $this->app = $app;

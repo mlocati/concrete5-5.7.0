@@ -22,12 +22,16 @@ use Concrete\Core\Updater\Migrations\AbstractMigration;
 use Concrete\Core\Updater\Migrations\LongRunningMigrationInterface;
 use Concrete\Core\Updater\Migrations\RepeatableMigrationInterface;
 
+/**
+ * @since 8.3.0
+ */
 class Version20171110032423 extends AbstractMigration implements RepeatableMigrationInterface, LongRunningMigrationInterface
 {
     /**
      * {@inheritdoc}
      *
      * @see \Concrete\Core\Updater\Migrations\AbstractMigration::upgradeDatabase()
+     * @since 8.3.2
      */
     public function upgradeDatabase()
     {
@@ -41,6 +45,9 @@ class Version20171110032423 extends AbstractMigration implements RepeatableMigra
         }
     }
 
+    /**
+     * @since 8.3.2
+     */
     protected function migrateCalendar()
     {
         $this->addEarlyCalendarFunctionality();

@@ -7,6 +7,9 @@ use Concrete\Core\Multilingual\Service\UserInterface\Flag;
 use HtmlObject\Element;
 use HtmlObject\Image;
 
+/**
+ * @since 8.2.0
+ */
 class SiteEntry extends Entry
 {
 
@@ -32,6 +35,9 @@ class SiteEntry extends Entry
         return null;
     }
 
+    /**
+     * @since 8.4.0
+     */
     public function getIcon()
     {
         return null;

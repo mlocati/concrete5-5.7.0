@@ -14,6 +14,9 @@ use Concrete\Core\Site\Resolver\ResolverFactory;
 use Doctrine\ORM\EntityManagerInterface;
 use Punic\Comparer;
 
+/**
+ * @since 8.0.0
+ */
 class Service
 {
     /**
@@ -38,6 +41,7 @@ class Service
 
     /**
      * @var \Concrete\Core\Cache\Cache
+     * @since 8.2.0
      */
     protected $cache;
 
@@ -66,6 +70,7 @@ class Service
 
     /**
      * @param mixed $cache
+     * @since 8.2.0
      */
     public function setCache($cache)
     {
@@ -94,6 +99,7 @@ class Service
      * @param string $handle
      *
      * @return Site|null
+     * @since 8.2.0
      */
     public function getByHandle($handle)
     {

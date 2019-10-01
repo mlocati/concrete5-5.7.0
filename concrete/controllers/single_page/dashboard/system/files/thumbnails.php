@@ -12,10 +12,19 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class Thumbnails extends DashboardPageController
 {
+    /**
+     * @since 8.4.0
+     */
     const FILESETOPTION_ALL = 'all';
 
+    /**
+     * @since 8.4.0
+     */
     const FILESETOPTION_ALL_EXCEPT = 'except';
 
+    /**
+     * @since 8.4.0
+     */
     const FILESETOPTION_ONLY = 'only';
 
     /**
@@ -60,6 +69,9 @@ class Thumbnails extends DashboardPageController
         }
     }
 
+    /**
+     * @since 8.4.0
+     */
     public function save($ftTypeID = false)
     {
         if (!$this->token->validate('thumbnailtype-save-' . $ftTypeID)) {
@@ -238,6 +250,9 @@ class Thumbnails extends DashboardPageController
         $this->edit($ftTypeID);
     }
 
+    /**
+     * @since 8.4.0
+     */
     protected function getSizingModes()
     {
         return [
@@ -246,6 +261,9 @@ class Thumbnails extends DashboardPageController
         ];
     }
 
+    /**
+     * @since 8.4.0
+     */
     protected function getSizingModeHelps()
     {
         $result = [];
@@ -265,6 +283,9 @@ class Thumbnails extends DashboardPageController
         return $result;
     }
 
+    /**
+     * @since 8.4.0
+     */
     protected function getFileSetOptions()
     {
         return [
@@ -274,6 +295,9 @@ class Thumbnails extends DashboardPageController
         ];
     }
 
+    /**
+     * @since 8.4.0
+     */
     protected function getPublicFileSets($asObjects)
     {
         $result = [];

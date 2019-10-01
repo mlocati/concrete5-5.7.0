@@ -143,6 +143,7 @@ class User extends ConcreteObject
 
     /**
      * @return UserInfo|null
+     * @since 5.7.5.4
      */
     public function getUserInfoObject()
     {
@@ -440,6 +441,7 @@ class User extends ConcreteObject
 
     /**
      * @param bool $hard
+     * @since 5.7.3
      */
     public function invalidateSession($hard = true)
     {
@@ -536,6 +538,7 @@ class User extends ConcreteObject
      * Returns date in yyyy-mm-dd H:i:s format.
      *
      * @return string
+     * @since 5.7.1
      */
     public function getLastPasswordChange()
     {
@@ -916,6 +919,7 @@ class User extends ConcreteObject
      * Manage user session writing.
      *
      * @param bool $cache_interface
+     * @since 5.7.1
      */
     public function persist($cache_interface = true)
     {
@@ -944,6 +948,7 @@ class User extends ConcreteObject
 
     /**
      * @param bool $cache_interface
+     * @since 5.7.1
      */
     public function logIn($cache_interface = true)
     {

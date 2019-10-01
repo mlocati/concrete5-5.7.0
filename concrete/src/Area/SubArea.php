@@ -9,11 +9,13 @@ class SubArea extends Area
 
     /**
      * @var \Block
+     * @since 5.7.3
      */
     protected $parentBlock;
 
     /**
      * @param \Block $block
+     * @since 5.7.3
      */
     public function setSubAreaBlockObject($block)
     {
@@ -95,6 +97,9 @@ class SubArea extends Area
         return $this->arParentID;
     }
 
+    /**
+     * @since 5.7.4
+     */
     public function getAreaCustomTemplates($include_parent_templates = true)
     {
         $these_templates = parent::getAreaCustomTemplates();

@@ -14,10 +14,14 @@ use Concrete\Core\User\Event\AddUser;
 use Concrete\Core\User\Event\UserInfoWithPassword;
 use Doctrine\ORM\EntityManagerInterface;
 
+/**
+ * @since 5.7.5.4
+ */
 class RegistrationService implements RegistrationServiceInterface
 {
     /**
      * @var EntityManagerInterface
+     * @since 8.0.0
      */
     protected $entityManager;
 
@@ -28,6 +32,7 @@ class RegistrationService implements RegistrationServiceInterface
 
     /**
      * @var UserInfoRepository
+     * @since 8.0.0
      */
     protected $userInfoRepository;
 
@@ -175,6 +180,7 @@ class RegistrationService implements RegistrationServiceInterface
      * @param string $lastName The user's last name
      *
      * @return string
+     * @since 8.3.2
      */
     public function getNewUsernameFromUserDetails($email, $suggestedUsername = '', $firstName = '', $lastName = '')
     {

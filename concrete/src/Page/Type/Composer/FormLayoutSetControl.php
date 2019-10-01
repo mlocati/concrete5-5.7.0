@@ -11,6 +11,9 @@ use Concrete\Core\Support\Facade\Application;
 
 class FormLayoutSetControl extends ConcreteObject
 {
+    /**
+     * @since 5.7.3
+     */
     protected $ptTargetParentPageID = 0;
 
     public function getPageTypeComposerFormLayoutSetControlID()
@@ -29,6 +32,9 @@ class FormLayoutSetControl extends ConcreteObject
     {
         return $this->ptComposerControlObject;
     }
+    /**
+     * @since 5.7.3
+     */
     public function getPageTypeComposerFormLayoutSetControlDisplayOrder()
     {
         return $this->ptComposerFormLayoutSetControlDisplayOrder;
@@ -58,6 +64,9 @@ class FormLayoutSetControl extends ConcreteObject
         return $this->ptComposerFormLayoutSetControlRequired;
     }
 
+    /**
+     * @since 5.7.0.1
+     */
     public function getPageTypeComposerFormLayoutSetControlCustomDisplayLabel($format = 'html')
     {
         $value = tc('PageTypeComposerFormLayoutSetControlCustomLabel', $this->getPageTypeComposerFormLayoutSetControlCustomLabel());
@@ -69,6 +78,9 @@ class FormLayoutSetControl extends ConcreteObject
                 return $value;
         }
     }
+    /**
+     * @since 5.7.0.1
+     */
     public function getPageTypeComposerFormLayoutSetControlDisplayDescription($format = 'html')
     {
         $value = tc('PageTypeComposerFormLayoutSetControlDescription', $this->getPageTypeComposerFormLayoutSetControlDescription());
@@ -85,6 +97,9 @@ class FormLayoutSetControl extends ConcreteObject
         $this->page = $page;
     }
 
+    /**
+     * @since 5.7.3
+     */
     public function setTargetParentPageID($ptTargetParentPageID)
     {
         $this->ptTargetParentPageID = $ptTargetParentPageID;
@@ -110,6 +125,9 @@ class FormLayoutSetControl extends ConcreteObject
             return $control->getPageTypeComposerControlName();
         }
     }
+    /**
+     * @since 5.7.0.1
+     */
     public function getPageTypeComposerControlDisplayLabel($format = 'html')
     {
         $result = $this->getPageTypeComposerFormLayoutSetControlCustomDisplayLabel($format);
@@ -277,6 +295,9 @@ class FormLayoutSetControl extends ConcreteObject
         $set->rescanFormLayoutSetControlDisplayOrder();
     }
 
+    /**
+     * @since 5.7.3
+     */
     public function duplicate(FormLayoutSet $set)
     {
         $control = $this->getPageTypeComposerControlObject();

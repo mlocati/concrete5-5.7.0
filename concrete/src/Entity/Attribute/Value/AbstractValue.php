@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\MappedSuperClass
+ * @since 8.0.0
  */
 abstract class AbstractValue implements AttributeValueInterface
 {
@@ -38,6 +39,7 @@ abstract class AbstractValue implements AttributeValueInterface
      * to set this via runtime. Do NOT set this if you are trying to actually
      * persist the attribute value object.
      * @var \Concrete\Core\Entity\Attribute\Value\Value\AbstractValue
+     * @since 8.4.1
      */
     protected $attribute_value;
 
@@ -63,6 +65,9 @@ abstract class AbstractValue implements AttributeValueInterface
     }
 
 
+    /**
+     * @since 8.4.1
+     */
     public function setAttributeValueObject($attributeValueObject)
     {
         $this->attribute_value = $attributeValueObject;
@@ -81,6 +86,9 @@ abstract class AbstractValue implements AttributeValueInterface
         return $controller;
     }
 
+    /**
+     * @since 8.3.0
+     */
     public function __destruct()
     {
         unset($this->attribute_key);

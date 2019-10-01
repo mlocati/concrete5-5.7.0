@@ -21,6 +21,9 @@ use Doctrine\ORM\EntityManagerInterface;
 use Concrete\Core\Entity\File\File;
 use Concrete\Core\Backup\ContentExporter;
 
+/**
+ * @since 5.7.2.1
+ */
 class LinkAbstractor extends ConcreteObject
 {
     /**
@@ -361,7 +364,7 @@ class LinkAbstractor extends ConcreteObject
      *
      * @return string
      *
-     * @since concrete5 8.5.0a3
+     * @since 8.5.0
      */
     protected static function replacePlaceholder($text, $pattern, callable $resolver, $caseSensitive = false)
     {

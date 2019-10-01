@@ -35,8 +35,14 @@ class Controller extends BlockController
     public $haveRetrievedSelf = false;
     public $haveRetrievedSelfPlus1 = false;
     public $displayUnapproved = false;
+    /**
+     * @since 5.7.5.9
+     */
     public $ignoreExcludeNav = false;
     protected $helpers = ['form', 'validation/token'];
+    /**
+     * @since 8.0.0
+     */
     protected $homePageID;
     protected $btTable = 'btNavigation';
     protected $btInterfaceWidth = 700;
@@ -48,6 +54,9 @@ class Controller extends BlockController
     protected $btCacheBlockOutputLifetime = 300;
     protected $btWrapperClass = 'ccm-ui';
     protected $btExportPageColumns = array('displayPagesCID');
+    /**
+     * @since 8.5.0
+     */
     protected $includeParentItem;
 
     public function __construct($obj = null)
@@ -82,6 +91,9 @@ class Controller extends BlockController
         parent::__construct($obj);
     }
 
+    /**
+     * @since 5.7.0.3
+     */
     public function registerViewAssets($outputContent = '')
     {
         if (is_object($this->block) && $this->block->getBlockFilename() == 'responsive_header_navigation') {
@@ -778,6 +790,9 @@ class Controller extends BlockController
         return $c->getAttribute('exclude_nav');
     }
 
+    /**
+     * @since 8.5.0
+     */
     public function action_preview_pane()
     {
         $token = $this->app->make('token');
@@ -810,6 +825,7 @@ class Controller extends BlockController
 
     /**
      * @return bool|null
+     * @since 8.5.0
      */
     public function shouldIncludeParentItem()
     {
@@ -818,6 +834,7 @@ class Controller extends BlockController
 
     /**
      * @param bool $includeParentItem
+     * @since 8.5.0
      */
     public function setIncludeParentItem($includeParentItem)
     {

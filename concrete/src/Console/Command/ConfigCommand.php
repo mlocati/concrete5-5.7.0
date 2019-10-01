@@ -10,11 +10,21 @@ use Concrete\Core\Console\Command;
 use Exception;
 use Illuminate\Filesystem\Filesystem;
 
+/**
+ * @since 5.7.5
+ */
 class ConfigCommand extends Command
 {
 
+    /**
+     * @since 5.7.5 defined by symfony/console, visibility: private
+     * @since 8.5.0 re-implemented, visibility: protected
+     */
     protected $description = 'Set or get configuration parameters.';
 
+    /**
+     * @since 8.5.0
+     */
     protected $signature = 'c5:config 
         {action : Either "get" or "set"} 
         {item : The config item EG: "concrete.debug.detail"} 
@@ -39,6 +49,9 @@ EOT
         );
     }
 
+    /**
+     * @since 8.5.0
+     */
     public function handle(Repository $config, Filesystem $filesystem)
     {
         $repository = $this->getRepository($config, $filesystem);

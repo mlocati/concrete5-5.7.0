@@ -32,11 +32,13 @@ class Access extends ConcreteObject
 
     /**
      * @var \Concrete\Core\Permission\Access\ListItem\ListItem[]|null
+     * @since 5.7.5.9
      */
     protected $listItems;
 
     /**
      * @param \Concrete\Core\Permission\Access\ListItem\ListItem[] $listItems
+     * @since 5.7.5.9
      */
     public function setListItems($listItems)
     {
@@ -225,6 +227,7 @@ class Access extends ConcreteObject
 
     /**
      * @param \Concrete\Core\Workflow\Workflow $wf
+     * @since 8.2.0
      */
     public function removeWorkflow(Workflow $wf)
     {
@@ -480,6 +483,7 @@ class Access extends ConcreteObject
      * @param \Concrete\Core\Permission\Access\Entity\Entity[] $filterEntities
      *
      * @return string
+     * @since 8.0.0
      */
     protected function getCacheIdentifier($accessType, $filterEntities = [])
     {

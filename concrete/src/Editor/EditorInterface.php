@@ -6,6 +6,7 @@ use Concrete\Core\Http\Request;
 
 /**
  * Interface that all rich-text editors must implement.
+ * @since 5.7.4
  */
 interface EditorInterface
 {
@@ -36,6 +37,7 @@ interface EditorInterface
      * @param string $content The initial value of the editor content
      *
      * @return string
+     * @since 5.7.4.2
      */
     public function outputBlockEditModeEditor($key, $content);
 

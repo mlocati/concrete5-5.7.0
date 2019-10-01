@@ -8,6 +8,9 @@ use Concrete\Core\Filesystem\TemplateLocator;
 use Concrete\Core\Attribute\Context\ContextInterface as AttributeContextInterface;
 use Concrete\Core\Form\Control\FormView as BaseFormView;
 
+/**
+ * @since 8.2.0
+ */
 class View extends BaseFormView
 {
 
@@ -37,6 +40,9 @@ class View extends BaseFormView
         $this->addScopeItem('key', $key);
     }
 
+    /**
+     * @since 8.4.0
+     */
     public function getControlID()
     {
         return $this->key->getController()->getControlID();

@@ -8,13 +8,25 @@ use Concrete\Core\Express\Form\Context\ContextInterface;
 use Concrete\Core\Express\Form\OwnedEntityForm;
 use Concrete\Core\Filesystem\TemplateLocator;
 
+/**
+ * @since 8.2.0
+ */
 class AssociationView extends View
 {
     protected $association;
     protected $entry;
+    /**
+     * @since 8.4.3
+     */
     protected $allEntries = [];
+    /**
+     * @since 8.4.3
+     */
     protected $selectedEntries = [];
 
+    /**
+     * @since 8.4.0
+     */
     public function getControlID()
     {
         return 'express_association_' . $this->control->getID();

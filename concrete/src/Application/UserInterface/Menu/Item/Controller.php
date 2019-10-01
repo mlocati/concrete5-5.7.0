@@ -7,9 +7,14 @@ use Concrete\Core\Controller\AbstractController;
 use HtmlObject\Element;
 use HtmlObject\Link;
 
+/**
+ * @since 5.7.0.3
+ */
 class Controller extends AbstractController implements ControllerInterface
 {
-    /** @var ItemInterface */
+    /** @var ItemInterface
+     * @since 5.7.2.1
+     */
     protected $menuItem;
 
     /**
@@ -58,6 +63,9 @@ class Controller extends AbstractController implements ControllerInterface
         return $a;
     }
 
+    /**
+     * @since 5.7.2
+     */
     public function registerViewAssets()
     {
         $al = \AssetList::getInstance();
@@ -91,6 +99,7 @@ class Controller extends AbstractController implements ControllerInterface
 
     /**
      * @return ItemInterface
+     * @since 5.7.2.1
      */
     public function getMenuItem()
     {

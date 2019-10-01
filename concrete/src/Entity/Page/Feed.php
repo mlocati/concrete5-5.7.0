@@ -15,6 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="PageFeeds")
+ * @since 8.0.0
  */
 class Feed
 {
@@ -165,6 +166,7 @@ class Feed
      * @param string $format
      *
      * @return string
+     * @since 8.2.0
      */
     public function getFeedDisplayTitle($format = 'html')
     {
@@ -346,6 +348,7 @@ class Feed
 
     /**
      * @param bool $checkPagePermissions
+     * @since 8.5.2
      */
     public function setCheckPagePermissions($checkPagePermissions)
     {
@@ -354,6 +357,7 @@ class Feed
 
     /**
      * @return bool
+     * @since 8.5.2
      */
     public function shouldCheckPagePermissions()
     {

@@ -12,57 +12,70 @@ use Core;
 use Page;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
+/**
+ * @since 8.3.0
+ */
 class Controller extends BlockController
 {
     public $helpers = ['form'];
 
     /**
      * @var int|null
+     * @since 8.4.0
      */
     public $caID;
 
     /**
      * @var string|null
+     * @since 8.4.0
      */
     public $calendarAttributeKeyHandle;
 
     /**
      * @var int|null
+     * @since 8.4.0
      */
     public $filterByTopicAttributeKeyID;
 
     /**
      * @var int|null
+     * @since 8.4.0
      */
     public $filterByTopicID;
 
     /**
      * @var string|null
+     * @since 8.4.0
      */
     public $viewTypes;
 
     /**
      * @var string|null
+     * @since 8.4.0
      */
     public $viewTypesOrder;
 
     /**
      * @var string|null
+     * @since 8.4.0
      */
     public $defaultView;
 
     /**
      * @var int|null
+     * @since 8.4.0
      */
     public $navLinks;
 
     /**
      * @var int|null
+     * @since 8.4.0
      */
     public $eventLimit;
 
     /**
      * @var string|null
+     * @since 8.4.0
      */
     public $lightboxProperties;
 
@@ -208,6 +221,7 @@ class Controller extends BlockController
      * @param array $viewTypesOrder
      *
      * @return string
+     * @since 8.4.0
      */
     public function getViewTypeString($viewTypesOrder)
     {

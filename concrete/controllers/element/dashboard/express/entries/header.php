@@ -3,11 +3,17 @@ namespace Concrete\Controller\Element\Dashboard\Express\Entries;
 
 use Concrete\Core\Controller\ElementController;
 
+/**
+ * @since 8.0.0
+ */
 class Header extends ElementController
 {
     protected $entity;
     protected $page;
     protected $createURL;
+    /**
+     * @since 8.2.0
+     */
     protected $exportURL;
 
     /**
@@ -20,6 +26,7 @@ class Header extends ElementController
 
     /**
      * @return string
+     * @since 8.2.0
      */
     public function getExportURL()
     {
@@ -36,6 +43,7 @@ class Header extends ElementController
 
     /**
      * @param string $exportURL
+     * @since 8.2.0
      */
     public function setExportURL($exportURL)
     {

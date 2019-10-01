@@ -6,6 +6,9 @@ use Concrete\Core\Entity\Express\Control\Control;
 use Concrete\Core\Filesystem\TemplateLocator;
 use Concrete\Core\Express\Form\Context\ContextInterface;
 
+/**
+ * @since 8.2.0
+ */
 class AttributeKeyView extends View
 {
 
@@ -22,6 +25,9 @@ class AttributeKeyView extends View
         }
     }
 
+    /**
+     * @since 8.4.0
+     */
     public function getControlID()
     {
         return null;

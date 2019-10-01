@@ -30,6 +30,7 @@ class Block extends ConcreteObject implements \Concrete\Core\Permission\ObjectIn
      * @deprecated use the getBlockAreaObject() method (what's deprecated is the "public" part, it should be protected)
      *
      * @var \Concrete\Core\Area\Area|null
+     * @since 5.7.5.2
      */
     public $a;
 
@@ -72,6 +73,7 @@ class Block extends ConcreteObject implements \Concrete\Core\Permission\ObjectIn
      * The ID of the associated block.
      *
      * @var int|null
+     * @since 8.0.0
      */
     protected $cbRelationID;
 
@@ -86,6 +88,7 @@ class Block extends ConcreteObject implements \Concrete\Core\Permission\ObjectIn
      * The block cache settings.
      *
      * @var \Concrete\Core\Block\CacheSettings|null
+     * @since 5.7.1
      */
     protected $cacheSettings;
 
@@ -93,6 +96,7 @@ class Block extends ConcreteObject implements \Concrete\Core\Permission\ObjectIn
      * Override cache settings?
      *
      * @var int|null 1 for true; 0/null for false
+     * @since 8.0.0
      */
     protected $cbOverrideBlockTypeCacheSettings;
 
@@ -100,6 +104,7 @@ class Block extends ConcreteObject implements \Concrete\Core\Permission\ObjectIn
      * The custom template name.
      *
      * @var string|null
+     * @since 5.7.5.2
      */
     protected $bFilename;
 
@@ -656,6 +661,7 @@ EOT
      * Get the ID of the associated block.
      *
      * @return int|null
+     * @since 8.0.0
      */
     public function getBlockRelationID()
     {
@@ -934,6 +940,7 @@ EOT
      * Get the cache settings instance.
      *
      * @return \Concrete\Core\Block\CacheSettings
+     * @since 5.7.1
      */
     public function getBlockCacheSettingsObject()
     {
@@ -948,6 +955,7 @@ EOT
      * Override cache settings?
      *
      * @var int|null 1 for true; 0/null for false
+     * @since 5.7.1
      */
     public function overrideBlockTypeCacheSettings()
     {
@@ -965,6 +973,7 @@ EOT
      * @param bool $enabledOnPost Should the block output be cached upon POST requests?
      * @param bool $enabledForRegistered Should the block output be cached when site visitors are registered users?
      * @param int $lifetime cache lifetime (in seconds); if empty we'll assume 5 years
+     * @since 5.7.1
      */
     public function setCustomCacheSettings($enabled, $enabledOnPost, $enabledForRegistered, $lifetime)
     {
@@ -1011,6 +1020,7 @@ EOT
 
     /**
      * Reset the cache settings, so that concrete5 will use the values of the block type controller.
+     * @since 5.7.1
      */
     public function resetCustomCacheSettings()
     {
@@ -1052,6 +1062,7 @@ EOT
      * Should the block output be cached?
      *
      * @return bool
+     * @since 5.7.1
      */
     public function cacheBlockOutput()
     {
@@ -1064,6 +1075,7 @@ EOT
      * Should the block output be cached upon POST requests?
      *
      * @return bool
+     * @since 5.7.1
      */
     public function cacheBlockOutputOnPost()
     {
@@ -1076,6 +1088,7 @@ EOT
      * Should the block output be cached when site visitors are registered users?
      *
      * @return bool
+     * @since 5.7.1
      */
     public function cacheBlockOutputForRegisteredUsers()
     {
@@ -1088,6 +1101,7 @@ EOT
      * Get the lifetime (in seconds) of the block output cache.
      *
      * @return int
+     * @since 5.7.1
      */
     public function getBlockOutputCacheLifetime()
     {
@@ -1277,6 +1291,7 @@ EOT
      * Is the block grid container enabled?
      *
      * @return bool
+     * @since 5.7.5
      */
     public function enableBlockContainer()
     {
@@ -1287,6 +1302,7 @@ EOT
      * Should the view ignore the grid container?
      *
      * @return bool
+     * @since 5.7.5
      */
     public function ignorePageThemeGridFrameworkContainer()
     {
@@ -1302,6 +1318,7 @@ EOT
      * Should this instance override the grid container settings of the block controller?
      *
      * @return int 0/false: false, 1/true: true
+     * @since 5.7.5
      */
     public function overrideBlockTypeContainerSettings()
     {
@@ -1316,6 +1333,7 @@ EOT
      * Set the custom settings related to the grid container (overriding the block type default values).
      *
      * @param bool $enableBlockContainer Is the block grid container enabled?
+     * @since 5.7.5
      */
     public function setCustomContainerSettings($enableBlockContainer)
     {
@@ -1337,6 +1355,7 @@ EOT
 
     /**
      * Reset the settings related to the grid container to the block type default values.
+     * @since 5.7.5
      */
     public function resetBlockContainerSettings()
     {
@@ -1360,6 +1379,7 @@ EOT
     /**
      * Disable the original block container for the current request.
      * This is called by the scrapbook proxy block, because the scrapbook block takes care of rendering the container.
+     * @since 5.7.5
      */
     public function disableBlockContainer()
     {
@@ -1863,6 +1883,7 @@ EOT
      * @param \ZendQueue\Queue $queue The queue to add the messages too (it will be emptied before adding the new messages)
      *
      * @return \ZendQueue\Queue
+     * @since 8.0.0
      */
     public function queueForDefaultsAliasing($addBlock, $updateForkedBlocks, $queue)
     {
@@ -1943,6 +1964,7 @@ EOT
      * @param bool $includeThisBlock Include this block instance in the queue?
      *
      * @return \ZendQueue\Queue
+     * @since 8.0.0
      */
     public function queueForDefaultsUpdate($data, $queue, $includeThisBlock = true)
     {

@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="atTopicSettings")
+ * @since 8.0.0
  */
 class TopicsSettings extends Settings
 {
@@ -23,6 +24,7 @@ class TopicsSettings extends Settings
 
     /**
      * @ORM\Column(type="boolean", options={"default":true})
+     * @since 8.2.0
      */
     protected $akTopicAllowMultipleValues = true;
 
@@ -65,6 +67,7 @@ class TopicsSettings extends Settings
 
     /**
      * @return bool
+     * @since 8.2.0
      */
     public function allowMultipleValues()
     {
@@ -73,6 +76,7 @@ class TopicsSettings extends Settings
 
     /**
      * @param bool $allowMultipleValues
+     * @since 8.2.0
      */
     public function setAllowMultipleValues($allowMultipleValues)
     {

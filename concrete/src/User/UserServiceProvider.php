@@ -14,6 +14,9 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Concrete\Core\User\LogSubscriber as UserLogSubscriber;
 use Concrete\Core\User\Group\LogSubscriber as GroupLogSubscriber;
 
+/**
+ * @since 5.7.5.4
+ */
 class UserServiceProvider extends ServiceProvider
 {
     public function register()
@@ -41,6 +44,7 @@ class UserServiceProvider extends ServiceProvider
      * Bind things to the container
      *
      * @param \Concrete\Core\Application\Application $app
+     * @since 8.5.0
      */
     protected function bindContainer(Application $app)
     {
@@ -68,6 +72,9 @@ class UserServiceProvider extends ServiceProvider
         });
     }
 
+    /**
+     * @since 8.5.0
+     */
     protected function bindEvents(EventDispatcherInterface $dispatcher, $subscribers)
     {
 
@@ -92,6 +99,7 @@ class UserServiceProvider extends ServiceProvider
      * @param \Concrete\Core\User\Notification\UserNotificationEventHandler $service
      *
      * @internal
+     * @since 8.5.0
      */
     public function handleEvent(Event $event, UserNotificationEventHandler $service)
     {

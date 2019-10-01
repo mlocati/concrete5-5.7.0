@@ -12,6 +12,9 @@ use Concrete\Core\Site\Service as SiteService;
 use Exception;
 use Illuminate\Filesystem\Filesystem;
 
+/**
+ * @since 8.2.0
+ */
 class TranslationsInstaller
 {
     /**
@@ -36,6 +39,7 @@ class TranslationsInstaller
 
     /**
      * @var Application
+     * @since 8.4.0
      */
     protected $app;
 
@@ -86,6 +90,7 @@ class TranslationsInstaller
      * @param Package $package
      *
      * @return array array keys are the missing locale IDs, array values are: false (package not translated), true (language file downloaded), \Exception (in case of errors)
+     * @since 8.4.0
      */
     public function installMissingPackageTranslations(Package $package)
     {

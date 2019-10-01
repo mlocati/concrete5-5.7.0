@@ -13,6 +13,7 @@ use Concrete\Core\Export\Item\Express\Form as FormExporter;
 /**
  * @ORM\Entity
  * @ORM\Table(name="ExpressForms")
+ * @since 8.0.0
  */
 class Form implements \JsonSerializable, ExportableInterface, FormInterface
 {
@@ -107,6 +108,9 @@ class Form implements \JsonSerializable, ExportableInterface, FormInterface
         $this->entity = $entity;
     }
 
+    /**
+     * @since 8.2.0
+     */
     public function getControlView(ContextInterface $context)
     {
         return new FormView($context, $this);

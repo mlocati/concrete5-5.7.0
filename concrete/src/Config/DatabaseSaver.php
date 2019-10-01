@@ -8,11 +8,13 @@ class DatabaseSaver implements SaverInterface
 {
     /**
      * @var \Concrete\Core\Database\Connection\Connection
+     * @since 5.7.5.4
      */
     protected $connection;
 
     /**
      * @return Connection
+     * @since 5.7.5.4
      */
     public function getConnection()
     {
@@ -25,6 +27,7 @@ class DatabaseSaver implements SaverInterface
 
     /**
      * @param Connection $connection
+     * @since 5.7.5.4
      */
     public function setConnection($connection)
     {

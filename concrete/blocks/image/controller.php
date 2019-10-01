@@ -28,6 +28,7 @@ class Controller extends BlockController implements FileTrackableInterface
 
     /**
      * @var \Concrete\Core\Statistics\UsageTracker\AggregateTracker|null
+     * @since 8.0.0
      */
     protected $tracker;
 
@@ -49,6 +50,7 @@ class Controller extends BlockController implements FileTrackableInterface
 
     /**
      * @param string $outputContent
+     * @since 5.7.0.3
      */
     public function registerViewAssets($outputContent = '')
     {
@@ -98,6 +100,9 @@ class Controller extends BlockController implements FileTrackableInterface
         $this->set('c', Page::getCurrentPage());
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function add()
     {
         $this->set('bf', null);
@@ -109,6 +114,9 @@ class Controller extends BlockController implements FileTrackableInterface
         $this->set('imageLinkValue', null);
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function edit()
     {
         // Image file object
@@ -219,6 +227,7 @@ class Controller extends BlockController implements FileTrackableInterface
 
     /**
      * @return int
+     * @since 8.2.0
      */
     public function getFileLinkID()
     {
@@ -245,6 +254,7 @@ class Controller extends BlockController implements FileTrackableInterface
 
     /**
      * @return \Concrete\Core\Entity\File\File|null
+     * @since 8.2.0
      */
     public function getFileLinkObject()
     {
@@ -311,6 +321,7 @@ class Controller extends BlockController implements FileTrackableInterface
 
     /**
      * @return bool
+     * @since 8.3.0
      */
     public function shouldLinkOpenInNewWindow()
     {
@@ -409,11 +420,17 @@ class Controller extends BlockController implements FileTrackableInterface
         $this->getTracker()->track($this);
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function getUsedFiles()
     {
         return [$this->getFileID()];
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function getUsedCollection()
     {
         return $this->getCollectionObject();
@@ -421,6 +438,7 @@ class Controller extends BlockController implements FileTrackableInterface
 
     /**
      * @return \Concrete\Core\Statistics\UsageTracker\AggregateTracker
+     * @since 8.4.0
      */
     protected function getTracker()
     {
@@ -433,6 +451,7 @@ class Controller extends BlockController implements FileTrackableInterface
 
     /**
      * @return string[]
+     * @since 8.5.2
      */
     protected function getImageLinkPickers()
     {

@@ -7,6 +7,9 @@ use Doctrine\ORM\EntityManagerInterface;
 use Core;
 use Doctrine\ORM\Tools\SchemaTool;
 
+/**
+ * @since 5.7.4
+ */
 class DatabaseStructureManager
 {
     /**
@@ -381,6 +384,9 @@ class DatabaseStructureManager
         }
     }
 
+    /**
+     * @since 8.2.0
+     */
     public function clearCacheAndProxies()
     {
         $config = $this->entityManager->getConfiguration();
@@ -398,6 +404,7 @@ class DatabaseStructureManager
 
     /**
      * Clears cache, regenerates all proxy classes, and updates metadatas in all entity managers
+     * @since 8.0.3
      */
     public function refreshEntities()
     {

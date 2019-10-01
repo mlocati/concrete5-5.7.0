@@ -125,6 +125,7 @@ class Picture extends Element
      * @param bool $lazyLoadNative If true, the image "loading" attribute is set to "lazy".
      *
      * @return \Concrete\Core\Html\Object\Picture
+     * @since 8.5.2
      */
     public function noscriptFallback($src, $lazyLoadNative = false)
     {

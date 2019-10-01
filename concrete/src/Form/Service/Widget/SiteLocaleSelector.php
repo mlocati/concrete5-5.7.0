@@ -8,6 +8,9 @@ use Concrete\Core\Multilingual\Service\UserInterface\Flag;
 use Concrete\Core\Utility\Service\Identifier;
 use View;
 
+/**
+ * @since 8.3.0
+ */
 class SiteLocaleSelector
 {
     /**
@@ -112,6 +115,7 @@ EOL;
      *     bool|string $displayLocaleCode Set to 'auto' to automatically determine it; set to a non falsy value to display the locale ID [default: 'auto']
      *
      * @return string
+     * @since 8.5.0
      */
     public function selectLocaleMultiple($fieldName, Site $site, array $selectedLocales = [], array $options = [])
     {

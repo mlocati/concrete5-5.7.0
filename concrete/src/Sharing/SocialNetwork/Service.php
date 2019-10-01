@@ -6,6 +6,9 @@ class Service
     protected $ssHandle;
     protected $ssName;
     protected $ssIcon;
+    /**
+     * @since 5.7.5
+     */
     protected $customHTML;
 
     public function __construct($ssHandle, $ssName, $ssIcon, $customHTML = null)
@@ -26,6 +29,9 @@ class Service
         return $this->ssName;
     }
 
+    /**
+     * @since 5.7.5.3
+     */
     public function getDisplayName()
     {
         return h($this->getName());

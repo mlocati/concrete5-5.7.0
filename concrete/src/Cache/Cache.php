@@ -173,6 +173,9 @@ abstract class Cache implements FlushableInterface
         return $this->pool->getItem($key);
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function save(CacheItemInterface $item)
     {
         $this->pool->save($item);

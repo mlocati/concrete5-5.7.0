@@ -7,6 +7,9 @@ use Concrete\Core\Search\Column\AttributeKeyColumn;
 use Concrete\Core\Search\Column\Column;
 use Core;
 
+/**
+ * @since 8.0.0
+ */
 class DefaultSet extends ColumnSet
 {
 
@@ -25,6 +28,7 @@ class DefaultSet extends ColumnSet
      *
      * @param Entry $entry
      * @return string
+     * @since 8.5.0
      */
     public static function getDateModified(Entry $entry)
     {

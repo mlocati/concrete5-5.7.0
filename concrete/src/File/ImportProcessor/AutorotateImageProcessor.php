@@ -12,6 +12,9 @@ use Imagine\Image\ImagineInterface;
 use Imagine\Image\Metadata\ExifMetadataReader;
 use Throwable;
 
+/**
+ * @since 8.2.0
+ */
 class AutorotateImageProcessor implements ProcessorInterface
 {
     /**
@@ -23,6 +26,7 @@ class AutorotateImageProcessor implements ProcessorInterface
      * Should thumbnails be rescanned when the image is rotated?
      *
      * @var bool
+     * @since 8.4.0
      */
     protected $rescanThumbnails = true;
 
@@ -35,6 +39,7 @@ class AutorotateImageProcessor implements ProcessorInterface
      * Should thumbnails be rescanned when the image is rotated?
      *
      * @return bool
+     * @since 8.4.0
      */
     public function isRescanThumbnails()
     {
@@ -47,6 +52,7 @@ class AutorotateImageProcessor implements ProcessorInterface
      * @param bool $rescanThumbnails
      *
      * @return $this
+     * @since 8.4.0
      */
     public function setRescanThumbnails($rescanThumbnails)
     {

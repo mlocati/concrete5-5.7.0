@@ -3,11 +3,20 @@ namespace Concrete\Core\Filesystem;
 
 use Concrete\Core\Foundation\Environment;
 
+/**
+ * @since 8.0.0
+ */
 class TemplateLocator
 {
 
+    /**
+     * @since 8.2.0
+     */
     protected $template;
 
+    /**
+     * @since 8.2.0
+     */
     protected function createTemplateFromInput($input)
     {
         $template = null;
@@ -24,6 +33,9 @@ class TemplateLocator
         return $template;
     }
 
+    /**
+     * @since 8.2.0
+     */
     protected function createLocationFromInput($input)
     {
         $location = null;
@@ -40,6 +52,9 @@ class TemplateLocator
     }
 
 
+    /**
+     * @since 8.2.0
+     */
     public function __construct($template = null)
     {
         if ($template) {
@@ -49,12 +64,16 @@ class TemplateLocator
 
     /**
      * @return Template
+     * @since 8.2.0
      */
     public function getTemplate()
     {
         return $this->template;
     }
 
+    /**
+     * @since 8.2.0
+     */
     public function setTemplate($template)
     {
         $this->template = $this->createTemplateFromInput($template);
@@ -81,6 +100,9 @@ class TemplateLocator
         array_unshift($this->locations, $this->createLocationFromInput($location));
     }
 
+    /**
+     * @since 8.2.0
+     */
     protected function getPath(TemplateLocation $location, Template $template)
     {
         $location = $location->getLocation()
@@ -99,6 +121,7 @@ class TemplateLocator
 
     /**
      * @return array
+     * @since 8.2.0
      */
     public function getLocations()
     {

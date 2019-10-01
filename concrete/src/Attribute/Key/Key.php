@@ -12,6 +12,9 @@ use Concrete\Core\Support\Facade\Facade;
 
 class Key extends Facade implements AttributeKeyInterface
 {
+    /**
+     * @since 8.0.0
+     */
     public static function getFacadeAccessor()
     {
         return 'Concrete\Core\Attribute\Key\Factory';
@@ -20,6 +23,7 @@ class Key extends Facade implements AttributeKeyInterface
     /**
      * @deprecated
      * Move to new location.
+     * @since 5.7.3
      */
     public static function exportTranslations()
     {
@@ -34,6 +38,7 @@ class Key extends Facade implements AttributeKeyInterface
 
     /**
      * @var LegacyKey
+     * @since 8.0.0
      */
     protected $legacyAttributeKey;
 
@@ -47,6 +52,9 @@ class Key extends Facade implements AttributeKeyInterface
         }
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function __toString()
     {
         if (isset($this->legacyAttributeKey)) {
@@ -94,6 +102,9 @@ class Key extends Facade implements AttributeKeyInterface
         }
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function getSearchIndexer()
     {
         if (isset($this->legacyAttributeKey)) {
@@ -106,6 +117,9 @@ class Key extends Facade implements AttributeKeyInterface
      * this class and would call parent::add(). Do NOT use this method. It is here
      * for backward compatibility.
      * @deprecated
+     * @since 5.7.0 visibility: protected
+     * @since 5.7.5.4 removed
+     * @since 8.0.0 re-implemented, visibility: public
      */
     public static function add($handle, $type, $args, $pkg = false)
     {
@@ -136,6 +150,7 @@ class Key extends Facade implements AttributeKeyInterface
      * $key = StoreOrderKey::getByID(10); Which then calls $ak = new self(); $ak->load(10);
      * if ($ak->getAttributeKeyID()) {...}
      * @deprecated
+     * @since 8.0.0
      */
     public function __call($name, $arguments)
     {
