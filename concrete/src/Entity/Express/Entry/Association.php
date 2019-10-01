@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\InheritanceType("SINGLE_TABLE")
  * @ORM\DiscriminatorColumn(name="type", type="string")
  * @ORM\Table(name="ExpressEntityEntryAssociations")
+ * @since 8.0.0
  */
 abstract class Association
 {
@@ -39,6 +40,7 @@ abstract class Association
 
     /**
      * @var bool A boolean to track whether the selected entries are sorted
+     * @since 8.2.0
      */
     protected $sorted;
 
@@ -149,6 +151,9 @@ abstract class Association
         $this->selectedEntries = new ArrayCollection();
     }
 
+    /**
+     * @since 8.5.0
+     */
     public function getAssociationEntry(Entry $entry)
     {
         foreach($this->getSelectedEntriesCollection() as $associatedEntry) {

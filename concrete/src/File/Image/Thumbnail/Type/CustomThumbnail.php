@@ -6,10 +6,16 @@ use Concrete\Core\Entity\File\Version as FileVersion;
 use Concrete\Core\File\Image\Thumbnail\Type\Version as ThumbnailVersion;
 use Concrete\Core\File\Image\Thumbnail\Type\Type as ThumbnailType;
 
+/**
+ * @since 8.1.0
+ */
 class CustomThumbnail extends ThumbnailVersion
 {
 
     protected $path;
+    /**
+     * @since 8.2.0
+     */
     protected $cropped;
 
     /**
@@ -35,6 +41,9 @@ class CustomThumbnail extends ThumbnailVersion
         return $this->path;
     }
 
+    /**
+     * @since 8.2.0
+     */
     public function isCropped()
     {
         return $this->cropped;

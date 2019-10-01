@@ -90,16 +90,19 @@ class Area extends ConcreteObject implements \Concrete\Core\Permission\ObjectInt
 
     /**
      * @var bool
+     * @since 5.7.4
      */
     protected $arOverrideCollectionPermissions;
 
     /**
      * @var int
+     * @since 5.7.4
      */
     protected $arInheritPermissionsFromAreaOnCID;
 
     /**
      * @var array
+     * @since 5.7.4
      */
     protected $arCustomTemplates = array();
 
@@ -399,6 +402,7 @@ class Area extends ConcreteObject implements \Concrete\Core\Permission\ObjectInt
 
     /**
      * @param Page $c
+     * @since 5.7.2
      */
     public function refreshCache($c)
     {
@@ -961,6 +965,7 @@ class Area extends ConcreteObject implements \Concrete\Core\Permission\ObjectInt
      * returns an array of custom templates defined for this Area object.
      *
      * @return array
+     * @since 5.7.4
      */
     public function getAreaCustomTemplates()
     {

@@ -19,6 +19,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="type", type="string")
  * @ORM\Table(name="ExpressFormFieldSetControls")
+ * @since 8.0.0
  */
 abstract class Control implements \JsonSerializable, ExportableInterface, ControlInterface
 {
@@ -167,6 +168,9 @@ abstract class Control implements \JsonSerializable, ExportableInterface, Contro
         return $manager->driver($this->getType());
     }
 
+    /**
+     * @since 8.1.0
+     */
     public function build(ObjectBuilder $builder)
     {
         return $this;

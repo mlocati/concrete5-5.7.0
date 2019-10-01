@@ -16,11 +16,18 @@ use Doctrine\ORM\Tools\SchemaTool;
 
 /**
  * @property \Concrete\Core\Database\Connection\Connection $connection
+ * @since 8.1.0
  */
 abstract class AbstractMigration extends DoctrineAbstractMigration
 {
+    /**
+     * @since 8.3.0
+     */
     protected $app;
 
+    /**
+     * @since 8.4.0
+     */
     protected $validAttributes = [];
 
     public function __construct(Version $version)
@@ -34,6 +41,7 @@ abstract class AbstractMigration extends DoctrineAbstractMigration
      * Override this method when the database structure is upgraded using ONLY the DBAL Schema object.
      *
      * @param Schema $schema
+     * @since 8.4.0
      */
     public function upgradeSchema(Schema $schema)
     {
@@ -43,6 +51,7 @@ abstract class AbstractMigration extends DoctrineAbstractMigration
      * Override this method when database schema is not upgraded, or when it's upgraded without using a Schema.
      *
      * @param Schema $schema
+     * @since 8.4.0
      */
     public function upgradeDatabase()
     {
@@ -52,6 +61,7 @@ abstract class AbstractMigration extends DoctrineAbstractMigration
      * Override this method when the database structure is downgraded using ONLY the DBAL Schema object.
      *
      * @param Schema $schema
+     * @since 8.4.0
      */
     public function downgradeSchema(Schema $schema)
     {
@@ -59,6 +69,7 @@ abstract class AbstractMigration extends DoctrineAbstractMigration
 
     /**
      * Override this method when database schema is not downgraded, or when it's downgraded without using a Schema.
+     * @since 8.4.0
      */
     public function downgradeDatabase()
     {
@@ -147,6 +158,7 @@ abstract class AbstractMigration extends DoctrineAbstractMigration
      * @param string $field The problematic field
      * @param string $linkedTable The referenced table
      * @param string $linkedField The referenced field
+     * @since 8.2.0
      */
     protected function nullifyInvalidForeignKey($table, $field, $linkedTable, $linkedField)
     {
@@ -170,6 +182,7 @@ abstract class AbstractMigration extends DoctrineAbstractMigration
      * @param string $field The problematic field
      * @param string $linkedTable The referenced table
      * @param string $linkedField The referenced field
+     * @since 8.2.0
      */
     protected function deleteInvalidForeignKey($table, $field, $linkedTable, $linkedField)
     {
@@ -186,6 +199,9 @@ abstract class AbstractMigration extends DoctrineAbstractMigration
         ");
     }
 
+    /**
+     * @since 8.4.0
+     */
     protected function isAttributeHandleValid($categoryClass, $handle)
     {
         if (!isset($this->validAttributes[$categoryClass])) {
@@ -209,6 +225,7 @@ abstract class AbstractMigration extends DoctrineAbstractMigration
 
      *
      * @return \Concrete\Core\Page\Page
+     * @since 8.4.0
      */
     protected function createSinglePage($path, $name = '', array $attributes = [])
     {

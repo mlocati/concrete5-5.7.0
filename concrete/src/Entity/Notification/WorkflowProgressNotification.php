@@ -14,6 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(
  *     name="WorkflowProgressNotifications"
  * )
+ * @since 8.0.0
  */
 class WorkflowProgressNotification extends Notification
 {
@@ -40,6 +41,9 @@ class WorkflowProgressNotification extends Notification
         return new WorkflowProgressListView($this);
     }
 
+    /**
+     * @since 8.3.0
+     */
     public function getNotificationDateTimeZone()
     {
         $progress = $this->getWorkflowProgressObject();

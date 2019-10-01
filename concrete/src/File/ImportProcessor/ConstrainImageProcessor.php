@@ -11,10 +11,14 @@ use Imagine\Image\ImageInterface;
 use Imagine\Image\Point;
 use InvalidArgumentException;
 
+/**
+ * @since 5.7.5.2
+ */
 class ConstrainImageProcessor implements ProcessorInterface
 {
     /**
      * @var \Concrete\Core\Application\Application
+     * @since 8.4.0
      */
     protected $app;
 
@@ -43,6 +47,7 @@ class ConstrainImageProcessor implements ProcessorInterface
      * Should thumbnails be rescanned when the image is resized?
      *
      * @var bool
+     * @since 8.4.0
      */
     protected $rescanThumbnails = true;
 
@@ -129,6 +134,7 @@ class ConstrainImageProcessor implements ProcessorInterface
      * Should thumbnails be rescanned when the image is resized?
      *
      * @return bool
+     * @since 8.4.0
      */
     public function isRescanThumbnails()
     {
@@ -141,6 +147,7 @@ class ConstrainImageProcessor implements ProcessorInterface
      * @param bool $rescanThumbnails
      *
      * @return $this
+     * @since 8.4.0
      */
     public function setRescanThumbnails($rescanThumbnails)
     {
@@ -188,6 +195,7 @@ class ConstrainImageProcessor implements ProcessorInterface
      * @throws InvalidArgumentException
      *
      * @return ImageInterface
+     * @since 8.3.0
      */
     public function resizeInPlace(ImageInterface $image, Box $size, $mode = ImageInterface::THUMBNAIL_INSET, $filter = ImageInterface::FILTER_UNDEFINED)
     {
@@ -280,6 +288,7 @@ class ConstrainImageProcessor implements ProcessorInterface
      * @return bool
      *
      * @deprecated It's always true
+     * @since 8.3.0
      */
     public function getResizeInPlace()
     {
@@ -290,6 +299,7 @@ class ConstrainImageProcessor implements ProcessorInterface
      * @param bool $resizeInPlace
      *
      * @deprecated It's always true
+     * @since 8.3.0
      */
     public function setResizeInPlace($resizeInPlace)
     {

@@ -17,6 +17,9 @@ use JsonSerializable;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Throwable;
 
+/**
+ * @since 8.0.0
+ */
 class ErrorList implements ArrayAccess, JsonSerializable
 {
     /**
@@ -90,7 +93,7 @@ class ErrorList implements ArrayAccess, JsonSerializable
      *
      * @return $this
      *
-     * @since concrete5 8.5.0a3
+     * @since 8.4.4
      */
     public function addError($e, $isHtml = false, $fieldName = null, $fieldDisplayName = null)
     {
@@ -145,7 +148,7 @@ class ErrorList implements ArrayAccess, JsonSerializable
      *
      * @return $this
      *
-     * @since concrete5 8.5.0a3
+     * @since 8.4.4
      */
     public function addHtml($e, $fieldName = null, $fieldDisplayName = null)
     {
@@ -216,6 +219,7 @@ class ErrorList implements ArrayAccess, JsonSerializable
      * Render this error list as a plain text.
      *
      * @return string
+     * @since 8.3.0
      */
     public function toText()
     {
@@ -250,6 +254,7 @@ class ErrorList implements ArrayAccess, JsonSerializable
      * @param \Concrete\Core\Error\ErrorList\Field\FieldInterface|string $field
      *
      * @return string|false false if no error is associated to the field, a string otherwise
+     * @since 8.3.0
      */
     public function getMessage($field)
     {
@@ -270,6 +275,7 @@ class ErrorList implements ArrayAccess, JsonSerializable
      * @param int $errorCode The HTTP response code to be sent to the client
      *
      * @return \Symfony\Component\HttpFoundation\JsonResponse
+     * @since 8.4.4
      */
     public function createResponse($errorCode = JsonResponse::HTTP_BAD_REQUEST)
     {

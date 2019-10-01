@@ -28,6 +28,7 @@ use Throwable;
  * This middleware requires the following to be defined on the Application:
  * "database" DatabaseManager
  * "BasicThumbnailer::class" Basic thumbnailer
+ * @since 8.1.0
  */
 class ThumbnailMiddleware implements MiddlewareInterface, ApplicationAwareInterface
 {
@@ -58,6 +59,9 @@ class ThumbnailMiddleware implements MiddlewareInterface, ApplicationAwareInterf
      */
     private $config;
 
+    /**
+     * @since 8.3.0
+     */
     public function __construct(Repository $config)
     {
         $this->config = $config;

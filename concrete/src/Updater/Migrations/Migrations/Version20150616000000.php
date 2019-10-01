@@ -6,12 +6,16 @@ use Concrete\Core\Page\Stack\StackList;
 use Concrete\Core\Updater\Migrations\AbstractMigration;
 use Concrete\Core\Updater\Migrations\RepeatableMigrationInterface;
 
+/**
+ * @since 5.7.5
+ */
 class Version20150616000000 extends AbstractMigration implements RepeatableMigrationInterface
 {
     /**
      * {@inheritdoc}
      *
      * @see \Concrete\Core\Updater\Migrations\AbstractMigration::upgradeDatabase()
+     * @since 8.3.2
      */
     public function upgradeDatabase()
     {

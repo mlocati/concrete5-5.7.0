@@ -6,6 +6,9 @@ use Concrete\Core\Permission\Key\Key;
 use Concrete\Core\Permission\Registry\Entry\Access\Entity\EntityInterface;
 use Concrete\Core\Permission\Registry\Entry\Object\Object\ObjectInterface;
 
+/**
+ * @since 8.0.0
+ */
 class PermissionsEntry implements EntryInterface
 {
 
@@ -34,6 +37,9 @@ class PermissionsEntry implements EntryInterface
         );
     }
 
+    /**
+     * @since 8.2.0
+     */
     public function remove($mixed)
     {
         $object = $this->object->getPermissionObject();

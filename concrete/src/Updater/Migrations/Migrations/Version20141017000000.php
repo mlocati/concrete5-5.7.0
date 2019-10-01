@@ -11,6 +11,9 @@ use Concrete\Core\Updater\Migrations\RepeatableMigrationInterface;
 use Doctrine\DBAL\Schema\Schema;
 use Exception;
 
+/**
+ * @since 5.7.4
+ */
 class Version20141017000000 extends AbstractMigration implements RepeatableMigrationInterface
 {
     /**
@@ -27,6 +30,7 @@ class Version20141017000000 extends AbstractMigration implements RepeatableMigra
      * {@inheritdoc}
      *
      * @see \Concrete\Core\Updater\Migrations\AbstractMigration::upgradeSchema()
+     * @since 8.3.2
      */
     public function upgradeSchema(Schema $schema)
     {
@@ -54,6 +58,7 @@ class Version20141017000000 extends AbstractMigration implements RepeatableMigra
      * {@inheritdoc}
      *
      * @see \Concrete\Core\Updater\Migrations\AbstractMigration::upgradeDatabase()
+     * @since 8.3.2
      */
     public function upgradeDatabase()
     {

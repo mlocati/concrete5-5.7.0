@@ -7,6 +7,9 @@ use Concrete\Core\Support\Facade\Application;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * @since 8.0.0
+ */
 abstract class ManyAssociationSaveHandler implements ManySaveHandlerInterface
 {
     protected $entityManager;
@@ -18,6 +21,10 @@ abstract class ManyAssociationSaveHandler implements ManySaveHandlerInterface
         $this->applier = $applier;
     }
 
+    /**
+     * @since 8.0.0 visibility: protected
+     * @since 8.5.0 visibility: public
+     */
     public function getAssociatedEntriesFromRequest(Control $control, Request $request)
     {
         $r = $this->entityManager->getRepository('Concrete\Core\Entity\Express\Entry');

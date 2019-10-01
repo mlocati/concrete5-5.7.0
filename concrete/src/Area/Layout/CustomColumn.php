@@ -8,6 +8,7 @@ class CustomColumn extends Column
 {
     /**
      * @var int;
+     * @since 5.7.4
      */
     public $arLayoutColumnWidth;
 
@@ -58,6 +59,9 @@ class CustomColumn extends Column
         return 'ccm-layout-column';
     }
 
+    /**
+     * @since 5.7.5
+     */
     protected function getColumnElement($contents)
     {
         $element = new Element('div');
@@ -70,6 +74,9 @@ class CustomColumn extends Column
         return $element;
     }
 
+    /**
+     * @since 5.7.5
+     */
     public function getColumnHtmlObject()
     {
         $contents = $this->getContents();
@@ -77,6 +84,9 @@ class CustomColumn extends Column
         return $this->getColumnElement($contents);
     }
 
+    /**
+     * @since 5.7.5
+     */
     public function getColumnHtmlObjectEditMode()
     {
         $contents = $this->getContents(true);

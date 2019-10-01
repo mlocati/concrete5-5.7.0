@@ -13,6 +13,9 @@ use Punic\Misc;
 
 defined('C5_EXECUTE') or die("Access Denied.");
 
+/**
+ * @since 5.7.3
+ */
 class TranslateInterface extends DashboardSitePageController
 {
     public $helpers = array('form');
@@ -158,6 +161,9 @@ class TranslateInterface extends DashboardSitePageController
         $result->outputJSON();
     }
 
+    /**
+     * @since 5.7.4
+     */
     public function export_translations($localeCode)
     {
         $result = new EditResponse();

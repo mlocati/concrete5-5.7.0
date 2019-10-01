@@ -19,6 +19,9 @@ use Concrete\Core\Tree\Node\Type\SearchPreset;
 use Concrete\Core\User\User;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
+/**
+ * @since 8.0.0
+ */
 class FileFolder extends AbstractController
 {
     protected $list;
@@ -174,6 +177,9 @@ class FileFolder extends AbstractController
         return $this->result;
     }
 
+    /**
+     * @since 8.2.1
+     */
     protected function canAccess()
     {
         $fp = FilePermissions::getGlobal();

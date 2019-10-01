@@ -25,6 +25,7 @@ use Concrete\Core\Database\Connection\Connection;
 /**
  * @ORM\Entity
  * @ORM\Table(name="BlockTypes")
+ * @since 8.0.0
  */
 class BlockType
 {
@@ -527,6 +528,7 @@ EOT
      * Get the display order of this block type when it's not assigned to any block type set.
      *
      * @return int
+     * @since 8.4.1
      */
     public function getBlockTypeDisplayOrder()
     {

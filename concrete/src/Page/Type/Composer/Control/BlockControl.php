@@ -20,6 +20,9 @@ class BlockControl extends Control
     protected $ptComposerControlTypeHandle = 'block';
     protected $bt = false;
     protected $b = false;
+    /**
+     * @since 5.7.4
+     */
     protected $controller;
 
     public function setBlockTypeID($btID)
@@ -50,6 +53,9 @@ class BlockControl extends Control
         $b->deleteBlock();
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function onPageDraftCreate(Page $c)
     {
         return $this->publishToPage($c, [], []);
@@ -197,6 +203,9 @@ class BlockControl extends Control
         return $layoutSetControl;
     }
 
+    /**
+     * @since 5.7.4
+     */
     protected function getController($obj)
     {
         if (!isset($this->controller)) {
@@ -255,6 +264,9 @@ class BlockControl extends Control
         $this->inc($template, ['control' => $this, 'obj' => $obj, 'description' => $description]);
     }
 
+    /**
+     * @since 5.7.5.2
+     */
     public function action($task)
     {
         $obj = $this->getPageTypeComposerControlDraftValue();
@@ -375,6 +387,9 @@ class BlockControl extends Control
         $this->recordPageTypeComposerOutputBlock($b);
     }
 
+    /**
+     * @since 5.7.5.3
+     */
     public function recordPageTypeComposerOutputBlock(\Concrete\Core\Block\Block $block)
     {
         $app = Application::getFacadeApplication();

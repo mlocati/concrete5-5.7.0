@@ -11,6 +11,9 @@ use URL;
 
 defined('C5_EXECUTE') or die('Access Denied.');
 
+/**
+ * @since 8.4.1
+ */
 class Controller extends BlockController
 {
     public $helpers = ['form'];
@@ -121,6 +124,9 @@ class Controller extends BlockController
         $this->set('pagination', $pagination);
     }
 
+    /**
+     * @since 8.5.2
+     */
     public function action_reload_drafts()
     {
         $b = $this->getBlockObject();

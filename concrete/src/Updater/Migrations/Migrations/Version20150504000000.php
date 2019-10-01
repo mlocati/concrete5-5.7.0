@@ -14,6 +14,9 @@ use Concrete\Core\Updater\Migrations\RepeatableMigrationInterface;
 use Concrete\Core\User\Group\Group;
 use Doctrine\DBAL\Schema\Schema;
 
+/**
+ * @since 5.7.4
+ */
 class Version20150504000000 extends AbstractMigration implements RepeatableMigrationInterface, LongRunningMigrationInterface
 {
     private $updateSectionPlurals = false;
@@ -52,6 +55,7 @@ class Version20150504000000 extends AbstractMigration implements RepeatableMigra
      * {@inheritdoc}
      *
      * @see \Concrete\Core\Updater\Migrations\AbstractMigration::upgradeSchema()
+     * @since 8.3.2
      */
     public function upgradeSchema(Schema $schema)
     {
@@ -99,6 +103,7 @@ class Version20150504000000 extends AbstractMigration implements RepeatableMigra
      * {@inheritdoc}
      *
      * @see \Concrete\Core\Updater\Migrations\AbstractMigration::upgradeDatabase()
+     * @since 8.3.2
      */
     public function upgradeDatabase()
     {

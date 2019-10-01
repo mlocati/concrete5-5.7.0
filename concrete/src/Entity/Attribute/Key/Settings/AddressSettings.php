@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="atAddressSettings")
+ * @since 8.0.0
  */
 class AddressSettings extends Settings
 {
@@ -26,6 +27,7 @@ class AddressSettings extends Settings
 
     /**
      * @ORM\Column(type="boolean", nullable=false)
+     * @since 8.3.0
      */
     protected $akGeolocateCountry = false;
 
@@ -81,6 +83,7 @@ class AddressSettings extends Settings
      * Should we try to determine the Country starting from the visitor's IP address?
      *
      * @return bool
+     * @since 8.3.0
      */
     public function geolocateCountry()
     {
@@ -91,6 +94,7 @@ class AddressSettings extends Settings
      * Should we try to determine the Country starting from the visitor's IP address?
      *
      * @param bool $value
+     * @since 8.3.0
      */
     public function setGeolocateCountry($value)
     {

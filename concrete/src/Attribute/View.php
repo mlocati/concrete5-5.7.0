@@ -20,7 +20,13 @@ class View extends AbstractView
     protected $attributeKey;
     protected $attributeType;
     protected $attributePkgHandle;
+    /**
+     * @since 8.0.0
+     */
     protected $templateLocator;
+    /**
+     * @since 8.0.0
+     */
     protected $controllerAction;
 
     protected function getValue()
@@ -52,6 +58,7 @@ class View extends AbstractView
 
     /**
      * @deprecated
+     * @since 8.0.0
      */
     protected function getContextFromString($string)
     {

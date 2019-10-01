@@ -9,6 +9,11 @@ use Concrete\Core\Attribute\Set;
 use stdClass;
 use Exception;
 
+/**
+ * @since 5.7.2
+ * @since 8.0.0 removed
+ * @since 8.2.0 re-implemented
+ */
 class Attributes extends Controller
 {
 

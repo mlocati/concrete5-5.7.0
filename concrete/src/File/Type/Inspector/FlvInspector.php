@@ -55,6 +55,7 @@ class FlvInspector extends Inspector
      * @return array|null
      *
      * @see http://www.adobe.com/devnet/f4v.html
+     * @since 8.3.1
      */
     public function getFlvMetadata(Version $fv)
     {

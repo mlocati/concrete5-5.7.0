@@ -3,14 +3,24 @@ namespace Concrete\Core\Attribute\Context;
 
 use Concrete\Core\Filesystem\TemplateLocator;
 
+/**
+ * @since 8.0.0
+ */
 class ComposerContext extends BasicFormContext
 {
 
+    /**
+     * @since 8.2.0
+     */
     protected $tooltip;
+    /**
+     * @since 8.2.0
+     */
     protected $required = false;
 
     /**
      * @return mixed
+     * @since 8.2.0
      */
     public function getTooltip()
     {
@@ -19,6 +29,7 @@ class ComposerContext extends BasicFormContext
 
     /**
      * @param mixed $tooltip
+     * @since 8.2.0
      */
     public function setTooltip($tooltip)
     {
@@ -27,6 +38,7 @@ class ComposerContext extends BasicFormContext
 
     /**
      * @return bool
+     * @since 8.2.0
      */
     public function isRequired()
     {
@@ -35,12 +47,16 @@ class ComposerContext extends BasicFormContext
 
     /**
      * @param bool $required
+     * @since 8.2.0
      */
     public function setRequired($required)
     {
         $this->required = $required;
     }
 
+    /**
+     * @since 8.2.0
+     */
     public function setLocation(TemplateLocator $locator)
     {
         $locator->setTemplate('composer');

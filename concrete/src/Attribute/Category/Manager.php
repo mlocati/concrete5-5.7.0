@@ -6,6 +6,9 @@ use Concrete\Core\Support\Manager as CoreManager;
 
 defined('C5_EXECUTE') or die("Access Denied.");
 
+/**
+ * @since 8.0.0
+ */
 class Manager extends CoreManager
 {
     public function createPageDriver()
@@ -33,6 +36,9 @@ class Manager extends CoreManager
         return $this->app->make('Concrete\Core\Attribute\Category\SiteCategory');
     }
 
+    /**
+     * @since 8.3.0
+     */
     public function createEventDriver()
     {
         return $this->app->make('Concrete\Core\Attribute\Category\EventCategory');

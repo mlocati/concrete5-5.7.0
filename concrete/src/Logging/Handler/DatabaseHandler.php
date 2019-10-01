@@ -7,6 +7,9 @@ use User;
 
 class DatabaseHandler extends AbstractProcessingHandler
 {
+    /**
+     * @since 5.7.5.2
+     */
     protected $initialized;
     private $statement;
 
@@ -44,6 +47,7 @@ class DatabaseHandler extends AbstractProcessingHandler
 
     /**
      * Clears all log entries. Requires the database handler.
+     * @since 8.5.0
      */
     public static function clearAll()
     {
@@ -55,6 +59,7 @@ class DatabaseHandler extends AbstractProcessingHandler
      * Clears log entries by channel. Requires the database handler.
      *
      * @param $channel string
+     * @since 8.5.0
      */
     public static function clearByChannel($channel)
     {

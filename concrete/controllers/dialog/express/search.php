@@ -5,6 +5,9 @@ use Concrete\Controller\Backend\UserInterface as BackendInterfaceController;
 use Concrete\Controller\Search\Express\Entries;
 use Concrete\Controller\Element\Dashboard\Express\Entries\Header;
 
+/**
+ * @since 8.0.0
+ */
 class Search extends BackendInterfaceController
 {
     protected $viewPath = '/dialogs/express/entry/search';
@@ -19,6 +22,9 @@ class Search extends BackendInterfaceController
         return false;
     }
 
+    /**
+     * @since 8.1.0
+     */
     protected function getEntity()
     {
         $em = \Database::connection()->getEntityManager();

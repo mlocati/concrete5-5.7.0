@@ -12,6 +12,7 @@ use Gettext\Translations;
 
 /**
  * Factory class for creating and retrieving instances of the Attribute type entity.
+ * @since 8.0.0
  */
 class TypeFactory
 {
@@ -27,6 +28,7 @@ class TypeFactory
 
     /**
      * @var \Concrete\Core\Attribute\Category\CategoryService
+     * @since 8.5.2
      */
     protected $categoryService;
 
@@ -166,6 +168,7 @@ class TypeFactory
 
     /**
      * @param \Concrete\Core\Entity\Attribute\Type $type
+     * @since 8.0.3
      */
     protected function installDatabase(AttributeType $type)
     {

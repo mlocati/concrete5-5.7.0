@@ -15,6 +15,9 @@ use Illuminate\Filesystem\Filesystem;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 
+/**
+ * @since 8.2.0
+ */
 class CacheClearer
 {
 
@@ -105,6 +108,7 @@ class CacheClearer
 
     /**
      * @param boolean $clearGlobalAreas
+     * @since 8.3.1
      */
     public function setClearGlobalAreas($clearGlobalAreas)
     {
@@ -240,6 +244,9 @@ class CacheClearer
         OpCache::clear();
     }
 
+    /**
+     * @since 8.3.1
+     */
     protected function deleteEmptyGlobalAreas()
     {
         if ($this->clearGlobalAreas) {

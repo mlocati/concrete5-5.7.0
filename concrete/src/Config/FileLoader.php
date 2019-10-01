@@ -239,6 +239,7 @@ class FileLoader implements LoaderInterface
      * @param  string  $namespace
      *
      * @return array
+     * @since 8.3.0
      */
     protected function defaultLoad($environment, $group, $namespace = null)
     {

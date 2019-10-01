@@ -6,6 +6,9 @@ use Concrete\Core\Tree\Node\Type\Formatter\ExpressEntryResultsListFormatter;
 use Concrete\Core\Tree\Node\Type\Menu\ExpressEntryResultsFolderMenu;
 use Loader;
 
+/**
+ * @since 8.0.0
+ */
 class ExpressEntryResults extends ExpressEntryCategory
 {
 
@@ -14,6 +17,9 @@ class ExpressEntryResults extends ExpressEntryCategory
         return new ExpressEntryResultsFolderMenu($this);
     }
 
+    /**
+     * @since 8.2.0
+     */
     public function getTotalResultsInFolder()
     {
         $em = \Database::connection()->getEntityManager();

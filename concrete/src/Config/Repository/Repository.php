@@ -6,6 +6,9 @@ use Closure;
 use Concrete\Core\Config\LoaderInterface;
 use Concrete\Core\Config\SaverInterface;
 
+/**
+ * @since 5.7.0.3
+ */
 class Repository extends \Illuminate\Config\Repository
 {
     /**
@@ -278,6 +281,7 @@ class Repository extends \Illuminate\Config\Repository
      * Set the saver instance.
      *
      * @param SaverInterface $saver
+     * @since 5.7.5.4
      */
     public function setSaver(SaverInterface $saver)
     {
@@ -366,6 +370,7 @@ class Repository extends \Illuminate\Config\Repository
      * @param callable $callable
      *
      * @return mixed returns the result of $callable
+     * @since 8.4.1
      */
     public function withKey($key, $value, callable $callable)
     {

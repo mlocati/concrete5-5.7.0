@@ -12,6 +12,9 @@ use Concrete\Core\Workflow\Progress\Progress;
 use Concrete\Core\Workflow\Progress\SiteProgressInterface;
 use HtmlObject\Element;
 
+/**
+ * @since 8.0.0
+ */
 class WorkflowProgressListView extends StandardListView
 {
 
@@ -87,6 +90,9 @@ class WorkflowProgressListView extends StandardListView
         return $this->progress->getWorkflowProgressFormAction();
     }
 
+    /**
+     * @since 8.3.0
+     */
     public function getNotificationDateTimeZone()
     {
         if ($this->progress instanceof SiteProgressInterface) {

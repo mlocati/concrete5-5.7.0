@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityManager;
 
 /**
  * Handles adding and removing keys from attribute sets.
+ * @since 8.0.0
  */
 class StandardSetManager implements SetManagerInterface
 {
@@ -103,6 +104,9 @@ class StandardSetManager implements SetManagerInterface
         }
     }
 
+    /**
+     * @since 8.0.1
+     */
     public function updateAttributeSetDisplayOrder($asIDs)
     {
         $db = \Database::connection();

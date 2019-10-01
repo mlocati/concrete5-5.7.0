@@ -6,6 +6,7 @@ namespace Concrete\Core\Config\Repository;
  * Class Liaison.
  *
  * \@package Concrete\Core\Config\Repository
+ * @since 5.7.0.3
  */
 class Liaison
 {
@@ -122,6 +123,7 @@ class Liaison
      * @param callable $callable
      *
      * @return mixed returns the result of $callable
+     * @since 8.4.1
      */
     public function withKey($key, $value, callable $callable)
     {

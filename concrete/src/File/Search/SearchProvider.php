@@ -16,6 +16,9 @@ use Concrete\Core\Tree\Node\Node;
 use Concrete\Core\Tree\Node\Type\SearchPreset;
 use Symfony\Component\HttpFoundation\Session\Session;
 
+/**
+ * @since 8.0.0
+ */
 class SearchProvider extends AbstractSearchProvider implements QueryableInterface
 {
     /**
@@ -98,6 +101,7 @@ class SearchProvider extends AbstractSearchProvider implements QueryableInterfac
      * {@inheritdoc}
      *
      * @see \Concrete\Core\Search\AbstractSearchProvider::getItemsPerPage()
+     * @since 8.2.0
      */
     public function getItemsPerPage()
     {
@@ -131,6 +135,7 @@ class SearchProvider extends AbstractSearchProvider implements QueryableInterfac
      * {@inheritdoc}
      *
      * @see \Concrete\Core\Search\AbstractSearchProvider::getItemsPerPageOptions()
+     * @since 8.2.0
      */
     public function getItemsPerPageOptions()
     {
@@ -148,6 +153,7 @@ class SearchProvider extends AbstractSearchProvider implements QueryableInterfac
      * Set items per page option in session.
      *
      * @param int $itemsPerPage
+     * @since 8.5.2
      */
     public function setItemsPerPageSession($itemsPerPage)
     {
@@ -158,6 +164,7 @@ class SearchProvider extends AbstractSearchProvider implements QueryableInterfac
      * Retrieve the items per page option from the session.
      *
      * @return int|null
+     * @since 8.5.2
      */
     public function getItemsPerPageSession()
     {
@@ -171,6 +178,7 @@ class SearchProvider extends AbstractSearchProvider implements QueryableInterfac
 
     /**
      * Clear the item per page option from the session.
+     * @since 8.5.2
      */
     public function clearItemsPerPageSession()
     {
@@ -187,6 +195,7 @@ class SearchProvider extends AbstractSearchProvider implements QueryableInterfac
 
     /**
      * @return \Concrete\Core\Entity\Search\SavedFileSearch
+     * @since 8.2.0
      */
     public function getSavedSearch()
     {

@@ -1,9 +1,15 @@
 <?php
 namespace Concrete\Core\Support;
 
+/**
+ * @since 5.7.2.1
+ */
 class Manager extends \Illuminate\Support\Manager
 {
 
+    /**
+     * @since 8.0.0
+     */
     protected $defaultDriver;
 
     protected function createDriver($driver)
@@ -30,6 +36,7 @@ class Manager extends \Illuminate\Support\Manager
      * Get the default driver name.
      *
      * @return string
+     * @since 8.0.0
      */
     public function getDefaultDriver()
     {

@@ -12,26 +12,32 @@ abstract class Column extends ConcreteObject implements ColumnInterface
 {
     /**
      * @var Layout
+     * @since 5.7.4
      */
     public $arLayout;
     /**
      * @var int
+     * @since 5.7.4
      */
     public $arLayoutColumnIndex;
     /**
      * @var int
+     * @since 5.7.4
      */
     public $arLayoutID;
     /**
      * @var int
+     * @since 5.7.4
      */
     public $arLayoutColumnID;
     /**
      * @var int
+     * @since 5.7.4
      */
     public $arLayoutColumnDisplayID;
     /**
      * @var int
+     * @since 5.7.4
      */
     public $arID;
 
@@ -161,6 +167,7 @@ abstract class Column extends ConcreteObject implements ColumnInterface
 
     /**
      * @return string
+     * @since 5.7.5
      */
     public function getContents($disableControls = false)
     {
@@ -172,11 +179,19 @@ abstract class Column extends ConcreteObject implements ColumnInterface
         return $contents;
     }
 
+    /**
+     * @since 5.7.5
+     */
     protected function getSubAreaMaximumColumns()
     {
         return 0;
     }
 
+    /**
+     * @since 5.7.5.2
+     * @since 5.7.5.3 removed
+     * @since 8.4.0 re-implemented
+     */
     public function getSubAreaObject()
     {
         $layout = $this->getAreaLayoutObject();

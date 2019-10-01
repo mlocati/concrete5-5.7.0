@@ -8,6 +8,9 @@ use Core;
 class CustomStyle extends AbstractCustomStyle
 {
     protected $set;
+    /**
+     * @since 5.7.5
+     */
     protected $theme;
 
     public function __construct(StyleSet $set = null, Block $b, $theme = null)
@@ -17,6 +20,9 @@ class CustomStyle extends AbstractCustomStyle
         $this->theme = $theme;
     }
 
+    /**
+     * @since 5.7.5
+     */
     public function getStyleWrapper($css)
     {
         $style = '<style type="text/css" data-area-style-area-handle="' . $this->block->getAreaHandle() . '" data-block-style-block-id="' . $this->block->getBlockID() . '" data-style-set="' . $this->getStyleSet()->getID() . '">' . $css . '</style>';
@@ -118,6 +124,9 @@ class CustomStyle extends AbstractCustomStyle
         return $css;
     }
 
+    /**
+     * @since 5.7.5.3
+     */
     public function getCustomStyleClass()
     {
         $class = 'ccm-custom-style-container ccm-custom-style-';
@@ -149,6 +158,9 @@ class CustomStyle extends AbstractCustomStyle
         return implode(' ', $classes);
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function getCustomStyleID()
     {
         $id = null;
@@ -161,6 +173,9 @@ class CustomStyle extends AbstractCustomStyle
         return $id;
     }
 
+    /**
+     * @since 8.2.0
+     */
     public function getCustomStyleElementAttribute()
     {
         $elementAttribute = null;

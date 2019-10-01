@@ -7,6 +7,9 @@ use Concrete\Core\Search\Field\ManagerFactory;
 use Doctrine\ORM\EntityManager;
 use URL;
 
+/**
+ * @since 8.0.0
+ */
 class AdvancedSearch extends AdvancedSearchController
 {
     protected $supportsSavedSearch = true;
@@ -23,6 +26,9 @@ class AdvancedSearch extends AdvancedSearchController
         return $this->app->make('Concrete\Core\Page\Search\SearchProvider');
     }
 
+    /**
+     * @since 8.4.1
+     */
     public function getSavedSearchEntity()
     {
         $em = $this->app->make(EntityManager::class);
@@ -53,11 +59,17 @@ class AdvancedSearch extends AdvancedSearchController
         return (string) URL::to('/ccm/system/search/pages/basic');
     }
 
+    /**
+     * @since 8.4.1
+     */
     public function getSavedSearchDeleteURL(SavedSearch $search)
     {
         return (string) (string) URL::to('/ccm/system/dialogs/page/advanced_search/preset/delete?presetID=' . $search->getID());
     }
 
+    /**
+     * @since 8.4.1
+     */
     public function getSavedSearchEditURL(SavedSearch $search)
     {
         return (string) (string) URL::to('/ccm/system/dialogs/page/advanced_search/preset/edit?presetID=' . $search->getID());

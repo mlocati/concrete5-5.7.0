@@ -28,6 +28,9 @@ use Concrete\Core\Updater\Migrations\AbstractMigration;
 use Concrete\Core\Updater\Migrations\LongRunningMigrationInterface;
 use Concrete\Core\Updater\Migrations\Routine\AddPageDraftsBooleanTrait;
 
+/**
+ * @since 8.0.0
+ */
 class Version20160725000000 extends AbstractMigration implements LongRunningMigrationInterface
 {
     use AddPageDraftsBooleanTrait;
@@ -49,6 +52,7 @@ class Version20160725000000 extends AbstractMigration implements LongRunningMigr
      * {@inheritdoc}
      *
      * @see \Concrete\Core\Updater\Migrations\AbstractMigration::upgradeDatabase()
+     * @since 8.3.2
      */
     public function upgradeDatabase()
     {
@@ -91,6 +95,9 @@ class Version20160725000000 extends AbstractMigration implements LongRunningMigr
         $this->version->getConfiguration()->getOutputWriter()->write($message);
     }
 
+    /**
+     * @since 8.2.0
+     */
     protected function prepareInvalidForeignKeys()
     {
         $this->output(t('Removing records with invalid foreign keys...'));
@@ -137,6 +144,9 @@ class Version20160725000000 extends AbstractMigration implements LongRunningMigr
         $this->deleteInvalidForeignKey('MultilingualPageRelations', 'cID', 'Pages', 'cID');
     }
 
+    /**
+     * @since 8.3.0
+     */
     protected function deleteInvalidAttributeValuesForeignKeys()
     {
         // Delete orphans of AttributeValues
@@ -149,6 +159,9 @@ class Version20160725000000 extends AbstractMigration implements LongRunningMigr
         $this->deleteInvalidForeignKey('atSocialLinks', 'avID', 'AttributeValues', 'avID');
     }
 
+    /**
+     * @since 8.2.0
+     */
     protected function nullifyInvalidForeignKeys()
     {
         // We need to perform this action *after* the tables have been migrated because these fields were NOT nullable before
@@ -1236,6 +1249,9 @@ class Version20160725000000 extends AbstractMigration implements LongRunningMigr
         // We don't have to do anything to fulfill this since it's already been taken care of by the previous migrations.
     }
 
+    /**
+     * @since 8.2.1
+     */
     protected function fixStacks()
     {
         $this->output(t('Updating Stacks and Global Areas...'));
@@ -1280,6 +1296,9 @@ class Version20160725000000 extends AbstractMigration implements LongRunningMigr
         }
     }
 
+    /**
+     * @since 8.4.0
+     */
     protected function fixMultilingualPageRelations()
     {
         // Delete records in MultilingualPageRelations with invalid locales

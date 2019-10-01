@@ -8,6 +8,7 @@ use Concrete\Core\Localization\Service\Date;
  * This class is used to define and match against various time windows.
  *
  * \@package Concrete\Core\Foundation\Repetition
+ * @since 5.7.4
  */
 abstract class AbstractRepetition implements RepetitionInterface
 {
@@ -63,12 +64,14 @@ abstract class AbstractRepetition implements RepetitionInterface
 
     /**
      * @var \DateTimeZone
+     * @since 8.2.0
      */
     protected $timezone;
 
     /**
      * AbstractRepetition constructor.
      * @param $timezone string | \DateTimeZone
+     * @since 8.2.0
      */
     public function __construct($timezone = null)
     {
@@ -85,17 +88,26 @@ abstract class AbstractRepetition implements RepetitionInterface
         $this->setTimezone($timezone);
     }
 
+    /**
+     * @since 8.2.0
+     */
     public function setTimezone(\DateTimeZone $timezone)
     {
         $this->timezone = $timezone;
     }
 
+    /**
+     * @since 8.2.0
+     */
     public function getStartDateTimestamp()
     {
         $datetime = new \DateTime($this->getStartDate(), $this->getTimezone());
         return $datetime->getTimestamp();
     }
 
+    /**
+     * @since 8.2.0
+     */
     public function getEndDateTimestamp()
     {
         $datetime = new \DateTime($this->getEndDate(), $this->getTimezone());
@@ -152,6 +164,7 @@ abstract class AbstractRepetition implements RepetitionInterface
 
     /**
      * @return \DateTimeZone
+     * @since 8.2.0
      */
     public function getTimezone()
     {
@@ -899,6 +912,7 @@ abstract class AbstractRepetition implements RepetitionInterface
      * @param \DateTime $to
      *
      * @return \DateInterval
+     * @since 5.7.5
      */
     protected function dateDiffNoDST(\DateTime $from, \DateTime $to)
     {
@@ -908,6 +922,9 @@ abstract class AbstractRepetition implements RepetitionInterface
         return $fromUTC->diff($toUTC);
     }
 
+    /**
+     * @since 8.2.0
+     */
     public function jsonSerialize()
     {
         $repeatPeriod = null;

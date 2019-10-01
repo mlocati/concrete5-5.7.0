@@ -7,6 +7,7 @@ use Concrete\Core\Updater\Migrations\RepeatableMigrationInterface;
 
 /**
  * Conversations Ratings Page Review Migration.
+ * @since 8.2.0
  */
 class Version20170227063249 extends AbstractMigration implements RepeatableMigrationInterface
 {
@@ -14,6 +15,7 @@ class Version20170227063249 extends AbstractMigration implements RepeatableMigra
      * {@inheritdoc}
      *
      * @see \Concrete\Core\Updater\Migrations\AbstractMigration::upgradeDatabase()
+     * @since 8.3.2
      */
     public function upgradeDatabase()
     {

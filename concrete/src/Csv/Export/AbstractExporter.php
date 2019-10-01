@@ -14,6 +14,9 @@ use League\Csv\Writer;
 
 defined('C5_EXECUTE') or die('Access Denied.');
 
+/**
+ * @since 8.3.0
+ */
 abstract class AbstractExporter
 {
     /**
@@ -71,6 +74,7 @@ abstract class AbstractExporter
      * @param int $value
      *
      * @return $this
+     * @since 8.5.0
      */
     public function setUnloadDoctrineEveryTick($value)
     {
@@ -84,6 +88,7 @@ abstract class AbstractExporter
      * Get the number of ticks after which doctrine entities should be unloaded (0 for never).
      *
      * @return int
+     * @since 8.5.0
      */
     public function getUnloadDoctrineEveryTick()
     {
@@ -94,6 +99,7 @@ abstract class AbstractExporter
      * Add a tick (to be used to unload Doctrine entities).
      *
      * @return $this
+     * @since 8.5.0
      */
     public function tick()
     {
@@ -321,6 +327,7 @@ abstract class AbstractExporter
 
     /**
      * Unload every Doctrine entites, and reset the state of this instance.
+     * @since 8.5.0
      */
     protected function unloadDoctrineEntities()
     {

@@ -23,7 +23,13 @@ class Stack extends Page
     const ST_TYPE_USER_ADDED = 0;
     const ST_TYPE_GLOBAL_AREA = 20;
 
+    /**
+     * @since 5.7.5
+     */
     const MULTILINGUAL_CONTENT_SOURCE_CURRENT = 100; // in multilingual sites, loads based on current page's locale
+    /**
+     * @since 5.7.5
+     */
     const MULTILINGUAL_CONTENT_SOURCE_DEFAULT = 200; // in multilingual sites, loads based on default locale (ignores current)
 
     /**
@@ -199,6 +205,7 @@ class Stack extends Page
      * @param $type
      *
      * @return \Concrete\Core\Multilingual\Page\Section\Section|false|null
+     * @since 5.7.5.3
      */
     protected static function getMultilingualSectionFromType($type)
     {
@@ -220,6 +227,7 @@ class Stack extends Page
      * @param $area
      *
      * @return self|false
+     * @since 8.0.0
      */
     public static function addGlobalArea($area)
     {
@@ -327,6 +335,7 @@ class Stack extends Page
 
     /**
      * @return \Concrete\Core\Export\Item\ItemInterface|\Concrete\Core\Export\Item\Stack|\Concrete\Core\Page\Exporter
+     * @since 8.0.0
      */
     public function getExporter()
     {
@@ -354,6 +363,8 @@ class Stack extends Page
      * Returns the ID of the multilingual section associated to this stack (or 0 if it's the language-neutral version).
      *
      * @return int
+     * @since 8.0.0 visibility: protected
+     * @since 8.5.0 visibility: public
      */
     public function getMultilingualSectionID()
     {
@@ -370,6 +381,7 @@ class Stack extends Page
      * Returns the multilingual section associated to this stack (or null if it's the language-neutral version).
      *
      * @return \Concrete\Core\Multilingual\Page\Section\Section|null
+     * @since 5.7.5
      */
     public function getMultilingualSection()
     {
@@ -397,6 +409,7 @@ class Stack extends Page
      * Returns the collection ID of the locale.neutral version of this stack (or null if this instance is already the neutral version).
      *
      * @return int|null
+     * @since 8.0.0
      */
     protected function getNeutralStackID()
     {
@@ -407,6 +420,7 @@ class Stack extends Page
      * Checks if this instance is the locale-neutral version of the stack.
      *
      * @return bool
+     * @since 8.0.0
      */
     public function isNeutralStack()
     {
@@ -419,6 +433,7 @@ class Stack extends Page
      * @param string|int $cvID
      *
      * @return self|null
+     * @since 8.0.0
      */
     public function getNeutralStack($cvID = 'RECENT')
     {
@@ -438,6 +453,7 @@ class Stack extends Page
      * @param string|int $cvID
      *
      * @return self|null
+     * @since 8.0.0
      */
     public function getLocalizedStack(Section $section, $cvID = 'RECENT')
     {
@@ -476,6 +492,7 @@ class Stack extends Page
      * @param \Concrete\Core\Multilingual\Page\Section\Section $section
      *
      * @return self
+     * @since 8.0.0
      */
     public function addLocalizedStack(Section $section)
     {

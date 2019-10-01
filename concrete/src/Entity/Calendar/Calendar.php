@@ -12,6 +12,7 @@ use Concrete\Core\Calendar\Calendar\PermissionsManager;
 /**
  * @ORM\Entity(repositoryClass="CalendarRepository")
  * @ORM\Table(name="Calendars")
+ * @since 8.3.0
  */
 class Calendar implements ObjectInterface, AssignableObjectInterface
 {
@@ -251,11 +252,17 @@ class Calendar implements ObjectInterface, AssignableObjectInterface
         return '\\Concrete\\Core\\Permission\\Response\\CalendarResponse';
     }
 
+    /**
+     * @since 8.4.2
+     */
     public function setChildPermissionsToOverride()
     {
         return false;
     }
 
+    /**
+     * @since 8.4.2
+     */
     public function setPermissionsToOverride()
     {
         /**

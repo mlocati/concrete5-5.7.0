@@ -12,10 +12,14 @@ class Pagination extends Pagerfanta
     /** @var \Concrete\Core\Search\ItemList\ItemList  */
     protected $list;
 
+    /**
+     * @since 8.2.0
+     */
     protected $baseURL;
 
     /**
      * @return mixed
+     * @since 8.2.0
      */
     public function getBaseURL()
     {
@@ -24,6 +28,7 @@ class Pagination extends Pagerfanta
 
     /**
      * @param mixed $baseURL
+     * @since 8.2.0
      */
     public function setBaseURL($baseURL)
     {
@@ -52,6 +57,9 @@ class Pagination extends Pagerfanta
         return $this->getNbPages();
     }
 
+    /**
+     * @since 5.7.4
+     */
     public function getItemListObject()
     {
         return $this->list;
@@ -72,6 +80,9 @@ class Pagination extends Pagerfanta
         return $this->renderView('application', $arguments);
     }
 
+    /**
+     * @since 5.7.4
+     */
     public function renderView($driver = 'application', $arguments = array())
     {
         $manager = Core::make('manager/view/pagination');
@@ -81,6 +92,9 @@ class Pagination extends Pagerfanta
         return $v->render($arguments);
     }
 
+    /**
+     * @since 8.2.0
+     */
     public function getRouteCollectionFunction()
     {
         $urlHelper = Core::make('helper/url');

@@ -8,6 +8,9 @@ use Concrete\Core\Entity\File\Version as FileVersion;
 use Concrete\Core\File\Image\BitmapFormat;
 use Concrete\Core\File\Service\File as FileService;
 
+/**
+ * @since 8.3.0
+ */
 class ThumbnailFormatService
 {
     /**
@@ -39,6 +42,7 @@ class ThumbnailFormatService
 
     /**
      * @var BitmapFormat
+     * @since 8.4.0
      */
     protected $bitmapFormat;
 

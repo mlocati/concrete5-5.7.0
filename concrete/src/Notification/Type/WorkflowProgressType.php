@@ -11,6 +11,9 @@ use Concrete\Core\Workflow\Progress\Progress;
 use Concrete\Core\Workflow\Workflow;
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * @since 8.0.0
+ */
 class WorkflowProgressType extends Type
 {
 
@@ -50,6 +53,9 @@ class WorkflowProgressType extends Type
         }
     }
 
+    /**
+     * @since 8.4.2
+     */
     public function getAvailableFilters()
     {
         $workflows = Workflow::getList();

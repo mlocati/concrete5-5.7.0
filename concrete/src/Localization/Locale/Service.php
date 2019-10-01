@@ -10,6 +10,9 @@ use Doctrine\DBAL\Exception\TableNotFoundException;
 use Doctrine\ORM\EntityManagerInterface;
 use Events;
 
+/**
+ * @since 8.0.0
+ */
 class Service
 {
     protected $entityManager;
@@ -28,6 +31,7 @@ class Service
      * Get the default site locale (if set).
      *
      * @return Locale|null
+     * @since 8.3.0
      */
     public function getDefaultLocale()
     {

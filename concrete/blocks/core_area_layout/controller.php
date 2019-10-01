@@ -23,6 +23,11 @@ class Controller extends BlockController
     protected $btSupportsInlineEdit = true;
     protected $btTable = 'btCoreAreaLayout';
     protected $btIsInternal = true;
+    /**
+     * @since 5.7.5.2
+     * @since 5.7.5.3 removed
+     * @since 8.4.0 re-implemented
+     */
     protected $btCacheSettingsInitialized = false;
 
     public function cacheBlockOutput()
@@ -46,6 +51,11 @@ class Controller extends BlockController
         return $this->btCacheBlockOutputLifetime;
     }
 
+    /**
+     * @since 5.7.5.2
+     * @since 5.7.5.3 removed
+     * @since 8.4.0 re-implemented
+     */
     protected function setupCacheSettings()
     {
         if ($this->btCacheSettingsInitialized || Page::getCurrentPage()->isEditMode()) {
@@ -126,6 +136,9 @@ class Controller extends BlockController
         return t("Area Layout");
     }
 
+    /**
+     * @since 5.7.0.3
+     */
     public function registerViewAssets($outputContent = '')
     {
         if (is_object($this->block) && $this->block->getBlockFilename() == 'parallax') {

@@ -1,12 +1,16 @@
 <?php
 namespace Concrete\Core\Search\Field;
 
+/**
+ * @since 8.0.0
+ */
 interface ManagerInterface
 {
     /**
      * Get the groups of fields.
      *
      * @return GroupInterface[]
+     * @since 8.2.0
      */
     public function getGroups();
 
@@ -16,6 +20,7 @@ interface ManagerInterface
      * @param string $name
      *
      * @return GroupInterface|null
+     * @since 8.2.0
      */
     public function getGroupByName($name);
 
@@ -25,6 +30,7 @@ interface ManagerInterface
      * @param string $key The field key
      *
      * @return FieldInterface|null
+     * @since 8.2.0
      */
     public function getFieldByKey($key);
 
@@ -34,6 +40,7 @@ interface ManagerInterface
      * @param array $request
      *
      * @return FieldInterface[]
+     * @since 8.2.0
      */
     public function getFieldsFromRequest(array $request);
 }

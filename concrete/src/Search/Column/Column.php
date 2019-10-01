@@ -6,19 +6,29 @@ use Concrete\Core\Search\Result\Result;
 class Column implements ColumnInterface
 {
     /** These properties are to be treated as protected. Use the set and get methods instead */
-    /** @deprecated */
+    /** @deprecated
+     * @since 8.2.0
+     */
     public $columnKey;
     
-    /** @deprecated */
+    /** @deprecated
+     * @since 8.2.0
+     */
     public $columnName;
     
-    /** @deprecated */
+    /** @deprecated
+     * @since 8.2.0
+     */
     public $sortDirection = 'asc';
     
-    /** @deprecated */
+    /** @deprecated
+     * @since 8.2.0
+     */
     public $isSortable;
     
-    /** @deprecated */
+    /** @deprecated
+     * @since 8.2.0
+     */
     public $callback;
 
     public function getColumnValue($obj)
@@ -73,11 +83,17 @@ class Column implements ColumnInterface
         return $il->getSortClassName($this->getColumnKey());
     }
 
+    /**
+     * @since 8.2.0
+     */
     public function getColumnSortDirection()
     {
         return $this->sortDirection;
     }
 
+    /**
+     * @since 8.2.0
+     */
     public function setColumnSortDirection($sortDirection)
     {
         return $this->sortDirection = $sortDirection;

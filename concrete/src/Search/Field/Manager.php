@@ -3,6 +3,9 @@ namespace Concrete\Core\Search\Field;
 
 use Concrete\Core\Attribute\SetManagerInterface;
 
+/**
+ * @since 8.0.0
+ */
 class Manager implements ManagerInterface
 {
     /**
@@ -40,6 +43,7 @@ class Manager implements ManagerInterface
      * {@inheritdoc}
      *
      * @see ManagerInterface::getGroupByName()
+     * @since 8.2.0
      */
     public function getGroupByName($name)
     {
@@ -99,6 +103,9 @@ class Manager implements ManagerInterface
         return $fields;
     }
 
+    /**
+     * @since 8.2.1
+     */
     protected function populateAttributeGroups(SetManagerInterface $setManager)
     {
         $attributeSets = $setManager->getAttributeSets();

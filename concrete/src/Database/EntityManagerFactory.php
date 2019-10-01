@@ -11,6 +11,9 @@ use Config;
 use Database;
 use Events;
 
+/**
+ * @since 5.7.5.3
+ */
 class EntityManagerFactory implements EntityManagerFactoryInterface
 {
     /**
@@ -19,6 +22,7 @@ class EntityManagerFactory implements EntityManagerFactoryInterface
      * a concrete version > 8.0.0
      * 
      * @var \Doctrine\Common\Annotations\CachedReader 
+     * @since 8.0.0
      */
     protected $cachedAnnotationsReader;
 
@@ -28,6 +32,7 @@ class EntityManagerFactory implements EntityManagerFactoryInterface
      * for a concrete version less than 8.0.0
      * 
      * @var \Doctrine\Common\Annotations\CachedReader 
+     * @since 8.0.0
      */
     protected $cachedSimpleAnnotationsReader;
 
@@ -35,6 +40,7 @@ class EntityManagerFactory implements EntityManagerFactoryInterface
      * Factory for bootstraping the doctrine orm configuration
      *
      * @var \Concrete\Core\Database\EntityManagerConfigFactoryInterface
+     * @since 8.0.0
      */
     protected $configFactory;
 

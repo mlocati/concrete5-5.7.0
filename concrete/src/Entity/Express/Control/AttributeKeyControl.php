@@ -13,6 +13,7 @@ use Concrete\Core\Form\Context\Registry\ControlRegistry;
 /**
  * @ORM\Entity
  * @ORM\Table(name="ExpressFormFieldSetAttributeKeyControls")
+ * @since 8.0.0
  */
 class AttributeKeyControl extends Control
 {
@@ -62,6 +63,9 @@ class AttributeKeyControl extends Control
         return new \Concrete\Core\Export\Item\Express\Control\AttributeKeyControl();
     }
 
+    /**
+     * @since 8.2.0
+     */
     public function getControlView(ContextInterface $context)
     {
         $registry = \Core::make(ControlRegistry::class);
@@ -70,6 +74,9 @@ class AttributeKeyControl extends Control
         ]);
     }
 
+    /**
+     * @since 8.1.0
+     */
     public function build(ObjectBuilder $builder)
     {
         // before we have built the object we have a proxy attribute key

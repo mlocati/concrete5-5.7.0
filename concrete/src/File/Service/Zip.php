@@ -9,6 +9,7 @@ use ZipArchive;
 
 /**
  * Wrapper for ZIP functions.
+ * @since 5.7.5.7
  */
 class Zip
 {
@@ -23,6 +24,7 @@ class Zip
      * The FunctionInspector instance to use.
      *
      * @var FunctionInspector
+     * @since 8.2.0
      */
     protected $functionInspector;
 
@@ -31,6 +33,7 @@ class Zip
      *
      * @param Filesystem $filesystem
      * @param FunctionInspector $functionInspector
+     * @since 8.2.0
      */
     public function __construct(Filesystem $filesystem, FunctionInspector $functionInspector)
     {

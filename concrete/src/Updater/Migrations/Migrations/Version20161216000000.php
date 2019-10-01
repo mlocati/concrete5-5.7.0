@@ -8,6 +8,9 @@ use Concrete\Core\Updater\Migrations\AbstractMigration;
 use Concrete\Core\Updater\Migrations\RepeatableMigrationInterface;
 use Concrete\Core\User\Group\Group;
 
+/**
+ * @since 8.0.3
+ */
 class Version20161216000000 extends AbstractMigration implements RepeatableMigrationInterface
 {
     /**
@@ -24,6 +27,7 @@ class Version20161216000000 extends AbstractMigration implements RepeatableMigra
      * {@inheritdoc}
      *
      * @see \Concrete\Core\Updater\Migrations\AbstractMigration::upgradeDatabase()
+     * @since 8.3.2
      */
     public function upgradeDatabase()
     {

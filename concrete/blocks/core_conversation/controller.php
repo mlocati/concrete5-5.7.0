@@ -33,7 +33,13 @@ class Controller extends BlockController implements ConversationFeatureInterface
         'conversation',
     ];
 
+    /**
+     * @since 8.2.0
+     */
     public $enableTopCommentReviews;
+    /**
+     * @since 8.2.0
+     */
     public $reviewAggregateAttributeKey;
 
     public function getBlockTypeDescription()
@@ -46,6 +52,9 @@ class Controller extends BlockController implements ConversationFeatureInterface
         return t("Conversation");
     }
 
+    /**
+     * @since 5.7.4
+     */
     public function getSearchableContent()
     {
         $ml = new MessageList();
@@ -112,6 +121,9 @@ class Controller extends BlockController implements ConversationFeatureInterface
         $this->set('notificationUsers', $conversation->getConversationSubscribedUsers());
     }
 
+    /**
+     * @since 5.7.0.3
+     */
     public function registerViewAssets($outputContent = '')
     {
         $this->requireAsset('core/conversation');

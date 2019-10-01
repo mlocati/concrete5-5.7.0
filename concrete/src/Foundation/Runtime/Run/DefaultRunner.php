@@ -26,6 +26,7 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
  * Default HTTP Runner.
  *
  * @todo Replace pipeline style functionality with middleware
+ * @since 8.0.0
  */
 class DefaultRunner implements RunInterface, ApplicationAwareInterface
 {
@@ -34,16 +35,24 @@ class DefaultRunner implements RunInterface, ApplicationAwareInterface
     /** @var Repository */
     protected $config;
 
-    /** @var UrlResolverInterface */
+    /** @var UrlResolverInterface
+     * @since 8.2.0
+     */
     protected $urlResolver;
 
-    /** @var RouterInterface */
+    /** @var RouterInterface
+     * @since 8.2.0
+     */
     protected $router;
 
-    /** @var SiteService */
+    /** @var SiteService
+     * @since 8.2.0
+     */
     protected $siteService;
 
-    /** @var EventDispatcherInterface */
+    /** @var EventDispatcherInterface
+     * @since 8.2.0
+     */
     protected $eventDispatcher;
 
     /** @var ServerInterface */
@@ -139,6 +148,8 @@ class DefaultRunner implements RunInterface, ApplicationAwareInterface
      * @deprecated In a future major version this will be part of HTTP middleware
      *
      * @return Response|void Returns a response if an error occurs
+     * @since 8.0.0 visibility: private
+     * @since 8.2.0 visibility: protected
      */
     protected function initializeLegacyURLDefinitions()
     {
@@ -154,6 +165,9 @@ class DefaultRunner implements RunInterface, ApplicationAwareInterface
         }
     }
 
+    /**
+     * @since 8.2.0
+     */
     protected function initializeSystemTimezone()
     {
         $config = $this->app->make('config');
@@ -164,6 +178,9 @@ class DefaultRunner implements RunInterface, ApplicationAwareInterface
         @date_default_timezone_set($config->get('app.server_timezone'));
     }
 
+    /**
+     * @since 8.2.0
+     */
     protected function initializeSiteTimezone()
     {
         $siteConfig = $this->app->make('site')->getSite()->getConfigRepository();
@@ -176,6 +193,7 @@ class DefaultRunner implements RunInterface, ApplicationAwareInterface
 
     /**
      * @deprecated Splitted into initializeSystemTimezone and initializeSiteTimezone
+     * @since 8.2.0
      */
     protected function initializeTimezone()
     {
@@ -187,6 +205,7 @@ class DefaultRunner implements RunInterface, ApplicationAwareInterface
      * Initialize localization.
      *
      * @deprecated In a future major version this will be part of HTTP middleware
+     * @since 8.2.0
      */
     protected function setSystemLocale()
     {
@@ -203,6 +222,7 @@ class DefaultRunner implements RunInterface, ApplicationAwareInterface
      * @deprecated In a future major version this will be part of HTTP middleware
      *
      * @return Response|void Returns a response if an error occurs
+     * @since 8.0.2
      */
     protected function registerLegacyConfigValues()
     {
@@ -239,6 +259,7 @@ class DefaultRunner implements RunInterface, ApplicationAwareInterface
 
     /**
      * Create the request object to use.
+     * @since 8.2.0
      */
     protected function createRequest()
     {
@@ -254,6 +275,7 @@ class DefaultRunner implements RunInterface, ApplicationAwareInterface
      * @deprecated In a future major version this will be part of HTTP middleware
      *
      * @return Response|void Returns a response if an error occurs
+     * @since 8.2.0
      */
     protected function setupPackages()
     {
@@ -267,6 +289,7 @@ class DefaultRunner implements RunInterface, ApplicationAwareInterface
      * Argument 1 passed to functionName() must be an instance of Area, instance of Concrete\Core\Area\Area given.
      *
      * @deprecated Don't use this method: it will be removed in future concrete5 versions
+     * @since 8.5.2
      */
     protected function preloadClassAliases()
     {
@@ -279,6 +302,7 @@ class DefaultRunner implements RunInterface, ApplicationAwareInterface
      * @deprecated In a future major version this will be part of HTTP middleware
      *
      * @return Response|void Returns a response if an error occurs
+     * @since 8.2.0
      */
     protected function loadBootstrap()
     {
@@ -293,6 +317,7 @@ class DefaultRunner implements RunInterface, ApplicationAwareInterface
      * @deprecated In a future major version this will be part of HTTP middleware
      *
      * @return Response|void Returns a response if an error occurs
+     * @since 8.2.0
      */
     protected function handleUpdates()
     {
@@ -321,6 +346,7 @@ class DefaultRunner implements RunInterface, ApplicationAwareInterface
      * @deprecated In a future major version this will be part of HTTP middleware
      *
      * @return Response|void Returns a response if an error occurs
+     * @since 8.2.0
      */
     protected function handleEventing()
     {
@@ -333,6 +359,7 @@ class DefaultRunner implements RunInterface, ApplicationAwareInterface
      * @deprecated In a future major version this will be part of HTTP middleware
      *
      * @return Response|void Returns a response if an error occurs
+     * @since 8.2.0
      */
     protected function handlePermissionKeys()
     {
@@ -346,6 +373,7 @@ class DefaultRunner implements RunInterface, ApplicationAwareInterface
      * @param string[] $steps
      *
      * @return Response|null
+     * @since 8.2.0
      */
     protected function trySteps(array $steps)
     {
@@ -365,6 +393,7 @@ class DefaultRunner implements RunInterface, ApplicationAwareInterface
      * @deprecated In a future major version this will be part of HTTP middleware
      *
      * @return Repository
+     * @since 8.2.0
      */
     protected function getConfig()
     {
@@ -393,6 +422,7 @@ class DefaultRunner implements RunInterface, ApplicationAwareInterface
      * @param Repository $repository
      *
      * @return $this
+     * @since 8.2.0
      */
     public function setConfig(Repository $repository)
     {
@@ -407,6 +437,7 @@ class DefaultRunner implements RunInterface, ApplicationAwareInterface
      * @deprecated In a future major version this will be part of HTTP middleware
      *
      * @return RouterInterface
+     * @since 8.2.0
      */
     protected function getRouter()
     {
@@ -435,6 +466,7 @@ class DefaultRunner implements RunInterface, ApplicationAwareInterface
      * @param RouterInterface $router
      *
      * @return $this
+     * @since 8.2.0
      */
     public function setRouter(RouterInterface $router)
     {
@@ -449,6 +481,7 @@ class DefaultRunner implements RunInterface, ApplicationAwareInterface
      * @deprecated In a future major version this will be part of HTTP middleware
      *
      * @return SiteService
+     * @since 8.2.0
      */
     protected function getSiteService()
     {
@@ -477,6 +510,7 @@ class DefaultRunner implements RunInterface, ApplicationAwareInterface
      * @param SiteService $site
      *
      * @return $this
+     * @since 8.2.0
      */
     public function setSiteService(SiteService $site)
     {
@@ -491,6 +525,7 @@ class DefaultRunner implements RunInterface, ApplicationAwareInterface
      * @deprecated In a future major version this will be part of HTTP middleware
      *
      * @return UrlResolverInterface
+     * @since 8.2.0
      */
     protected function getUrlResolver()
     {
@@ -521,6 +556,7 @@ class DefaultRunner implements RunInterface, ApplicationAwareInterface
      * @param UrlResolverInterface $urlResolver
      *
      * @return $this
+     * @since 8.2.0
      */
     public function setUrlResolver(UrlResolverInterface $urlResolver)
     {
@@ -535,6 +571,7 @@ class DefaultRunner implements RunInterface, ApplicationAwareInterface
      * @deprecated In a future major version this will be part of HTTP middleware
      *
      * @return EventDispatcherInterface
+     * @since 8.2.0
      */
     protected function getEventDispatcher()
     {
@@ -565,6 +602,7 @@ class DefaultRunner implements RunInterface, ApplicationAwareInterface
      * @param EventDispatcherInterface $urlResolver
      *
      * @return $this
+     * @since 8.2.0
      */
     public function setEventDispatcher(EventDispatcherInterface $urlResolver)
     {

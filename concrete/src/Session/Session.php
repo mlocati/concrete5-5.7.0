@@ -14,7 +14,9 @@ use \Symfony\Component\HttpFoundation\Session\Session as SymfonySession;
 class Session
 {
 
-    /** @var Application */
+    /** @var Application
+     * @since 5.7.5.5
+     */
     protected static $app;
 
     /**
@@ -22,6 +24,7 @@ class Session
      * Instead override the application bindings.
      * This method only exists to enable legacy static methods on the real application instance
      * @deprecated Create the session using $app->make('session');
+     * @since 5.7.5.5
      */
     public static function setApplicationObject(Application $app)
     {

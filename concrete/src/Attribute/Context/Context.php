@@ -5,10 +5,16 @@ use Concrete\Core\Entity\Attribute\Key\Key;
 use Concrete\Core\Entity\Attribute\Value\AbstractValue;
 use Concrete\Core\Filesystem\TemplateLocator;
 
+/**
+ * @since 8.0.0
+ */
 abstract class Context implements ContextInterface
 {
 
     protected $actions = [];
+    /**
+     * @since 8.2.0
+     */
     protected $controlTemplates = [];
 
     public function preferTemplateIfAvailable($template, $pkgHandle = null)
@@ -41,17 +47,24 @@ abstract class Context implements ContextInterface
 
     /**
      * @return array
+     * @since 8.2.0
      */
     public function getControlTemplates()
     {
         return $this->controlTemplates;
     }
 
+    /**
+     * @since 8.2.0
+     */
     public function setLocation(TemplateLocator $locator)
     {
         return $locator;
     }
 
+    /**
+     * @since 8.2.0
+     */
     public function render(Key $key, $value = null)
     {
         return;

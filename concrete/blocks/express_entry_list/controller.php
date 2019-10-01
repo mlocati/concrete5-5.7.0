@@ -20,6 +20,9 @@ use Concrete\Core\Search\Result\ItemColumn;
 use Concrete\Core\Support\Facade\Facade;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
+/**
+ * @since 8.0.0
+ */
 class Controller extends BlockController
 {
     protected $btInterfaceWidth = "640";
@@ -59,6 +62,9 @@ class Controller extends BlockController
         $this->set('displayLimit', 20);
     }
 
+    /**
+     * @since 8.5.0
+     */
     protected function getSearchFieldManager(Entity $entity)
     {
         $fieldManager = ManagerFactory::get('express');
@@ -66,6 +72,9 @@ class Controller extends BlockController
         return $fieldManager;
     }
 
+    /**
+     * @since 8.5.0
+     */
     public function action_add_search_field($entityID = null)
     {
         if (!$entityID) {
@@ -158,6 +167,9 @@ class Controller extends BlockController
         return $select;
     }
 
+    /**
+     * @since 8.5.0
+     */
     protected function getSearchAssociationsJsonArray($entity)
     {
         $associations = $entity->getAssociations();

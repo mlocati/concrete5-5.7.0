@@ -15,6 +15,7 @@ class Controller extends AbstractController implements AttributeInterface
 {
     /**
      * @var EntityManager
+     * @since 8.0.0
      */
     protected $entityManager;
 
@@ -48,6 +49,9 @@ class Controller extends AbstractController implements AttributeInterface
         $this->set('controller', $this);
     }
 
+    /**
+     * @since 8.3.0
+     */
     public function __destruct()
     {
         unset($this->attributeKey);
@@ -58,6 +62,7 @@ class Controller extends AbstractController implements AttributeInterface
      * {@inheritdoc}
      *
      * @see \Concrete\Core\Attribute\AttributeInterface::getIconFormatter()
+     * @since 8.0.0
      */
     public function getIconFormatter()
     {
@@ -68,6 +73,7 @@ class Controller extends AbstractController implements AttributeInterface
      * {@inheritdoc}
      *
      * @see \Concrete\Core\Attribute\AttributeInterface::setAttributeType()
+     * @since 8.0.0
      */
     public function setAttributeType($attributeType)
     {
@@ -88,6 +94,7 @@ class Controller extends AbstractController implements AttributeInterface
      * @param string $_file
      *
      * @return string|null
+     * @since 8.0.0
      */
     public function getAttributeTypeFileURL($_file)
     {
@@ -115,6 +122,7 @@ class Controller extends AbstractController implements AttributeInterface
 
     /**
      * @return string
+     * @since 8.0.3
      */
     public function getAttributeKeySettingsClass()
     {
@@ -157,6 +165,9 @@ class Controller extends AbstractController implements AttributeInterface
     {
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function deleteKey()
     {
         $settings = $this->retrieveAttributeKeySettings();
@@ -168,6 +179,7 @@ class Controller extends AbstractController implements AttributeInterface
 
     /**
      * @return \Concrete\Core\Entity\Attribute\Key\Settings\Settings
+     * @since 8.0.0
      */
     public function createAttributeKeySettings()
     {
@@ -178,6 +190,7 @@ class Controller extends AbstractController implements AttributeInterface
 
     /**
      * @return \Concrete\Core\Entity\Attribute\Key\Settings\Settings
+     * @since 8.0.0
      */
     public function getAttributeKeySettings()
     {
@@ -196,6 +209,7 @@ class Controller extends AbstractController implements AttributeInterface
      * {@inheritdoc}
      *
      * @see \Concrete\Core\Attribute\AttributeInterface::getAttributeValueClass()
+     * @since 8.0.3
      */
     public function getAttributeValueClass()
     {
@@ -222,6 +236,7 @@ class Controller extends AbstractController implements AttributeInterface
 
     /**
      * @return \Concrete\Core\Entity\Attribute\Value\AbstractValue|null
+     * @since 8.0.0
      */
     public function getAttributeValueObject()
     {
@@ -241,6 +256,7 @@ class Controller extends AbstractController implements AttributeInterface
      * Create the default attribute value (if needed).
      *
      * @return \Concrete\Core\Entity\Attribute\Value\AbstractValue|null
+     * @since 8.2.0
      */
     public function createDefaultAttributeValue()
     {
@@ -251,6 +267,7 @@ class Controller extends AbstractController implements AttributeInterface
      * {@inheritdoc}
      *
      * @see \Concrete\Core\Attribute\AttributeInterface::createAttributeValueFromRequest()
+     * @since 8.0.0
      */
     public function createAttributeValueFromRequest()
     {
@@ -261,12 +278,16 @@ class Controller extends AbstractController implements AttributeInterface
      * {@inheritdoc}
      *
      * @see \Concrete\Core\Attribute\AttributeInterface::createAttributeValue()
+     * @since 8.0.0
      */
     public function createAttributeValue($mixed)
     {
         return $this->saveValue($mixed);
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function deleteValue()
     {
     }
@@ -283,6 +304,7 @@ class Controller extends AbstractController implements AttributeInterface
      * {@inheritdoc}
      *
      * @see \Concrete\Core\Attribute\AttributeInterface::getSearchIndexValue()
+     * @since 8.0.0
      */
     public function getSearchIndexValue()
     {
@@ -378,6 +400,7 @@ class Controller extends AbstractController implements AttributeInterface
      * {@inheritdoc}
      *
      * @see \Concrete\Core\Attribute\AttributeInterface::getDisplayValue()
+     * @since 8.0.0
      */
     public function getDisplayValue()
     {
@@ -388,6 +411,7 @@ class Controller extends AbstractController implements AttributeInterface
      * @param ContextInterface $context
      *
      * @return \Concrete\Core\Form\Control\FormViewInterface
+     * @since 8.2.0
      */
     public function getControlView(ContextInterface $context)
     {
@@ -426,6 +450,7 @@ class Controller extends AbstractController implements AttributeInterface
      * Get the ID to use for label elements. Not applicable in form views that do
      * not contain <label>
      * @return string
+     * @since 8.4.0
      */
     public function getControlID()
     {
@@ -436,6 +461,7 @@ class Controller extends AbstractController implements AttributeInterface
      * Get the ID to use for label elements.
      * @deprecated
      * @return string
+     * @since 8.0.0
      */
     public function getLabelID()
     {
@@ -468,6 +494,7 @@ class Controller extends AbstractController implements AttributeInterface
 
     /**
      * @return \Concrete\Core\Attribute\ValidatorInterface
+     * @since 8.0.0
      */
     public function getValidator()
     {
@@ -519,6 +546,7 @@ class Controller extends AbstractController implements AttributeInterface
 
     /**
      * @return bool
+     * @since 5.7.4.2
      */
     public function requestFieldExists()
     {
@@ -561,6 +589,7 @@ class Controller extends AbstractController implements AttributeInterface
      * @deprecated
      *
      * @param mixed $data
+     * @since 8.0.0
      */
     public function saveForm($data)
     {
@@ -570,6 +599,7 @@ class Controller extends AbstractController implements AttributeInterface
      * @deprecated
      *
      * @param mixed $mixed
+     * @since 8.0.0
      */
     public function saveValue($mixed)
     {
@@ -588,6 +618,7 @@ class Controller extends AbstractController implements AttributeInterface
 
     /**
      * @return \Concrete\Core\Entity\Attribute\Key\Settings\Settings|null
+     * @since 8.0.0
      */
     protected function retrieveAttributeKeySettings()
     {

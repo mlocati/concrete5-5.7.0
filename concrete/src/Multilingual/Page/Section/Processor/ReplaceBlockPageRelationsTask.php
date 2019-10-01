@@ -7,6 +7,9 @@ use Concrete\Core\Page\Page;
 
 defined('C5_EXECUTE') or die("Access Denied.");
 
+/**
+ * @since 5.7.5
+ */
 class ReplaceBlockPageRelationsTask implements TaskInterface
 {
     public function execute(ActionInterface $action)
@@ -65,6 +68,9 @@ class ReplaceBlockPageRelationsTask implements TaskInterface
         }
     }
 
+    /**
+     * @since 5.7.5.3
+     */
     public function finish(ActionInterface $action)
     {
         return;

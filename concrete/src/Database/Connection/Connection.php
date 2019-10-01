@@ -11,6 +11,9 @@ use Exception;
 use ORM;
 use PDO;
 
+/**
+ * @since 5.7.0.3
+ */
 class Connection extends \Doctrine\DBAL\Connection
 {
     /** @var EntityManager */
@@ -20,6 +23,7 @@ class Connection extends \Doctrine\DBAL\Connection
      * The supported character sets and associated default collation.
      *
      * @var null|array NULL if not yet initialized; an array with keys (character set - always lower case) and values (default collation for the character set - always lower case) otherwise
+     * @since 8.5.0
      */
     protected $supportedCharsets;
 
@@ -27,6 +31,7 @@ class Connection extends \Doctrine\DBAL\Connection
      * The supported collations and the associated character sets.
      *
      * @var null|array NULL if not yet initialized; an array with keys (collation) and values (associated character set) otherwise
+     * @since 8.5.0
      */
     protected $supportedCollations;
 
@@ -112,6 +117,7 @@ class Connection extends \Doctrine\DBAL\Connection
      * This feature will be removed when DBAL will support it, so don't use this feature.
      *
      * @param array $textIndexes
+     * @since 8.3.2
      */
     public function createTextIndexes(array $textIndexes)
     {
@@ -243,6 +249,7 @@ class Connection extends \Doctrine\DBAL\Connection
      *
      * @param mixed $q
      * @param mixed $arguments
+     * @since 5.7.5
      */
     public function GetAssoc($q, $arguments = [])
     {
@@ -438,6 +445,7 @@ class Connection extends \Doctrine\DBAL\Connection
      * @throws \Exception throws an exception in case of errors
      *
      * @return array keys: character set (always lower case); array values: default collation for the character set (always lower case)
+     * @since 8.5.0
      */
     public function getSupportedCharsets()
     {
@@ -462,6 +470,7 @@ class Connection extends \Doctrine\DBAL\Connection
      * @throws \Exception throws an exception in case of errors
      *
      * @return array keys: collation (always lower case); array values: associated character set (always lower case)
+     * @since 8.5.0
      */
     public function getSupportedCollations()
     {
@@ -509,6 +518,7 @@ class Connection extends \Doctrine\DBAL\Connection
      * @param int $fieldLength the length (in chars) of a field to be used as key/index
      *
      * @return bool
+     * @since 8.5.0
      */
     public function isCollationSupportedForKeys($collation, $fieldLength)
     {
@@ -543,6 +553,7 @@ class Connection extends \Doctrine\DBAL\Connection
      * @param string $collation
      *
      * @internal
+     * @since 8.5.0
      */
     public function refreshCharactersetCollation($characterSet, $collation)
     {

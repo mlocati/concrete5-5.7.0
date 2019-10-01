@@ -3,8 +3,14 @@ namespace Concrete\Core\Multilingual\Page\Section;
 
 defined('C5_EXECUTE') or die("Access Denied.");
 
+/**
+ * @since 5.7.3
+ */
 class Translation extends \Gettext\Translation
 {
+    /**
+     * @since 5.7.4
+     */
     public function getRecordID()
     {
         return $this->mtID;
@@ -36,6 +42,9 @@ class Translation extends \Gettext\Translation
         }
     }
 
+    /**
+     * @since 5.7.4
+     */
     public static function getByRow($row)
     {
         $result = null;
@@ -82,6 +91,9 @@ class Translation extends \Gettext\Translation
         return $result;
     }
 
+    /**
+     * @since 5.7.4
+     */
     public static function getByString($msgid)
     {
         $db = \Database::get();
@@ -92,6 +104,9 @@ class Translation extends \Gettext\Translation
         }
     }
 
+    /**
+     * @since 5.7.4
+     */
     public static function getByRecordID($mtID)
     {
         $result = null;

@@ -13,6 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Entity
  * @ORM\Table(name="FileImageThumbnailTypes")
+ * @since 8.0.0
  */
 class Type
 {
@@ -20,6 +21,7 @@ class Type
      * Thumbnail sizing mode: proportional.
      *
      * @var string
+     * @since 8.2.0
      */
     const RESIZE_PROPORTIONAL = 'proportional';
 
@@ -27,6 +29,7 @@ class Type
      * Thumbnail sizing mode: exact dimensions.
      *
      * @var string
+     * @since 8.2.0
      */
     const RESIZE_EXACT = 'exact';
 
@@ -34,6 +37,7 @@ class Type
      * Default thumbnail sizing mode.
      *
      * @var string
+     * @since 8.2.0
      */
     const RESIZE_DEFAULT = self::RESIZE_PROPORTIONAL;
 
@@ -41,6 +45,7 @@ class Type
      * Suffix for high DPI thumbnails (eg. Retina).
      *
      * @var string
+     * @since 8.4.0
      */
     const HIGHDPI_SUFFIX = '_2x';
 
@@ -106,6 +111,7 @@ class Type
      * @ORM\Column(type="string")
      *
      * @var string
+     * @since 8.2.0
      */
     protected $ftTypeSizingMode = self::RESIZE_DEFAULT;
 
@@ -115,6 +121,7 @@ class Type
      * @ORM\Column(type="boolean")
      *
      * @var bool
+     * @since 8.4.1
      */
     protected $ftUpscalingEnabled = false;
 
@@ -124,6 +131,7 @@ class Type
      * @ORM\Column(type="boolean", nullable=false)
      *
      * @var bool
+     * @since 8.4.0
      */
     protected $ftLimitedToFileSets = false;
 
@@ -133,6 +141,7 @@ class Type
      * @ORM\OneToMany(targetEntity="TypeFileSet", mappedBy="ftfsThumbnailType", cascade={"all"}, orphanRemoval=true)
      *
      * @var ArrayCollection|TypeFileSet[]
+     * @since 8.4.0
      */
     protected $ftAssociatedFileSets;
 
@@ -142,6 +151,7 @@ class Type
      * @ORM\Column(type="boolean")
      *
      * @var bool
+     * @since 8.5.0
      */
     protected $ftKeepAnimations = false;
 
@@ -151,11 +161,13 @@ class Type
      * @ORM\Column(type="string", nullable=false)
      *
      * @var string
+     * @since 8.5.2
      */
     protected $ftSaveAreaBackgroundColor = '';
 
     /**
      * Initialize the instance.
+     * @since 8.4.0
      */
     public function __construct()
     {
@@ -307,6 +319,7 @@ class Type
      * Set the thumbnail sizing mode.
      *
      * @param string $ftTypeSizingMode one of the Type::RESIZE_... constants
+     * @since 8.2.0
      */
     public function setSizingMode($ftTypeSizingMode = self::RESIZE_DEFAULT)
     {
@@ -317,6 +330,7 @@ class Type
      * Get the thumbnail sizing mode.
      *
      * @return string One of the Type::RESIZE_... constants.
+     * @since 8.2.0
      */
     public function getSizingMode()
     {
@@ -327,6 +341,7 @@ class Type
      * Upscaling is enabled?
      *
      * @return bool
+     * @since 8.4.1
      */
     public function isUpscalingEnabled()
     {
@@ -337,6 +352,7 @@ class Type
      * Upscaling is enabled?
      *
      * @param bool $value
+     * @since 8.4.1
      */
     public function setIsUpscalingEnabled($value)
     {
@@ -347,6 +363,7 @@ class Type
      * Get the display name of the thumbnail sizing mode.
      *
      * @return string
+     * @since 8.2.0
      */
     public function getSizingModeDisplayName()
     {
@@ -364,6 +381,7 @@ class Type
      * @param bool $value
      *
      * @return $this
+     * @since 8.4.0
      */
     public function setLimitedToFileSets($value)
     {
@@ -376,6 +394,7 @@ class Type
      * Should the thumbnails be build for every file that ARE NOT in the file sets (false), or only for files that ARE in the specified file sets (true)?
      *
      * @return bool
+     * @since 8.4.0
      */
     public function isLimitedToFileSets()
     {
@@ -386,6 +405,7 @@ class Type
      * Get the associated file sets (whose meaning depends on the value of ftLimitedToFileSets).
      *
      * @return ArrayCollection|TypeFileSet[]
+     * @since 8.4.0
      */
     public function getAssociatedFileSets()
     {
@@ -398,6 +418,7 @@ class Type
      * @param bool $value
      *
      * @return $this
+     * @since 8.5.0
      */
     public function setKeepAnimations($value)
     {
@@ -410,6 +431,7 @@ class Type
      * Should we create animated thumbnails for animated images?
      *
      * @return bool
+     * @since 8.5.0
      */
     public function isKeepAnimations()
     {
@@ -422,6 +444,7 @@ class Type
      * @param string $color
      *
      * @return $this
+     * @since 8.5.2
      */
     public function setSaveAreaBackgroundColor($color)
     {
@@ -434,6 +457,7 @@ class Type
      * Background color of the Image Editor save area
      *
      * @return string
+     * @since 8.5.2
      */
     public function getSaveAreaBackgroundColor()
     {

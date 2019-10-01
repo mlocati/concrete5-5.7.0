@@ -10,6 +10,9 @@ use OAuth\OAuth2\Service\Google;
 use Concrete\Core\User\User;
 use Concrete\Core\Routing\RedirectResponse;
 
+/**
+ * @since 5.7.3
+ */
 class Controller extends GenericOauth2TypeController
 {
     public function supportsRegistration()
@@ -127,6 +130,9 @@ class Controller extends GenericOauth2TypeController
         return true;
     }
 
+    /**
+     * @since 8.4.0
+     */
     public function handle_detach_attempt()
     {
 

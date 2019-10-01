@@ -8,6 +8,9 @@ use Concrete\Core\Entity\Express\FieldSet;
 use Concrete\Core\Express\ObjectBuilder;
 use Doctrine\ORM\Id\UuidGenerator;
 
+/**
+ * @since 8.1.0
+ */
 class FieldsetBuilder
 {
 
@@ -45,6 +48,9 @@ class FieldsetBuilder
         return $this;
     }
 
+    /**
+     * @since 8.2.1
+     */
     public function addAssociationControl($target_property_name)
     {
         $control = new FieldsetBuilderAssociationControl($target_property_name);

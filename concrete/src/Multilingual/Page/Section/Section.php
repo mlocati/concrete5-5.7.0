@@ -13,6 +13,9 @@ use Punic\Language;
 
 defined('C5_EXECUTE') or die("Access Denied.");
 
+/**
+ * @since 5.7.3
+ */
 class Section extends Page
 {
 
@@ -29,6 +32,9 @@ class Section extends Page
         }
     }
 
+    /**
+     * @since 8.0.0
+     */
     protected static function getLocaleFromHomePageID($cID)
     {
         $em = Database::get()->getEntityManager();
@@ -41,6 +47,9 @@ class Section extends Page
     }
 
 
+    /**
+     * @since 8.0.0
+     */
     protected function setLocale($locale)
     {
         $this->locale = $locale;
@@ -48,6 +57,7 @@ class Section extends Page
 
     /**
      * @var Locale
+     * @since 8.0.0
      */
     protected $locale;
 
@@ -158,6 +168,7 @@ class Section extends Page
      * @example For English: returns 2
      * @example For French: returns 2
      * @example For Russian returns 3
+     * @since 5.7.4
      */
     public function getNumberOfPluralForms()
     {
@@ -173,6 +184,7 @@ class Section extends Page
      * @example For English: returns 'n != 1'
      * @example For French: returns 'n > 1'
      * @example For Russian returns '(n % 10 == 1 && n % 100 != 11) ? 0 : ((n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14)) ? 1 : 2)'
+     * @since 5.7.4
      */
     public function getPluralsRule()
     {
@@ -196,6 +208,7 @@ class Section extends Page
      *     'one' => '1, 21, 31, 41, 51, 61, 71, 81, 101, 1001, …',
      *     'few' => '2~4, 22~24, 32~34, 42~44, 52~54, 62, 102, 1002, …',
      *     'other' => '0, 5~19, 100, 1000, 10000, 100000, 1000000, …',
+     * @since 5.7.4
      */
     public function getPluralsCases()
     {
@@ -242,6 +255,9 @@ class Section extends Page
         return $pages;
     }
 
+    /**
+     * @since 5.7.4
+     */
     public static function getRelatedCollectionIDForLocale($cID, $locale)
     {
         $mpRelationID = self::getMultilingualPageRelationID($cID);
@@ -255,6 +271,9 @@ class Section extends Page
         return $relatedCID;
     }
 
+    /**
+     * @since 5.7.4
+     */
     public static function getMultilingualPageRelationID($cID)
     {
         $db = Database::get();
@@ -275,6 +294,9 @@ class Section extends Page
     }
 
 
+    /**
+     * @since 5.7.4
+     */
     public static function getCollectionIDForLocale($mpRelationID, $locale)
     {
         $db = Database::get();
@@ -452,6 +474,9 @@ class Section extends Page
         return $section;
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function getLocaleObject()
     {
         return $this->locale;
@@ -463,6 +488,9 @@ class Section extends Page
         return $locale;
     }
 
+    /**
+     * @since 5.7.5
+     */
     public static function getDefaultSection(Site $site = null)
     {
         if (!is_object($site)) {
@@ -587,6 +615,9 @@ class Section extends Page
         }
     }
 
+    /**
+     * @since 5.7.5
+     */
     public function isDefaultMultilingualSection(Site $site = null)
     {
         if (!is_object($site)) {

@@ -7,6 +7,9 @@ use Concrete\Core\Notification\Alert\Filter\FilterList;
 use Concrete\Core\Notification\Notifier\NotifierInterface;
 use Concrete\Core\Notification\Subject\SubjectInterface;
 
+/**
+ * @since 8.0.0
+ */
 interface TypeInterface
 {
 
@@ -46,6 +49,7 @@ interface TypeInterface
      * Get available notification filters
      *
      * @return \Concrete\Core\Notification\Alert\Filter\FilterInterface[]
+     * @since 8.4.2
      */
     public function getAvailableFilters();
 }

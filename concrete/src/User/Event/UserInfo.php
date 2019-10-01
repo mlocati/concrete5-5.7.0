@@ -10,11 +10,13 @@ class UserInfo extends AbstractEvent
 
     /**
      * @var \Concrete\Core\User\User
+     * @since 8.5.0
      */
     protected $applier;
 
     /**
      * @return \Concrete\Core\User\User
+     * @since 8.5.0
      */
     public function getApplier()
     {
@@ -23,6 +25,7 @@ class UserInfo extends AbstractEvent
 
     /**
      * @param \Concrete\Core\User\User $applier
+     * @since 8.5.0
      */
     public function setApplier(\Concrete\Core\User\User $applier)
     {

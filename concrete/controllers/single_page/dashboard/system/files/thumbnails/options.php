@@ -10,6 +10,9 @@ use Concrete\Core\Page\Page;
 use Concrete\Core\Permission\Checker;
 use Concrete\Core\Url\Resolver\Manager\ResolverManager;
 
+/**
+ * @since 8.2.0
+ */
 class Options extends DashboardPageController
 {
     public function view()
@@ -62,6 +65,9 @@ class Options extends DashboardPageController
         $this->view();
     }
 
+    /**
+     * @since 8.3.0
+     */
     protected function getThumbnailGenerationStrategies()
     {
         return [

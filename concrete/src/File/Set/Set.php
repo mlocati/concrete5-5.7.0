@@ -32,22 +32,28 @@ class Set
     const TYPE_PUBLIC = 1;
     const TYPE_STARRED = 2;
     const TYPE_SAVED_SEARCH = 3;
+    /**
+     * @since 5.7.1
+     */
     const GLOBAL_FILESET_USER_ID = 0;
 
     protected $fileSetFiles;
 
     /**
      * @var int File Set ID
+     * @since 5.7.4
      */
     public $fsID;
 
     /**
      * @var int User ID
+     * @since 5.7.4
      */
     public $uID;
 
     /**
      * @var string File Set Name
+     * @since 5.7.4
      */
     public $fsName;
 
@@ -58,10 +64,17 @@ class Set
 
     /**
      * @var int
+     * @since 5.7.4
      */
     public $fsType;
 
+    /**
+     * @since 5.7.4
+     */
     public $fsSearchRequest;
+    /**
+     * @since 5.7.4
+     */
     public $fsResultColumns;
 
     /**
@@ -121,6 +134,7 @@ class Set
      * @param bool|User|\Concrete\Core\User\UserInfo $user User or UserInfo Object
      *
      * @return array
+     * @since 8.4.3
      */
     public static function getOwnedSets($user = false)
     {
@@ -210,6 +224,9 @@ class Set
         }
     }
 
+    /**
+     * @since 5.7.5.4
+     */
     public static function __callStatic($name, $arguments)
     {
         if (strcasecmp($name, 'add') === 0) {
@@ -227,6 +244,7 @@ class Set
      * @param int $type
      *
      * @return Set
+     * @since 5.7.5.4
      */
     public static function create($setName, $fsOverrideGlobalPermissions = 0, $u = false, $type = self::TYPE_PUBLIC)
     {
@@ -432,6 +450,7 @@ class Set
      * @param string $format
      *
      * @return string
+     * @since 5.7.4
      */
     public function getFileSetDisplayName($format = 'html')
     {
@@ -647,6 +666,9 @@ class Set
 
     */
 
+    /**
+     * @since 5.7.4
+     */
     public function getJSONObject()
     {
         $r = new \stdClass();
@@ -687,6 +709,7 @@ class Set
      * @param string $fileOperation 'add' or 'remove'
      *
      * @return bool
+     * @since 8.5.0
      */
     protected function shouldRefreshFileThumbnails($fileOperation)
     {

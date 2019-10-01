@@ -4,6 +4,9 @@ namespace Concrete\Core\Editor;
 
 use Exception;
 
+/**
+ * @since 5.7.4
+ */
 class PluginManager
 {
     /**
@@ -108,6 +111,7 @@ class PluginManager
      * Mark a plugin as not selected (disabled).
      *
      * @param \Concrete\Core\Editor\Plugin|\Concrete\Core\Editor\Plugin[]|string|string[] $keyOrKeys the plugin(s) to be marked as unselected (or their handles)
+     * @since 5.7.4.2
      */
     public function deselect($keyOrKeys)
     {

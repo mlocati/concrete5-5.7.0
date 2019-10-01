@@ -37,6 +37,9 @@ class ApprovePageRequest extends PageRequest
         return $this->cvID;
     }
 
+    /**
+     * @since 8.0.0
+     */
     protected function isNewPageRequest()
     {
         $active = Page::getByID($this->cID, 'ACTIVE');
@@ -106,6 +109,9 @@ class ApprovePageRequest extends PageRequest
         return parent::trigger();
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function getRequestIconElement()
     {
         if (!$this->isNewPageRequest()) {
@@ -167,6 +173,9 @@ class ApprovePageRequest extends PageRequest
         return $wpr;
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function scheduleVersion($cvPublishDate, $cvPublishEndDate)
     {
         $this->isScheduled = true;
@@ -174,6 +183,9 @@ class ApprovePageRequest extends PageRequest
         $this->cvPublishEndDate = $cvPublishEndDate;
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function getRequesterComment()
     {
         $c = Page::getByID($this->getRequestedPageID());

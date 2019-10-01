@@ -17,11 +17,26 @@ class Controller extends AttributeTypeController implements SimpleTextExportable
 
     protected $searchIndexFieldDefinition = ['type' => 'datetime', 'options' => ['notnull' => false]];
 
+    /**
+     * @since 8.2.0
+     */
     protected $akUseNowIfEmpty = null;
+    /**
+     * @since 8.1.0
+     */
     protected $akDateDisplayMode = null;
+    /**
+     * @since 8.3.0
+     */
     protected $akTextCustomFormat = null;
+    /**
+     * @since 8.2.0
+     */
     protected $akTimeResolution = null;
 
+    /**
+     * @since 8.0.0
+     */
     public function getIconFormatter()
     {
         return new FontAwesomeIconFormatter('clock-o');
@@ -51,6 +66,9 @@ class Controller extends AttributeTypeController implements SimpleTextExportable
         $this->load();
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function getSearchIndexValue()
     {
         $datetime = $this->getDateTime();
@@ -112,6 +130,9 @@ class Controller extends AttributeTypeController implements SimpleTextExportable
         return $type;
     }
 
+    /**
+     * @since 5.7.4.2
+     */
     public function validateValue()
     {
         $v = $this->getAttributeValue()->getValue();
@@ -153,6 +174,9 @@ class Controller extends AttributeTypeController implements SimpleTextExportable
         echo $html;
     }
 
+    /**
+     * @since 8.0.3
+     */
     public function getAttributeValueClass()
     {
         return DateTimeValue::class;
@@ -173,6 +197,9 @@ class Controller extends AttributeTypeController implements SimpleTextExportable
         $akv->addChild('value', $value);
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function createAttributeValue($value)
     {
         if ($value) {
@@ -190,6 +217,9 @@ class Controller extends AttributeTypeController implements SimpleTextExportable
         return $av;
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function createAttributeValueFromRequest()
     {
         $this->load();
@@ -235,11 +265,17 @@ class Controller extends AttributeTypeController implements SimpleTextExportable
         return $this->createAttributeValue($datetime);
     }
 
+    /**
+     * @since 8.0.3
+     */
     public function getAttributeKeySettingsClass()
     {
         return DateTimeSettings::class;
     }
 
+    /**
+     * @since 8.4.0
+     */
     public function getPlainTextValue()
     {
         return $this->getDisplayValue();
@@ -292,6 +328,7 @@ class Controller extends AttributeTypeController implements SimpleTextExportable
      * {@inheritdoc}
      *
      * @see \Concrete\Core\Attribute\SimpleTextExportableAttributeInterface::getAttributeValueTextRepresentation()
+     * @since 8.3.0
      */
     public function getAttributeValueTextRepresentation()
     {
@@ -326,6 +363,7 @@ class Controller extends AttributeTypeController implements SimpleTextExportable
      * {@inheritdoc}
      *
      * @see \Concrete\Core\Attribute\SimpleTextExportableAttributeInterface::updateAttributeValueFromTextRepresentation()
+     * @since 8.3.0
      */
     public function updateAttributeValueFromTextRepresentation($textRepresentation, ErrorList $warnings)
     {
@@ -390,6 +428,7 @@ class Controller extends AttributeTypeController implements SimpleTextExportable
      * Retrieve the date/time value.
      *
      * @return DateTime|null
+     * @since 8.1.0
      */
     protected function getDateTime()
     {

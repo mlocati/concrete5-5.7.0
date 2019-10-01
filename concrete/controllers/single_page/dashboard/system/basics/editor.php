@@ -6,8 +6,14 @@ use Concrete\Core\Editor\Plugin;
 use Concrete\Core\Page\Controller\DashboardSitePageController;
 use Punic\Comparer;
 
+/**
+ * @since 5.7.2.1
+ */
 class Editor extends DashboardSitePageController
 {
+    /**
+     * @since 5.7.4
+     */
     public function view()
     {
         $manager = $this->app->make('editor')->getPluginManager();
@@ -26,6 +32,9 @@ class Editor extends DashboardSitePageController
         $this->set('selected_hidden', $config->get('editor.ckeditor4.plugins.selected_hidden'));
     }
 
+    /**
+     * @since 5.7.4
+     */
     public function submit()
     {
         if ($this->token->validate('submit')) {
