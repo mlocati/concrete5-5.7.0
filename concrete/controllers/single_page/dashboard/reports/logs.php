@@ -16,6 +16,9 @@ use Request;
 
 class Logs extends DashboardPageController
 {
+    /**
+     * @since 8.5.0
+     */
     protected function isReportEnabled()
     {
         $config = $this->app->make('config');
@@ -96,6 +99,9 @@ class Logs extends DashboardPageController
         }
     }
 
+    /**
+     * @since 5.7.5
+     */
     public function csv($token = '')
     {
         if ($this->isReportEnabled()) {
@@ -158,6 +164,10 @@ class Logs extends DashboardPageController
         $this->view();
     }
 
+    /**
+     * @since 5.7.5 visibility: public
+     * @since 8.5.0 visibility: protected
+     */
     protected function getFilteredList()
     {
         $list = new LogList();
@@ -193,6 +203,9 @@ class Logs extends DashboardPageController
         return $list;
     }
 
+    /**
+     * @since 8.4.0
+     */
     public function deleteLog($logID, $token = '')
     {
         if ($this->isReportEnabled()) {

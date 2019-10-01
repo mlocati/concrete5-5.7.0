@@ -10,6 +10,7 @@ class Route extends SymfonyRoute
      * If this route has a custom name, it appears here. Otherwise it is automatically generated
      * from the path.
      * @var string
+     * @since 8.5.0
      */
     protected $customName;
 
@@ -19,16 +20,19 @@ class Route extends SymfonyRoute
      * It is the job of the RouteActionFactory to turn it from whatever
      * it currently is into RouteAction object.
      * @var mixed
+     * @since 8.5.0
      */
     protected $action;
 
     /**
      * @var RouteMiddleware[]
+     * @since 8.5.0
      */
     protected $middlewares = [];
 
     /**
      * @return bool
+     * @since 8.5.0
      */
     public function hasCustomName()
     {
@@ -37,6 +41,7 @@ class Route extends SymfonyRoute
 
     /**
      * @return mixed
+     * @since 8.5.0
      */
     public function getAction()
     {
@@ -45,6 +50,7 @@ class Route extends SymfonyRoute
 
     /**
      * @param mixed $action
+     * @since 8.5.0
      */
     public function setAction($action)
     {
@@ -53,6 +59,7 @@ class Route extends SymfonyRoute
 
     /**
      * @return mixed
+     * @since 8.5.0
      */
     public function getName()
     {
@@ -68,6 +75,7 @@ class Route extends SymfonyRoute
      * collection you will want to use $route->updateName($name, $router)
      * instead
      * @param $name
+     * @since 8.5.0
      */
     public function setCustomName($name)
     {
@@ -76,6 +84,7 @@ class Route extends SymfonyRoute
 
     /**
      * @param mixed $name
+     * @since 8.5.0
      */
     public function updateName($name, Router $router)
     {
@@ -105,6 +114,7 @@ class Route extends SymfonyRoute
      * Adds middleware to the route.
      * 
      * @param RouteMiddleware $middleware
+     * @since 8.5.0
      */
     public function addMiddleware(RouteMiddleware $middleware)
     {
@@ -113,6 +123,7 @@ class Route extends SymfonyRoute
 
     /**
      * @return RouteMiddleware[]
+     * @since 8.5.0
      */
     public function getMiddlewares()
     {
@@ -124,6 +135,7 @@ class Route extends SymfonyRoute
      * OAuth2 request.
      * 
      * @param string $scope
+     * @since 8.5.2
      */
     public function setScopes($scope)
     {

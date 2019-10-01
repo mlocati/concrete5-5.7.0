@@ -13,10 +13,16 @@ use Doctrine\DBAL\Schema\Comparator;
 use Doctrine\DBAL\Statement;
 use Doctrine\DBAL\Types\Type;
 
+/**
+ * @since 8.0.0
+ */
 class StandardSearchIndexer implements SearchIndexerInterface
 {
     protected $connection;
 
+    /**
+     * @since 8.2.0
+     */
     protected $comparator;
 
     public function __construct(Connection $connection, Comparator $comparator)
@@ -63,6 +69,7 @@ class StandardSearchIndexer implements SearchIndexerInterface
      *
      * @param CategoryInterface $category
      * @param AttributeKeyInterface $key
+     * @since 8.2.0
      */
     public function refreshSearchIndexKeyColumns(CategoryInterface $category, AttributeKeyInterface $key)
     {

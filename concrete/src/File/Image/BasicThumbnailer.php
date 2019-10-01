@@ -16,6 +16,9 @@ use Imagine\Image\Box;
 use Imagine\Image\ImageInterface;
 use Concrete\Core\File\Image\Thumbnail\ThumbnailFormatService;
 
+/**
+ * @since 5.7.5
+ */
 class BasicThumbnailer implements ThumbnailerInterface, ApplicationAwareInterface
 {
     use ApplicationAwareTrait;
@@ -31,6 +34,7 @@ class BasicThumbnailer implements ThumbnailerInterface, ApplicationAwareInterfac
      * The currently configured PNG compression level.
      *
      * @var int|null
+     * @since 8.2.0
      */
     protected $pngCompression = null;
 
@@ -38,6 +42,7 @@ class BasicThumbnailer implements ThumbnailerInterface, ApplicationAwareInterfac
      * The currently configured format of the generated thumbnails.
      *
      * @var string|null
+     * @since 8.2.0
      */
     protected $thumbnailsFormat = null;
 
@@ -46,6 +51,9 @@ class BasicThumbnailer implements ThumbnailerInterface, ApplicationAwareInterfac
      */
     private $storageLocation;
 
+    /**
+     * @since 8.0.0
+     */
     public function __construct(StorageLocationInterface $storageLocation = null)
     {
         $this->storageLocation = $storageLocation;
@@ -55,6 +63,7 @@ class BasicThumbnailer implements ThumbnailerInterface, ApplicationAwareInterfac
      * {@inheritdoc}
      *
      * @see ThumbnailerInterface::getStorageLocation()
+     * @since 8.0.0
      */
     public function getStorageLocation()
     {
@@ -75,6 +84,7 @@ class BasicThumbnailer implements ThumbnailerInterface, ApplicationAwareInterfac
      * {@inheritdoc}
      *
      * @see ThumbnailerInterface::setStorageLocation()
+     * @since 8.0.0
      */
     public function setStorageLocation(StorageLocationInterface $storageLocation)
     {
@@ -101,6 +111,8 @@ class BasicThumbnailer implements ThumbnailerInterface, ApplicationAwareInterfac
      * {@inheritdoc}
      *
      * @see ThumbnailerInterface::getJpegCompression()
+     * @since 5.7.5 visibility: protected
+     * @since 8.2.0 visibility: public
      */
     public function getJpegCompression()
     {
@@ -115,6 +127,7 @@ class BasicThumbnailer implements ThumbnailerInterface, ApplicationAwareInterfac
      * {@inheritdoc}
      *
      * @see ThumbnailerInterface::setPngCompression()
+     * @since 8.2.0
      */
     public function setPngCompression($level)
     {
@@ -129,6 +142,7 @@ class BasicThumbnailer implements ThumbnailerInterface, ApplicationAwareInterfac
      * {@inheritdoc}
      *
      * @see ThumbnailerInterface::getPngCompression()
+     * @since 8.2.0
      */
     public function getPngCompression()
     {
@@ -143,6 +157,7 @@ class BasicThumbnailer implements ThumbnailerInterface, ApplicationAwareInterfac
      * {@inheritdoc}
      *
      * @see ThumbnailerInterface::setThumbnailsFormat()
+     * @since 8.2.0
      */
     public function setThumbnailsFormat($thumbnailsFormat)
     {
@@ -161,6 +176,7 @@ class BasicThumbnailer implements ThumbnailerInterface, ApplicationAwareInterfac
      * {@inheritdoc}
      *
      * @see ThumbnailerInterface::getThumbnailsFormat()
+     * @since 8.2.0
      */
     public function getThumbnailsFormat()
     {

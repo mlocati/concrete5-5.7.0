@@ -1,6 +1,9 @@
 <?php
 namespace Concrete\Core\Html\Service;
 
+/**
+ * @since 5.7.4
+ */
 class Seo
 {
     private $siteName = '';
@@ -42,6 +45,9 @@ class Seo
         return $this;
     }
 
+    /**
+     * @since 5.7.5
+     */
     public function clearTitleSegments()
     {
         $this->titleSegments = array();

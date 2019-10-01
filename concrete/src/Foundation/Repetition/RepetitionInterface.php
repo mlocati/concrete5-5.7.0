@@ -1,6 +1,9 @@
 <?php
 namespace Concrete\Core\Foundation\Repetition;
 
+/**
+ * @since 5.7.4
+ */
 interface RepetitionInterface extends \JsonSerializable
 {
     /**
@@ -18,8 +21,14 @@ interface RepetitionInterface extends \JsonSerializable
     const MONTHLY_REPEAT_MONTHLY = 2;
     const MONTHLY_REPEAT_LAST_WEEKDAY = 3;
 
+    /**
+     * @since 8.2.0
+     */
     public function getTimezone();
 
+    /**
+     * @since 8.2.0
+     */
     public function setTimezone(\DateTimeZone $timezone);
 
     /**
@@ -31,6 +40,7 @@ interface RepetitionInterface extends \JsonSerializable
 
     /**
      * Returns the start date/time as a timestamp
+     * @since 8.2.0
      */
     public function getStartDateTimestamp();
 

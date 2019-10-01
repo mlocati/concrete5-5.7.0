@@ -20,22 +20,32 @@ class PageController extends Controller
     protected $action;
     protected $passThruBlocks = array();
     protected $parameters = array();
+    /**
+     * @since 8.0.0
+     */
     protected $replacement = null;
+    /**
+     * @since 8.1.0
+     */
     protected $requestValidated;
 
     /**
      * array of method names that can't be called through the url
      * @var array
+     * @since 5.7.5.11 (but not in 8.0.0)
      */
     protected $restrictedMethods = array();
 
     /**
      * Custom request path - overrides Request::getPath() (useful when replacing controllers).
      * @var string|null
+     * @since 8.0.0
      */
     protected $customRequestPath = null;
 
-    /** @var \Concrete\Core\Page\Page The current page */
+    /** @var \Concrete\Core\Page\Page The current page
+     * @since 8.0.0
+     */
     public $c;
 
     public function supportsPageCache()
@@ -60,6 +70,7 @@ class PageController extends Controller
      * called render().
      *
      * @param @string|\Concrete\Core\Page\Page $var
+     * @since 5.7.4
      */
     public function replace($var)
     {
@@ -84,6 +95,7 @@ class PageController extends Controller
      * Set the custom request path (useful when replacing controllers).
      *
      * @param string|null $requestPath Set to null to use the default request path
+     * @since 8.0.0
      */
     public function setCustomRequestPath($requestPath)
     {
@@ -94,17 +106,24 @@ class PageController extends Controller
      * Get the custom request path (useful when replacing controllers).
      *
      * @return string|null Returns null if no custom request path, a string otherwise
+     * @since 8.0.0
      */
     public function getCustomRequestPath()
     {
         return $this->customRequestPath;
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function isReplaced()
     {
         return !!$this->replacement;
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function getReplacement()
     {
         return $this->replacement;
@@ -345,6 +364,7 @@ class PageController extends Controller
      * Should this page be displayed using the user's language?
      *
      * @return bool
+     * @since 8.2.0
      */
     public function useUserLocale()
     {
@@ -353,6 +373,7 @@ class PageController extends Controller
 
     /**
      * Override this method to send content created by the page controller to the indexer
+     * @since 8.5.0
      */
     public function getSearchableContent()
     {

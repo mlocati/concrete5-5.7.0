@@ -7,6 +7,9 @@ use Concrete\Core\Notification\Notifier\NewPrivateMessageNotifier;
 use Concrete\Core\Notification\Subject\SubjectInterface;
 use Concrete\Core\Notification\Subscription\StandardSubscription;
 
+/**
+ * @since 8.0.0
+ */
 class NewPrivateMessageType extends Type
 {
 
@@ -37,6 +40,9 @@ class NewPrivateMessageType extends Type
         return new NewPrivateMessageNotifier($this->entityManager);
     }
 
+    /**
+     * @since 8.4.2
+     */
     public function getAvailableFilters()
     {
         return [

@@ -7,9 +7,15 @@ use Concrete\Core\Entity\Express\Entry;
 use Concrete\Core\Express\Entry\Formatter\EntryFormatterInterface;
 use Concrete\Core\Support\Facade\Application;
 
+/**
+ * @since 8.0.0
+ */
 abstract class AbstractFormatter implements FormatterInterface
 {
     protected $association;
+    /**
+     * @since 8.2.1
+     */
     protected $entryFormatter;
 
     public function __construct(Association $association)
@@ -47,6 +53,7 @@ abstract class AbstractFormatter implements FormatterInterface
     /**
      * Supploy the entry formatter we should use
      * @param \Concrete\Core\Express\Entry\Formatter\EntryFormatterInterface $formatter
+     * @since 8.2.1
      */
     public function setEntryFormatter(EntryFormatterInterface $formatter)
     {
@@ -56,6 +63,7 @@ abstract class AbstractFormatter implements FormatterInterface
     /**
      * Get the entry formatter to use
      * @return \Concrete\Core\Express\Entry\Formatter\EntryFormatterInterface
+     * @since 8.2.1
      */
     protected function getEntryFormatter()
     {

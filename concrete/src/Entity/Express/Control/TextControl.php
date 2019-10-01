@@ -14,6 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="ExpressFormFieldSetTextControls")
+ * @since 8.0.0
  */
 class TextControl extends Control
 {
@@ -78,6 +79,9 @@ class TextControl extends Control
         return $label;
     }
 
+    /**
+     * @since 8.2.0
+     */
     public function getControlView(ContextInterface $context)
     {
         return new TextView($context, $this);

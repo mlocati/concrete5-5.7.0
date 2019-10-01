@@ -55,6 +55,7 @@ class Version
      * Is this a high-DPI thumbnail type version?
      *
      * @var bool
+     * @since 5.7.5.2
      */
     protected $isDoubledVersion;
 
@@ -62,6 +63,7 @@ class Version
      * The thumbnail sizing mode (one of the \Concrete\Core\Entity\File\Image\Thumbnail\Type\Type::RESIZE_... constants).
      *
      * @var string
+     * @since 8.2.0
      */
     protected $sizingMode;
 
@@ -69,6 +71,7 @@ class Version
      * Upscaling is enabled?
      *
      * @var bool
+     * @since 8.4.1
      */
     protected $upscalingEnabled;
 
@@ -76,6 +79,7 @@ class Version
      * Should the thumbnails be build for every file that ARE NOT in the file sets (false), or only for files that ARE in the specified file sets (true)?
      *
      * @var bool
+     * @since 8.4.0
      */
     protected $limitedToFileSets;
 
@@ -83,6 +87,7 @@ class Version
      * Associated file set IDs (whose meaning depends on the value of limitedToFileSets).
      *
      * @var int[]
+     * @since 8.4.0
      */
     protected $associatedFileSetIDs;
 
@@ -90,6 +95,7 @@ class Version
      * Should we create animated thumbnails for animated images?
      *
      * @var bool
+     * @since 8.5.0
      */
     protected $keepAnimations;
 
@@ -97,6 +103,7 @@ class Version
      * Background color of the Image Editor save area
      *
      * @var string
+     * @since 8.5.2
      */
     protected $saveAreaBackgroundColor;
 
@@ -217,6 +224,7 @@ class Version
      *    If $format is 'text' or any other value, the display name won't be escaped.
      *
      * @return string
+     * @since 5.7.5.2
      */
     public function getDisplayName($format = 'html')
     {
@@ -289,6 +297,7 @@ class Version
      * Set the thumbnail sizing mode.
      *
      * @param string $sizingMode One of the \Concrete\Core\Entity\File\Image\Thumbnail\Type\Type::RESIZE_... constants
+     * @since 8.2.0
      */
     public function setSizingMode($sizingMode)
     {
@@ -299,6 +308,7 @@ class Version
      * Get the thumbnail sizing mode.
      *
      * @return string One of the \Concrete\Core\Entity\File\Image\Thumbnail\Type\Type::RESIZE_... constants
+     * @since 8.2.0
      */
     public function getSizingMode()
     {
@@ -309,6 +319,7 @@ class Version
      * Is upscaling enabled?
      *
      * @param bool $value
+     * @since 8.4.1
      */
     public function setIsUpscalingEnabled($value)
     {
@@ -319,6 +330,7 @@ class Version
      * Is upscaling enabled?
      *
      * @return bool
+     * @since 8.4.1
      */
     public function isUpscalingEnabled()
     {
@@ -331,6 +343,7 @@ class Version
      * @param bool $value
      *
      * @return $this
+     * @since 8.4.0
      */
     public function setLimitedToFileSets($value)
     {
@@ -343,6 +356,7 @@ class Version
      * Should the thumbnails be build for every file that ARE NOT in the file sets (false), or only for files that ARE in the specified file sets (true)?
      *
      * @return bool
+     * @since 8.4.0
      */
     public function isLimitedToFileSets()
     {
@@ -355,6 +369,7 @@ class Version
      * @param int[] $value
      *
      * @return $this
+     * @since 8.4.0
      */
     public function setAssociatedFileSetIDs(array $value)
     {
@@ -367,6 +382,7 @@ class Version
      * Get the IDs of associated file sets (whose meaning depends on the value of limitedToFileSets).
      *
      * @return int[]
+     * @since 8.4.0
      */
     public function getAssociatedFileSetIDs()
     {
@@ -377,6 +393,7 @@ class Version
      * Should we create animated thumbnails for animated images?
      *
      * @param bool $value
+     * @since 8.5.0
      */
     public function setKeepAnimations($value)
     {
@@ -387,6 +404,7 @@ class Version
      * Should we create animated thumbnails for animated images?
      *
      * @return bool
+     * @since 8.5.0
      */
     public function isKeepAnimations()
     {
@@ -399,6 +417,7 @@ class Version
      * @param string $color
      *
      * @return $this
+     * @since 8.5.2
      */
     public function setSaveAreaBackgroundColor($color)
     {
@@ -411,6 +430,7 @@ class Version
      * Background color of the Image Editor save area
      *
      * @return string
+     * @since 8.5.2
      */
     public function getSaveAreaBackgroundColor()
     {
@@ -421,6 +441,7 @@ class Version
      * Get the display name of the thumbnail sizing mode.
      *
      * @return string
+     * @since 8.2.0
      */
     public function getSizingModeDisplayName()
     {
@@ -477,6 +498,7 @@ class Version
      * @param File|null $file The File instance to check file sets against
      *
      * @return bool
+     * @since 8.4.0
      */
     public function shouldExistFor($imageWidth, $imageHeight, File $file = null)
     {

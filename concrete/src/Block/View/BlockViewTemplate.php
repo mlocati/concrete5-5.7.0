@@ -17,6 +17,9 @@ class BlockViewTemplate
     protected $bFilename;
     protected $btHandle;
     protected $obj;
+    /**
+     * @since 8.2.0
+     */
     protected $template;
     protected $baseURL;
     protected $checkAssets = true;
@@ -27,8 +30,12 @@ class BlockViewTemplate
     protected $render = FILENAME_BLOCK_VIEW;
     /**
      * @var PackageList
+     * @since 8.2.0
      */
     protected $packageList;
+    /**
+     * @since 8.2.0
+     */
     protected $theme;
 
     public function __construct($obj, PackageList $packageList = null)
@@ -57,6 +64,7 @@ class BlockViewTemplate
 
     /**
      * @return PackageList
+     * @since 8.2.0
      */
     public function getPackageList()
     {
@@ -65,6 +73,7 @@ class BlockViewTemplate
 
     /**
      * @param static $packageList
+     * @since 8.2.0
      */
     public function setPackageList($packageList)
     {

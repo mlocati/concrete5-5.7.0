@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
 /**
  * Class StorageLocationFactory
  * Get ahold of existing storage locations and create new ones.
+ * @since 8.1.0
  */
 class StorageLocationFactory
 {

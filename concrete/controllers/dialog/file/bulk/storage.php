@@ -13,6 +13,9 @@ use Permissions;
 use Exception;
 use stdClass;
 
+/**
+ * @since 5.7.5.4
+ */
 class Storage extends BackendInterfaceController
 {
     public $helpers = array('form');
@@ -79,6 +82,9 @@ class Storage extends BackendInterfaceController
         return $json->outputJSON();
     }
 
+    /**
+     * @since 8.5.0
+     */
     public function doChangeStorageLocation()
     {
         if ($this->validateAction()) {

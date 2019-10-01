@@ -13,6 +13,9 @@ use Session;
 
 defined('C5_EXECUTE') or die('Access Denied.');
 
+/**
+ * @since 5.7.3
+ */
 class Controller extends BlockController
 {
     protected $btInterfaceWidth = 500;
@@ -23,6 +26,7 @@ class Controller extends BlockController
 
     /**
      * @var string
+     * @since 8.2.0
      */
     public $label;
 
@@ -41,6 +45,7 @@ class Controller extends BlockController
      * @param int $sectionID
      *
      * @return \League\URL\URLInterface
+     * @since 8.2.0
      */
     public function resolve_language_url($currentPageID, $sectionID)
     {

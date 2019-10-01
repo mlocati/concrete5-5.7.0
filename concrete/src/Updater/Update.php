@@ -22,6 +22,7 @@ class Update
      * Key of the mutex to be used when performing core upgrades.
      *
      * @var string
+     * @since 8.4.0
      */
     const MUTEX_KEY = 'core_system_upgrade';
 
@@ -137,6 +138,7 @@ class Update
 
     /**
      * Checks migrations to see if the current code DB version is greater than that registered in the database.
+     * @since 8.0.0
      */
     public static function isCurrentVersionNewerThanDatabaseVersion()
     {
@@ -155,6 +157,7 @@ class Update
      * @param null|Configuration $configuration
      *
      * @throws \Concrete\Core\Updater\Migrations\MigrationIncompleteException throws a MigrationIncompleteException exception if there's still some migration pending
+     * @since 5.7.2
      */
     public static function updateToCurrentVersion(Configuration $configuration = null)
     {

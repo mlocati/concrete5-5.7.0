@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Helper class to work with SEO canonical URLs.
+ * @since 8.3.0
  */
 class SeoCanonical
 {
@@ -38,6 +39,7 @@ class SeoCanonical
      * The list of path arguments to be included in canonical URLs.
      *
      * @var string[]
+     * @since 8.5.2
      */
     protected $pathArguments = [];
 
@@ -139,6 +141,7 @@ class SeoCanonical
      * Get path arguments to append canonical URLs
      *
      * @return string[]|null
+     * @since 8.5.2
      */
     public function getPathArguments()
     {
@@ -149,6 +152,7 @@ class SeoCanonical
      * Set path arguments to append canonical URLs
      *
      * @param string[] $pathArguments
+     * @since 8.5.2
      */
     public function setPathArguments($pathArguments)
     {

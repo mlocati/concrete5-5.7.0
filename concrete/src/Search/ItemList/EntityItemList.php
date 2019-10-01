@@ -5,32 +5,50 @@ use Doctrine\DBAL\Logging\EchoSQLLogger;
 
 abstract class EntityItemList extends ItemList
 {
-    /** @var \Doctrine\ORM\QueryBuilder */
+    /** @var \Doctrine\ORM\QueryBuilder
+     * @since 5.7.5
+     */
     protected $query;
 
     /**
      * @return \Doctrine\ORM\EntityManager
+     * @since 5.7.5
      */
     abstract public function getEntityManager();
 
+    /**
+     * @since 5.7.5
+     */
     abstract public function createQuery();
 
+    /**
+     * @since 5.7.5
+     */
     public function __construct()
     {
         $this->query = $this->getEntityManager()->createQueryBuilder();
         $this->createQuery();
     }
 
+    /**
+     * @since 5.7.5.2
+     */
     public function getQueryObject()
     {
         return $this->query;
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function finalizeQuery(\Doctrine\ORM\QueryBuilder $query)
     {
         return $query;
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function deliverQueryObject()
     {
         $this->setupAutomaticSorting();

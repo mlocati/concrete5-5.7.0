@@ -12,6 +12,7 @@ use Zend\I18n\Translator\LoaderPluginManager;
  * translator.
  *
  * @author Antti Hukkanen <antti.hukkanen@mainiotech.fi>
+ * @since 8.0.0
  */
 class TranslatorAdapterFactory implements TranslatorAdapterFactoryInterface
 {
@@ -20,6 +21,7 @@ class TranslatorAdapterFactory implements TranslatorAdapterFactoryInterface
 
     /**
      * @var \Zend\I18n\Translator\LoaderPluginManager|null
+     * @since 8.5.0
      */
     protected $loaderPluginManager;
 

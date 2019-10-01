@@ -12,6 +12,9 @@ use Concrete\Core\Tree\Type\ExpressEntryResults;
 use Concrete\Core\Validation\CSRF\Token;
 use Concrete\Core\Routing\Redirect;
 
+/**
+ * @since 8.0.0
+ */
 class Entities extends DashboardPageController
 {
     public function add()
@@ -138,6 +141,7 @@ class Entities extends DashboardPageController
 
     /**
      * @return \Concrete\Core\Routing\RedirectResponse
+     * @since 8.5.2
      */
     public function delete_entries()
     {
@@ -162,6 +166,9 @@ class Entities extends DashboardPageController
         return Redirect::to('/dashboard/system/express/entities', 'view_entity', $entity->getId());
     }
 
+    /**
+     * @since 8.5.2
+     */
     public function clear_entries($id = null)
     {
         $entity = $this->entityManager->getRepository('\Concrete\Core\Entity\Express\Entity')->findOneById($id);

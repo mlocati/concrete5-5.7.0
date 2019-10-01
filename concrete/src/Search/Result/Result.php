@@ -12,8 +12,17 @@ class Result
     protected $listColumns;
     protected $list;
     protected $baseURL;
+    /**
+     * @since 8.0.0
+     */
     protected $breadcrumb;
+    /**
+     * @since 8.0.0
+     */
     protected $query; // This is a search request, it gets rid of folders, etc...
+    /**
+     * @since 8.0.0
+     */
     protected $filters; // These are search filters - they display folders, don't display a "reset search" label, etc...
 
     /** @var \Concrete\Core\Search\Pagination\Pagination */
@@ -25,6 +34,7 @@ class Result
 
     /**
      * @return mixed
+     * @since 8.0.0
      */
     public function getFilters()
     {
@@ -33,6 +43,7 @@ class Result
 
     /**
      * @param mixed $filters
+     * @since 8.0.0
      */
     public function setFilters($filters)
     {
@@ -41,6 +52,7 @@ class Result
 
     /**
      * @return mixed
+     * @since 8.0.0
      */
     public function getQuery()
     {
@@ -49,6 +61,7 @@ class Result
 
     /**
      * @param mixed $query
+     * @since 8.0.0
      */
     public function setQuery($query)
     {
@@ -63,6 +76,7 @@ class Result
 
     /**
      * @return mixed
+     * @since 8.0.0
      */
     public function getBreadcrumb()
     {
@@ -71,6 +85,7 @@ class Result
 
     /**
      * @param mixed $breadcrumb
+     * @since 8.0.0
      */
     public function setBreadcrumb($breadcrumb)
     {
@@ -87,6 +102,9 @@ class Result
         return $this->baseURL;
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function getSearchResultBulkMenus()
     {
         return false;
@@ -94,6 +112,7 @@ class Result
 
     /**
      * @return Set
+     * @since 8.0.0
      */
     public function getListColumns()
     {
@@ -151,6 +170,9 @@ class Result
         return $node;
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function getSortURL($column, $dir = 'asc')
     {
         return $this->getItemListObject()->getSortURL($column, $dir, $this->getBaseURL());

@@ -11,26 +11,31 @@ abstract class Layout extends ConcreteObject
 {
     /**
      * @var Area
+     * @since 5.7.4
      */
     public $area;
 
     /**
      * @var Block
+     * @since 5.7.4
      */
     public $block;
 
     /**
      * @var int
+     * @since 5.7.4
      */
     public $arLayoutID;
 
     /**
      * @var bool
+     * @since 5.7.4
      */
     public $arLayoutUsesThemeGridFramework;
 
     /**
      * @var int
+     * @since 5.7.4
      */
     public $arLayoutNumColumns;
 
@@ -59,6 +64,9 @@ abstract class Layout extends ConcreteObject
         }
     }
 
+    /**
+     * @since 5.7.5
+     */
     protected function loadColumnNumber()
     {
         $db = Database::connection();
@@ -75,6 +83,7 @@ abstract class Layout extends ConcreteObject
 
     /**
      * @param Block $b
+     * @since 5.7.3
      */
     public function setBlockObject(Block $b)
     {
@@ -83,6 +92,7 @@ abstract class Layout extends ConcreteObject
 
     /**
      * @return Block
+     * @since 5.7.3
      */
     public function getBlockObject()
     {
@@ -194,6 +204,7 @@ abstract class Layout extends ConcreteObject
 
     /**
      * @return \Concrete\Core\Area\Layout\Formatter\FormatterInterface
+     * @since 5.7.5
      */
     public function getFormatter()
     {

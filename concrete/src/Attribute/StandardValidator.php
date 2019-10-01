@@ -15,6 +15,9 @@ use Concrete\Core\Entity\Attribute\Type as TypeEntity;
 use Concrete\Core\Validation\ResponseInterface;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * @since 8.0.0
+ */
 class StandardValidator implements ValidatorInterface
 {
 
@@ -48,6 +51,7 @@ class StandardValidator implements ValidatorInterface
      * @param mixed $validateResponse
      * @param bool $includeFieldNotPresentErrors
      * @return Response $response
+     * @since 8.5.0
      */
     protected function parseResponse(
         Key $key,

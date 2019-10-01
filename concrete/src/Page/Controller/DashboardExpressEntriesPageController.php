@@ -16,6 +16,9 @@ use Concrete\Core\Tree\Node\Node;
 use Concrete\Core\Tree\Type\ExpressEntryResults;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
+/**
+ * @since 8.0.0
+ */
 abstract class DashboardExpressEntriesPageController extends DashboardPageController
 {
     protected function getBackURL(Entity $entity)
@@ -85,6 +88,7 @@ abstract class DashboardExpressEntriesPageController extends DashboardPageContro
      * @param int|null $treeNodeParentID
      *
      * @return \Symfony\Component\HttpFoundation\Response
+     * @since 8.2.0
      */
     public function csv_export($treeNodeParentID = null)
     {
@@ -117,6 +121,8 @@ abstract class DashboardExpressEntriesPageController extends DashboardPageContro
      * @param \Concrete\Core\Tree\Node\Type\ExpressEntryResults $parent
      *
      * @return \Concrete\Core\Entity\Express\Entity
+     * @since 8.2.0 visibility: private
+     * @since 8.3.1 visibility: protected
      */
     protected function getEntity(\Concrete\Core\Tree\Node\Type\ExpressEntryResults $parent)
     {
@@ -337,6 +343,8 @@ abstract class DashboardExpressEntriesPageController extends DashboardPageContro
 
     /**
      * @param $treeNodeParentID
+     * @since 8.2.0 visibility: private
+     * @since 8.3.1 visibility: protected
      */
     protected function getParentNode($treeNodeParentID)
     {

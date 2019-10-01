@@ -4,6 +4,9 @@ namespace Concrete\Core\Html\Object;
 use HtmlObject\Element;
 use HtmlObject\Image;
 
+/**
+ * @since 8.5.2
+ */
 class JavaScriptLazyImage extends Element
 {
     /**

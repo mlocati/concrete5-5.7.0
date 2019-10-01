@@ -8,6 +8,7 @@ use JsonSerializable;
 
 /**
  * Represents an error that can be safely shown to users.
+ * @since 8.2.0
  */
 class UserMessageException extends Exception implements JsonSerializable, HtmlAwareErrorInterface
 {
@@ -21,7 +22,6 @@ class UserMessageException extends Exception implements JsonSerializable, HtmlAw
     /**
      * Does the message contain an HTML-formatted string?
      *
-     * @since concrete5 8.5.0a3
      *
      * @var bool
      */
@@ -55,7 +55,7 @@ class UserMessageException extends Exception implements JsonSerializable, HtmlAw
      * {@inheritdoc}
      *
      * @see \Concrete\Core\Error\ErrorList\Error\HtmlAwareErrorInterface::messageContainsHtml()
-     * @since concrete5 8.5.0a3
+     * @since 8.4.4
      */
     public function messageContainsHtml()
     {
@@ -69,7 +69,7 @@ class UserMessageException extends Exception implements JsonSerializable, HtmlAw
      *
      * @return $this
      *
-     * @since concrete5 8.5.0a3
+     * @since 8.4.4
      */
     public function setMessageContainsHtml($value)
     {

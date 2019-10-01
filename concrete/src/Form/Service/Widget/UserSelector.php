@@ -16,6 +16,7 @@ class UserSelector
      * The application container instance.
      *
      * @var \Concrete\Core\Application\Application
+     * @since 8.3.2
      */
     protected $app;
 
@@ -23,6 +24,7 @@ class UserSelector
      * Initialize the instance.
      *
      * @param \Concrete\Core\Application\Application $app
+     * @since 8.3.2
      */
     public function __construct(Application $app)
     {

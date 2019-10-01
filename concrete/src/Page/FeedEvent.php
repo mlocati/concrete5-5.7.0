@@ -5,6 +5,9 @@ use Symfony\Component\EventDispatcher\GenericEvent;
 use Concrete\Core\Http\RequestEventInterface;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * @since 5.7.4
+ */
 class FeedEvent extends GenericEvent implements RequestEventInterface
 {
     protected $feed;
@@ -30,6 +33,9 @@ class FeedEvent extends GenericEvent implements RequestEventInterface
         return $this->page;
     }
 
+    /**
+     * @since 5.7.5
+     */
     public function setPageObject(Page $c)
     {
         $this->page = $c;

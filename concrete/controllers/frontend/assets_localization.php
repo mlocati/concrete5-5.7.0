@@ -10,6 +10,9 @@ use Concrete\Core\Localization\Localization;
 use Controller;
 use Environment;
 
+/**
+ * @since 5.7.4
+ */
 class AssetsLocalization extends Controller
 {
     /**
@@ -485,6 +488,7 @@ jQuery.each(jQuery.Redactor.opts.langs.en, function(key, value) {
 
     /**
      * @return \Symfony\Component\HttpFoundation\Response
+     * @since 8.0.0
      */
     public function getFancytreeJavascript()
     {
@@ -689,6 +693,7 @@ jQuery.fn.concreteConversationAttachments.localize(' . json_encode([
 
     /**
      * @return \Symfony\Component\HttpFoundation\Response
+     * @since 8.5.2
      */
     public function getMomentJavascript()
     {

@@ -21,6 +21,9 @@ use Symfony\Component\EventDispatcher\GenericEvent;
  */
 abstract class Progress extends ConcreteObject implements SubjectInterface
 {
+    /**
+     * @since 8.0.0
+     */
     protected $wrID = null;
     protected $wpID;
     protected $wpDateAdded;
@@ -28,11 +31,17 @@ abstract class Progress extends ConcreteObject implements SubjectInterface
     protected $response;
     protected $wpDateLastAction;
 
+    /**
+     * @since 8.0.0
+     */
     public function getNotificationDate()
     {
         return \Core::make('date')->toDateTime($this->wpDateAdded);
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function getUsersToExcludeFromNotification()
     {
         return array();
@@ -131,6 +140,9 @@ abstract class Progress extends ConcreteObject implements SubjectInterface
         }
     }
 
+    /**
+     * @since 5.7.5.4
+     */
     public static function __callStatic($name, $arguments)
     {
         if (strcasecmp($name, 'add') === 0) {
@@ -147,6 +159,7 @@ abstract class Progress extends ConcreteObject implements SubjectInterface
      * @param WorkflowRequest $wr
      *
      * @return self
+     * @since 5.7.5.4
      */
     public static function create($wpCategoryHandle, Workflow $wf, WorkflowRequest $wr)
     {

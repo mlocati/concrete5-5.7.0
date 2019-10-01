@@ -20,6 +20,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(
  *     name="Notifications"
  * )
+ * @since 8.0.0
  */
 abstract class Notification
 {
@@ -60,6 +61,9 @@ abstract class Notification
         return $this->nDate;
     }
 
+    /**
+     * @since 8.3.0
+     */
     public function getNotificationDateTimeZone()
     {
         $site = \Core::make('site')->getSite();
@@ -80,6 +84,7 @@ abstract class Notification
 
     /**
      * @return mixed
+     * @since 8.2.0
      */
     public function getAlerts()
     {

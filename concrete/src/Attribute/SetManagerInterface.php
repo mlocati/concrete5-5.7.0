@@ -3,6 +3,7 @@ namespace Concrete\Core\Attribute;
 
 /**
  * Handles adding and removing keys from attribute sets.
+ * @since 8.0.0
  */
 interface SetManagerInterface
 {
@@ -31,6 +32,7 @@ interface SetManagerInterface
      * Update the order of the attribute sets.
      *
      * @param int[] $attributeSetIdentifiers the sorted list of the attribute set identifiers
+     * @since 8.0.1
      */
     public function updateAttributeSetDisplayOrder($attributeSetIdentifiers);
 }

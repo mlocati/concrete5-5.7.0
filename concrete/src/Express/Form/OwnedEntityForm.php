@@ -5,6 +5,9 @@ use Concrete\Core\Entity\Express\Entry;
 use Concrete\Core\Entity\Express\Form;
 use Concrete\Core\Form\Context\ContextInterface;
 
+/**
+ * @since 8.0.0
+ */
 class OwnedEntityForm implements FormInterface
 {
 
@@ -36,6 +39,9 @@ class OwnedEntityForm implements FormInterface
         return $this->form->getId();
     }
 
+    /**
+     * @since 8.2.0
+     */
     public function getControlView(ContextInterface $context)
     {
         return $this->form->getControlView($context);

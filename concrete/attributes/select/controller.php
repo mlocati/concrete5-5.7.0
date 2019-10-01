@@ -29,11 +29,17 @@ class Controller extends AttributeTypeController implements SimpleTextExportable
     private $akSelectOptionDisplayOrder;
     private $akDisplayMultipleValuesOnSelect;
 
+    /**
+     * @since 8.0.0
+     */
     public function getIconFormatter()
     {
         return new FontAwesomeIconFormatter('list-alt');
     }
 
+    /**
+     * @since 8.0.3
+     */
     public function getAttributeValueClass()
     {
         return SelectValue::class;
@@ -87,6 +93,9 @@ class Controller extends AttributeTypeController implements SimpleTextExportable
         }
     }
 
+    /**
+     * @since 5.7.5.3
+     */
     public function setAllowedMultipleValues($allow)
     {
         /**
@@ -98,6 +107,9 @@ class Controller extends AttributeTypeController implements SimpleTextExportable
         $this->entityManager->flush();
     }
 
+    /**
+     * @since 5.7.5.3
+     */
     public function setAllowOtherValues($allow)
     {
         /**
@@ -109,6 +121,9 @@ class Controller extends AttributeTypeController implements SimpleTextExportable
         $this->entityManager->flush();
     }
 
+    /**
+     * @since 8.3.0
+     */
     public function setHideNoneOption($allow)
     {
         /**
@@ -120,6 +135,9 @@ class Controller extends AttributeTypeController implements SimpleTextExportable
         $this->entityManager->flush();
     }
 
+    /**
+     * @since 5.7.5.3
+     */
     public function setOptionDisplayOrder($order)
     {
         /**
@@ -131,6 +149,9 @@ class Controller extends AttributeTypeController implements SimpleTextExportable
         $this->entityManager->flush();
     }
 
+    /**
+     * @since 5.7.5.3
+     */
     public function setOptions($options)
     {
         /**
@@ -232,6 +253,9 @@ class Controller extends AttributeTypeController implements SimpleTextExportable
         $this->set('selectedOptions', $selectedOptions);
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function createAttributeValueFromRequest()
     {
         $data = $this->post();
@@ -345,6 +369,9 @@ class Controller extends AttributeTypeController implements SimpleTextExportable
         }
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function getOptionByID($id)
     {
         $orm = $this->entityManager;
@@ -356,6 +383,9 @@ class Controller extends AttributeTypeController implements SimpleTextExportable
         return $option;
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function getOptionByValue($value, $attributeKey = false)
     {
         $orm = \Database::connection()->getEntityManager();
@@ -385,6 +415,7 @@ class Controller extends AttributeTypeController implements SimpleTextExportable
      * Code from this bug - http://www.concrete5.org/index.php?cID=595692.
      *
      * @param mixed $value
+     * @since 8.0.0
      */
     public function createAttributeValue($value)
     {
@@ -446,6 +477,9 @@ class Controller extends AttributeTypeController implements SimpleTextExportable
         return $html;
     }
 
+    /**
+     * @since 5.7.4.2
+     */
     public function validateValue()
     {
         return is_object($value = $this->getAttributeValue()->getValue()) && ((string) $value != '');
@@ -758,11 +792,17 @@ EOT
         return $this->akSelectOptionDisplayOrder;
     }
 
+    /**
+     * @since 8.0.3
+     */
     public function getAttributeKeySettingsClass()
     {
         return SelectSettings::class;
     }
 
+    /**
+     * @since 8.4.0
+     */
     public function getControlID()
     {
         return $this->field('atSelectOptionValue');
@@ -772,6 +812,7 @@ EOT
      * {@inheritdoc}
      *
      * @see \Concrete\Core\Attribute\SimpleTextExportableAttributeInterface::getAttributeValueTextRepresentation()
+     * @since 8.3.0
      */
     public function getAttributeValueTextRepresentation()
     {
@@ -794,6 +835,7 @@ EOT
      * {@inheritdoc}
      *
      * @see \Concrete\Core\Attribute\SimpleTextExportableAttributeInterface::updateAttributeValueFromTextRepresentation()
+     * @since 8.3.0
      */
     public function updateAttributeValueFromTextRepresentation($textRepresentation, ErrorList $warnings)
     {
@@ -901,6 +943,7 @@ EOT
      * New options are just text/tag, whereas existing ones are SelectAttributeOption:ID/text.
      *
      * @param mixed $value
+     * @since 8.0.0
      */
     protected function loadSelectedTagValueFromPost($value)
     {

@@ -6,6 +6,9 @@ use Concrete\Core\Permission\Key\Key;
 use Concrete\Core\Permission\Registry\Entry\Access\Entity\EntityInterface;
 use Concrete\Core\Permission\Registry\Entry\Object\Object\ObjectInterface;
 
+/**
+ * @since 8.0.0
+ */
 class TaskPermissionsEntry implements EntryInterface
 {
 
@@ -31,6 +34,9 @@ class TaskPermissionsEntry implements EntryInterface
         $pt->assignPermissionAccess($pa);
     }
 
+    /**
+     * @since 8.2.0
+     */
     public function remove($mixed)
     {
         $key = Key::getByHandle($this->pkHandle);

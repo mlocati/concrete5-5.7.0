@@ -13,6 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="SiteLocales")
  * @ORM\EntityListeners({"\Concrete\Core\Site\Locale\Listener"})
+ * @since 8.0.0
  */
 class Locale implements LocaleInterface, TreeInterface
 {
@@ -45,6 +46,7 @@ class Locale implements LocaleInterface, TreeInterface
      * {@inheritdoc}
      *
      * @see \Concrete\Core\Localization\Locale\LocaleInterface::getLocaleID()
+     * @since 8.2.0
      */
     public function getLocaleID()
     {
@@ -115,6 +117,7 @@ class Locale implements LocaleInterface, TreeInterface
      * {@inheritdoc}
      *
      * @see TreeInterface::getSiteTreeID()
+     * @since 8.2.0
      */
     public function getSiteTreeID()
     {
@@ -127,6 +130,7 @@ class Locale implements LocaleInterface, TreeInterface
      * {@inheritdoc}
      *
      * @see TreeInterface::getSiteTreeObject()
+     * @since 8.2.0
      */
     public function getSiteTreeObject()
     {

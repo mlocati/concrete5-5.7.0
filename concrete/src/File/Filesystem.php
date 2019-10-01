@@ -12,6 +12,9 @@ use Concrete\Core\Tree\TreeType;
 use Concrete\Core\Tree\Type\FileManager;
 use Concrete\Core\User\Group\Group;
 
+/**
+ * @since 8.0.0
+ */
 class Filesystem
 {
     /**
@@ -64,6 +67,7 @@ class Filesystem
      * @param mixed $folderID
      *
      * @return \Concrete\Core\Tree\Node\Type\FileFolder|null
+     * @since 8.2.0
      */
     public function getFolder($folderID)
     {

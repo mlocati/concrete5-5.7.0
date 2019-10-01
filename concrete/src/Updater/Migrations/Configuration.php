@@ -14,6 +14,7 @@ class Configuration extends DoctrineMigrationConfiguration
      * Forced initial migration: inclusive.
      *
      * @var string
+     * @since 8.4.0
      */
     const FORCEDMIGRATION_INCLUSIVE = '>=';
 
@@ -21,6 +22,7 @@ class Configuration extends DoctrineMigrationConfiguration
      * Forced initial migration: exclusive.
      *
      * @var string
+     * @since 8.4.0
      */
     const FORCEDMIGRATION_EXCLUSIVE = '>';
 
@@ -28,6 +30,7 @@ class Configuration extends DoctrineMigrationConfiguration
      * Forced initial migration.
      *
      * @var null|\Doctrine\DBAL\Migrations\Version
+     * @since 8.4.0
      */
     protected $forcedInitialMigration = null;
 
@@ -53,6 +56,7 @@ class Configuration extends DoctrineMigrationConfiguration
 
     /**
      * Force the initial migration to be the least recent repeatable one.
+     * @since 8.4.0
      */
     public function forceMaxInitialMigration()
     {
@@ -72,6 +76,7 @@ class Configuration extends DoctrineMigrationConfiguration
      *
      * @param string $reference A concrete5 version (eg. '8.3.1') or a migration identifier (eg '20171218000000')
      * @param string $criteria One of the FORCEDMIGRATION_... constants
+     * @since 8.4.0
      */
     public function forceInitialMigration($reference, $criteria = self::FORCEDMIGRATION_INCLUSIVE)
     {
@@ -98,6 +103,7 @@ class Configuration extends DoctrineMigrationConfiguration
      * Get the forced initial migration (if set).
      *
      * @return \Doctrine\DBAL\Migrations\Version|null
+     * @since 8.4.0
      */
     public function getForcedInitialMigration()
     {
@@ -106,6 +112,7 @@ class Configuration extends DoctrineMigrationConfiguration
 
     /**
      * Reset the forced initial migration.
+     * @since 8.4.0
      */
     public function resetForceInitialMigration()
     {
@@ -118,6 +125,7 @@ class Configuration extends DoctrineMigrationConfiguration
      * and for any of those LOWER than the lowest one in the table, we can assume they are included
      * in this migration. We then manually insert these rows into the SystemDatabaseMigrations table
      * so Doctrine isn't stupid and attempt to apply them.
+     * @since 5.7.2
      */
     public function registerPreviousMigratedVersions()
     {
@@ -191,6 +199,7 @@ class Configuration extends DoctrineMigrationConfiguration
      * @throws Exception throws an Exception if $criteria is not valid
      *
      * @return \Doctrine\DBAL\Migrations\Version|null
+     * @since 8.4.0
      */
     protected function findInitialMigration($reference, $criteria)
     {
@@ -208,6 +217,7 @@ class Configuration extends DoctrineMigrationConfiguration
      * @throws Exception throws an Exception if $criteria is not valid
      *
      * @return \Doctrine\DBAL\Migrations\Version|null
+     * @since 8.4.0
      */
     protected function findInitialMigrationByIdentifier($identifier, $criteria)
     {
@@ -256,6 +266,7 @@ class Configuration extends DoctrineMigrationConfiguration
      * 20050101000000       <- if $criteria is FORCEDMIGRATION_EXCLUSIVE
      * 20060101000000
      * 20070101000000 v1.5
+     * @since 8.4.0
      */
     protected function findInitialMigrationByCoreVersion($coreVersion, $criteria)
     {

@@ -16,10 +16,14 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="\Concrete\Core\Entity\Express\EntityRepository")
  * @ORM\Table(name="ExpressEntities")
  * @ORM\EntityListeners({"\Concrete\Core\Express\Entity\Listener"})
+ * @since 8.0.0
  */
 class Entity implements CategoryObjectInterface, ObjectInterface, ExportableInterface
 {
 
+    /**
+     * @since 8.4.1
+     */
     const DEFAULT_ITEMS_PER_PAGE = 10;
 
     use PackageTrait;
@@ -47,6 +51,7 @@ class Entity implements CategoryObjectInterface, ObjectInterface, ExportableInte
 
     /**
      * @ORM\Column(type="string", nullable=true)
+     * @since 8.2.1
      */
     protected $label_mask;
 
@@ -77,6 +82,7 @@ class Entity implements CategoryObjectInterface, ObjectInterface, ExportableInte
 
     /**
      * @ORM\Column(type="integer")
+     * @since 8.4.1
      */
     protected $items_per_page = 10;
 
@@ -219,6 +225,7 @@ class Entity implements CategoryObjectInterface, ObjectInterface, ExportableInte
 
     /**
      * @return string
+     * @since 8.2.1
      */
     public function getLabelMask()
     {
@@ -227,6 +234,7 @@ class Entity implements CategoryObjectInterface, ObjectInterface, ExportableInte
 
     /**
      * @param string $label_mask
+     * @since 8.2.1
      */
     public function setLabelMask($label_mask)
     {
@@ -252,6 +260,7 @@ class Entity implements CategoryObjectInterface, ObjectInterface, ExportableInte
     /**
      * @param string $format
      * @return string
+     * @since 8.2.0
      */
     public function getEntityDisplayDescription($format = 'html')
     {
@@ -369,6 +378,7 @@ class Entity implements CategoryObjectInterface, ObjectInterface, ExportableInte
 
     /**
      * @return int
+     * @since 8.4.1
      */
     public function getItemsPerPage()
     {
@@ -381,6 +391,7 @@ class Entity implements CategoryObjectInterface, ObjectInterface, ExportableInte
 
     /**
      * @param mixed $items_per_page
+     * @since 8.4.1
      */
     public function setItemsPerPage($items_per_page)
     {
@@ -390,6 +401,7 @@ class Entity implements CategoryObjectInterface, ObjectInterface, ExportableInte
     /**
      * @param string $format
      * @return string
+     * @since 8.2.0
      */
     public function getEntityDisplayName($format = 'html')
     {
@@ -448,6 +460,9 @@ class Entity implements CategoryObjectInterface, ObjectInterface, ExportableInte
         $this->forms = $forms;
     }
 
+    /**
+     * @since 8.5.0
+     */
     public function getForm($name)
     {
         foreach($this->getForms() as $form) {
@@ -488,6 +503,9 @@ class Entity implements CategoryObjectInterface, ObjectInterface, ExportableInte
         return '\\Concrete\\Core\\Permission\\Response\\ExpressEntityResponse';
     }
 
+    /**
+     * @since 8.1.0
+     */
     public function getAssociation($handle)
     {
         foreach($this->associations as $association) {
@@ -512,6 +530,9 @@ class Entity implements CategoryObjectInterface, ObjectInterface, ExportableInte
         return new EntityExporter();
     }
 
+    /**
+     * @since 8.2.0
+     */
     public function getController()
     {
 

@@ -26,6 +26,9 @@ abstract class Node extends ConcreteObject implements \Concrete\Core\Permission\
 
     protected $treeNodeIsSelected = false;
 
+    /**
+     * @since 5.7.4.2
+     */
     protected $tree;
 
     abstract public function loadDetails();
@@ -41,8 +44,14 @@ abstract class Node extends ConcreteObject implements \Concrete\Core\Permission\
 
     abstract public function deleteDetails();
 
+    /**
+     * @since 8.0.0
+     */
     abstract public function getTreeNodeTypeName();
 
+    /**
+     * @since 8.0.0
+     */
     public function getTreeNodeTypeDisplayName($format = 'html')
     {
         $name = $this->getTreeNodeTypeName();
@@ -55,6 +64,9 @@ abstract class Node extends ConcreteObject implements \Concrete\Core\Permission\
         }
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function getListFormatter()
     {
         return false;
@@ -80,16 +92,25 @@ abstract class Node extends ConcreteObject implements \Concrete\Core\Permission\
         return self::getByID($this->treeNodeParentID);
     }
 
+    /**
+     * @since 5.7.4.2
+     */
     public function setTree(Tree $tree)
     {
         $this->tree = $tree;
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function getDateLastModified()
     {
         return $this->dateModified;
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function getDateCreated()
     {
         return $this->dateCreated;
@@ -104,6 +125,9 @@ abstract class Node extends ConcreteObject implements \Concrete\Core\Permission\
         return $this->tree;
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function setTreeNodeName($treeNodeName)
     {
         $db = Database::connection();
@@ -111,6 +135,9 @@ abstract class Node extends ConcreteObject implements \Concrete\Core\Permission\
         $this->treeNodeName = $treeNodeName;
     }
 
+    /**
+     * @since 5.7.3
+     */
     public function getTreeNodeName()
     {
         return $this->treeNodeName;
@@ -176,6 +203,9 @@ abstract class Node extends ConcreteObject implements \Concrete\Core\Permission\
         }
     }
 
+    /**
+     * @since 8.2.0
+     */
     public function getChildNodesLoaded()
     {
         return $this->childNodesLoaded;
@@ -238,11 +268,17 @@ abstract class Node extends ConcreteObject implements \Concrete\Core\Permission\
         }
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function getTreeNodeMenu()
     {
         return null;
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function getJSONObject()
     {
         return $this->getTreeNodeJSON();
@@ -343,6 +379,9 @@ abstract class Node extends ConcreteObject implements \Concrete\Core\Permission\
         return $path;
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function setChildPermissionsToOverride()
     {
         $this->populateDirectChildrenOnly();
@@ -351,6 +390,9 @@ abstract class Node extends ConcreteObject implements \Concrete\Core\Permission\
         }
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function setPermissionsToOverride()
     {
         $this->setTreeNodePermissionsToOverride();
@@ -437,6 +479,7 @@ abstract class Node extends ConcreteObject implements \Concrete\Core\Permission\
      * @param Node $newParent the new parent node
      *
      * @return MoveException|null return a MoveException in case of problems, null in case of success
+     * @since 8.0.0
      */
     public function checkMove(Node $newParent)
     {
@@ -499,6 +542,7 @@ where treeNodeDisplayOrder > ? and treeNodeParentID = ?',
 
     /**
      * Update the Date Modified to the current time.
+     * @since 8.3.1
      */
     public function updateDateModified()
     {
@@ -690,6 +734,7 @@ where treeNodeDisplayOrder > ? and treeNodeParentID = ?',
      * @param Translations $translations
      *
      * @internal
+     * @since 5.7.4
      */
     public function exportTranslations(Translations $translations)
     {
@@ -704,6 +749,9 @@ where treeNodeDisplayOrder > ? and treeNodeParentID = ?',
         }
     }
 
+    /**
+     * @since 8.0.0
+     */
     public static function getNodeByName($name)
     {
         $db = Database::connection();
@@ -718,6 +766,9 @@ where treeNodeDisplayOrder > ? and treeNodeParentID = ?',
         }
     }
 
+    /**
+     * @since 8.2.0
+     */
     public function getHierarchicalNodesOfType($treeNodeTypeHandle, $level = 1, $returnNodeObjects = false, $includeThisNode = true, $maxDepth = null)
     {
         $treeNodeType = TreeNodeType::getByHandle($treeNodeTypeHandle);
@@ -727,6 +778,9 @@ where treeNodeDisplayOrder > ? and treeNodeParentID = ?',
         return $nodesOfType;
     }
 
+    /**
+     * @since 8.2.0
+     */
     public static function getNodesOfType($treeNodeTypeHandle)
     {
         $db = Database::connection();
@@ -772,6 +826,9 @@ where treeNodeDisplayOrder > ? and treeNodeParentID = ?',
         $r->closeCursor();
     }
 
+    /**
+     * @since 8.2.0
+     */
     protected function populateRecursiveNodes($treeNodeTypeID, $nodes, $nodeRow, $level, $returnNodeObjects = false, $includeThisNode = true, $maxDepth = null)
     {
         $db = Database::connection();

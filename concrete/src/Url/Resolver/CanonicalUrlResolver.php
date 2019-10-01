@@ -9,20 +9,26 @@ use Concrete\Core\Page\Page;
 use Concrete\Core\Url\Url;
 use Concrete\Core\Url\UrlImmutable;
 
+/**
+ * @since 5.7.4
+ */
 class CanonicalUrlResolver implements UrlResolverInterface
 {
     /**
      * @var \Concrete\Core\Http\Request
+     * @since 5.7.5.4
      */
     protected $request;
 
     /**
      * @var \Concrete\Core\Application\Application
+     * @since 5.7.5.4
      */
     protected $app;
 
     /**
      * @var \Concrete\Core\Url\Url
+     * @since 5.7.5.4
      */
     protected $cached;
 
@@ -31,6 +37,7 @@ class CanonicalUrlResolver implements UrlResolverInterface
      *
      * @param \Concrete\Core\Application\Application $app
      * @param \Concrete\Core\Http\Request $request
+     * @since 5.7.5.4
      */
     public function __construct(Application $app, Request $request)
     {
@@ -120,6 +127,7 @@ class CanonicalUrlResolver implements UrlResolverInterface
 
     /**
      * Clear the cached canonical URL.
+     * @since 5.7.5.4
      */
     public function clearCached()
     {

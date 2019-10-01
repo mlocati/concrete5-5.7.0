@@ -4,14 +4,21 @@ namespace Concrete\Controller\Element\Search;
 use Concrete\Core\Controller\ElementController;
 use Concrete\Core\Search\ProviderInterface;
 
+/**
+ * @since 8.0.0
+ */
 class CustomizeResults extends ElementController
 {
     protected $provider;
 
+    /**
+     * @since 8.2.0
+     */
     protected $includeNumberOfResults = true;
 
     /**
      * @return boolean
+     * @since 8.2.0
      */
     public function includeNumberOfResults()
     {
@@ -20,6 +27,7 @@ class CustomizeResults extends ElementController
 
     /**
      * @param boolean $includeNumberOfResults
+     * @since 8.2.0
      */
     public function setIncludeNumberOfResults($includeNumberOfResults)
     {

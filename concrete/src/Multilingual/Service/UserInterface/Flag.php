@@ -9,6 +9,9 @@ use HtmlObject\Image;
 
 defined('C5_EXECUTE') or die("Access Denied.");
 
+/**
+ * @since 5.7.3
+ */
 class Flag
 {
     /**
@@ -57,6 +60,9 @@ class Flag
         return self::getFlagIcon($icon, $filePathOnly);
     }
 
+    /**
+     * @since 8.0.0
+     */
     public static function getLocaleFlagIcon(LocaleInterface $locale, $filePathOnly = false)
     {
         $icon = $locale->getCountry();

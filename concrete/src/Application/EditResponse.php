@@ -38,6 +38,7 @@ class EditResponse implements JsonSerializable
      * @var string|null
      *
      * @deprecated since concrete5 8.5.0a3 (what's deprecated is the "public part") - use setTitle/getTitle
+     * @since 5.7.4
      */
     public $title;
 
@@ -93,7 +94,7 @@ class EditResponse implements JsonSerializable
      *
      * @return \Concrete\Core\Error\ErrorList\ErrorList|\Exception|string|null
      *
-     * @since concrete5 8.5.0a3
+     * @since 8.5.0
      */
     public function getError()
     {
@@ -118,6 +119,7 @@ class EditResponse implements JsonSerializable
      * Does this response contain an error?
      *
      * @return bool
+     * @since 8.3.0
      */
     public function hasError()
     {
@@ -137,7 +139,7 @@ class EditResponse implements JsonSerializable
      *
      * @return string
      *
-     * @since concrete5 8.5.0a3
+     * @since 8.5.0
      */
     public function getTime()
     {
@@ -287,6 +289,7 @@ class EditResponse implements JsonSerializable
      * {@inheritdoc}
      *
      * @see \JsonSerializable::jsonSerialize()
+     * @since 8.0.0
      */
     public function jsonSerialize()
     {

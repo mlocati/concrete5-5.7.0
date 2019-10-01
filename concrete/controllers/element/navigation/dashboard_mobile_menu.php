@@ -6,6 +6,9 @@ use Concrete\Core\Entity\Express\Entity;
 use Concrete\Core\Page\Page;
 use Concrete\Core\Page\PageList;
 
+/**
+ * @since 8.0.0
+ */
 class DashboardMobileMenu extends Menu
 {
 
@@ -20,6 +23,9 @@ class DashboardMobileMenu extends Menu
         return true;
     }
 
+    /**
+     * @since 8.2.0
+     */
     protected function getPageList($parent)
     {
         $list = parent::getPageList($parent);

@@ -7,6 +7,9 @@ use Concrete\Core\Attribute\Category\CategoryInterface;
 use Concrete\Core\Database\Connection\Connection;
 use Doctrine\DBAL\Schema\Schema;
 
+/**
+ * @since 8.0.0
+ */
 class StandardSearchIndexer implements SearchIndexerInterface
 {
     protected $connection;
@@ -89,6 +92,9 @@ class StandardSearchIndexer implements SearchIndexerInterface
         }
     }
 
+    /**
+     * @since 8.2.0
+     */
     public function refreshRepositoryColumns(CategoryInterface $category, AttributeKeyInterface $key)
     {
         if ($this->isValid($category)) {

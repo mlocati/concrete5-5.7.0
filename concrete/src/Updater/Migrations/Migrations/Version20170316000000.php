@@ -17,6 +17,7 @@ use Concrete\Core\Updater\Migrations\RepeatableMigrationInterface;
  * search columns to be longer than 255 chars.
  * After refreshing all columns we go though all entities and re-fill the search indexes so that any values that are
  * longer than 255 chars will now be indexed properly.
+ * @since 8.2.0
  */
 class Version20170316000000 extends AbstractMigration implements RepeatableMigrationInterface, LongRunningMigrationInterface
 {
@@ -24,6 +25,7 @@ class Version20170316000000 extends AbstractMigration implements RepeatableMigra
      * {@inheritdoc}
      *
      * @see \Concrete\Core\Updater\Migrations\AbstractMigration::upgradeDatabase()
+     * @since 8.3.2
      */
     public function upgradeDatabase()
     {

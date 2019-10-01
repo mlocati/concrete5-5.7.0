@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="atBooleanSettings")
+ * @since 8.0.0
  */
 class BooleanSettings extends Settings
 {
@@ -17,11 +18,13 @@ class BooleanSettings extends Settings
 
     /**
      * @ORM\Column(type="string", nullable=true)
+     * @since 8.2.0
      */
     protected $checkboxLabel;
 
     /**
      * @return mixed
+     * @since 8.2.0
      */
     public function getCheckboxLabel()
     {
@@ -30,6 +33,7 @@ class BooleanSettings extends Settings
 
     /**
      * @param mixed $checkboxLabel
+     * @since 8.2.0
      */
     public function setCheckboxLabel($checkboxLabel)
     {

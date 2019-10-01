@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 /**
  * The interface that any attribute category must implement.
+ * @since 8.0.0
  */
 interface CategoryInterface
 {
@@ -27,6 +28,7 @@ interface CategoryInterface
      * @param string $akHandle
      *
      * @return \Concrete\Core\Attribute\AttributeKeyInterface|null
+     * @since 8.2.0
      */
     public function getAttributeKeyByHandle($akHandle);
 

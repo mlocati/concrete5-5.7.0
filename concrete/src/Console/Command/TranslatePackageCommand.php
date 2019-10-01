@@ -13,6 +13,9 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
+/**
+ * @since 5.7.5.4
+ */
 class TranslatePackageCommand extends Command
 {
     protected function configure()
@@ -58,6 +61,7 @@ EOT
     
     /**
      * @var \Concrete\Core\Application\Application
+     * @since 8.2.0
      */
     protected $app;
     

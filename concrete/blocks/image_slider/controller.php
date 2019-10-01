@@ -26,6 +26,7 @@ class Controller extends BlockController implements FileTrackableInterface
 
     /**
      * @var \Concrete\Core\Statistics\UsageTracker\AggregateTracker|null
+     * @since 8.0.0
      */
     protected $tracker;
 
@@ -81,11 +82,17 @@ class Controller extends BlockController implements FileTrackableInterface
         $this->set('rows', $query);
     }
 
+    /**
+     * @since 5.7.4
+     */
     public function composer()
     {
         $this->edit();
     }
 
+    /**
+     * @since 5.7.0.3
+     */
     public function registerViewAssets($outputContent = '')
     {
         $al = \Concrete\Core\Asset\AssetList::getInstance();
@@ -94,6 +101,9 @@ class Controller extends BlockController implements FileTrackableInterface
         $this->requireAsset('responsive-slides');
     }
 
+    /**
+     * @since 5.7.4
+     */
     public function getEntries()
     {
         $db = Database::get();
@@ -225,6 +235,9 @@ class Controller extends BlockController implements FileTrackableInterface
         $this->getTracker()->track($this);
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function getUsedFiles()
     {
         return array_map(function ($entry) {
@@ -232,6 +245,9 @@ class Controller extends BlockController implements FileTrackableInterface
         }, $this->getEntries());
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function getUsedCollection()
     {
         return $this->getCollectionObject();
@@ -239,6 +255,7 @@ class Controller extends BlockController implements FileTrackableInterface
 
     /**
      * @return \Concrete\Core\Statistics\UsageTracker\AggregateTracker
+     * @since 8.4.0
      */
     protected function getTracker()
     {

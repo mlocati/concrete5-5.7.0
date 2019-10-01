@@ -10,8 +10,15 @@ use Concrete\Core\Error\ErrorList\ErrorList;
 use Concrete\Core\Error\ErrorList\Field\AttributeField;
 use Concrete\Core\Validator\String\EmailValidator;
 
+/**
+ * @since 8.0.0
+ */
 class Controller extends DefaultController
 {
+    /**
+     * @since 8.0.0 visibility: protected
+     * @since 8.2.0 visibility: public
+     */
     public $helpers = ['form'];
 
     public function form()
@@ -46,6 +53,7 @@ class Controller extends DefaultController
      * {@inheritdoc}
      *
      * @see \Concrete\Core\Attribute\SimpleTextExportableAttributeInterface::updateAttributeValueFromTextRepresentation()
+     * @since 8.3.0
      */
     public function updateAttributeValueFromTextRepresentation($textRepresentation, ErrorList $warnings)
     {

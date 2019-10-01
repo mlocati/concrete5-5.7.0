@@ -12,6 +12,7 @@ use League\OAuth2\Server\Entities\UserEntityInterface;
  *     @ORM\Index(name="uEmail", columns={"uEmail"})
  *     }
  * )
+ * @since 8.0.0
  */
 class User implements UserEntityInterface
 {
@@ -463,6 +464,7 @@ class User implements UserEntityInterface
      * Return the user's identifier.
      *
      * @return mixed
+     * @since 8.5.0
      */
     public function getIdentifier()
     {

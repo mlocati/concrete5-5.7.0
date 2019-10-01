@@ -12,12 +12,21 @@ use Database;
 class Controller extends DefaultController
 {
 
+    /**
+     * @since 8.0.0
+     */
     public function getIconFormatter()
     {
         return new FontAwesomeIconFormatter('font');
     }
 
+    /**
+     * @since 8.0.0
+     */
     protected $akTextareaDisplayMode;
+    /**
+     * @since 8.0.0
+     */
     protected $akTextareaDisplayModeCustomOptions;
     public $helpers = array('form');
 
@@ -41,6 +50,11 @@ class Controller extends DefaultController
         return $type;
     }
 
+    /**
+     * @since 5.7.0
+     * @since 8.0.0 removed
+     * @since 8.4.2 re-implemented
+     */
     public function getValue()
     {
         $this->load();
@@ -64,6 +78,9 @@ class Controller extends DefaultController
         return $value;
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function getDisplayValue()
     {
         $value = $this->getValue();
@@ -133,6 +150,9 @@ class Controller extends DefaultController
         $this->set('akTextareaDisplayMode', $type->getMode());
     }
 
+    /**
+     * @since 8.0.3
+     */
     public function getAttributeValueClass()
     {
         return TextValue::class;
@@ -146,6 +166,9 @@ class Controller extends DefaultController
         return $akey;
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function createAttributeValue($value)
     {
         $this->load();
@@ -170,6 +193,9 @@ class Controller extends DefaultController
         return $type;
     }
 
+    /**
+     * @since 8.0.3
+     */
     public function getAttributeKeySettingsClass()
     {
         return TextareaSettings::class;

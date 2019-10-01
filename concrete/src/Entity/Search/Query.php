@@ -5,9 +5,13 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Embeddable
+ * @since 8.0.0
  */
 class Query implements \JsonSerializable
 {
+    /**
+     * @since 8.2.0
+     */
     const MAX_ITEMS_PER_PAGE = 10;
 
     /**
@@ -66,6 +70,7 @@ class Query implements \JsonSerializable
 
     /**
      * @param int
+     * @since 8.2.0
      */
     public function setItemsPerPage($itemsPerPage)
     {
@@ -74,6 +79,7 @@ class Query implements \JsonSerializable
 
     /**
      * @return int
+     * @since 8.2.0
      */
     public function getItemsPerPage()
     {

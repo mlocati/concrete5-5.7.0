@@ -8,6 +8,9 @@ use Concrete\Core\Asset\AssetInterface;
 use Concrete\Core\Asset\AssetPointer;
 use Exception;
 
+/**
+ * @since 5.7.4
+ */
 class Plugin
 {
     /**
@@ -28,6 +31,7 @@ class Plugin
      * The plugin description.
      *
      * @var string
+     * @since 8.4.1
      */
     protected $description = '';
 
@@ -126,6 +130,7 @@ class Plugin
      * Get the plugin description.
      *
      * @return string
+     * @since 8.4.1
      */
     public function getDescription()
     {
@@ -136,6 +141,7 @@ class Plugin
      * Set the plugin description.
      *
      * @param string $description
+     * @since 8.4.1
      */
     public function setDescription($description)
     {

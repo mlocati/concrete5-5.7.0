@@ -13,12 +13,21 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Doctrine\ORM\EntityManager;
 use Exception;
 
+/**
+ * @since 8.0.0
+ */
 abstract class AdvancedSearch extends BackendInterfaceController
 {
     protected $viewPath = '/dialogs/search/advanced_search';
     protected $supportsSavedSearch = true;
+    /**
+     * @since 8.4.1
+     */
     public $objectID = null;
 
+    /**
+     * @since 8.4.1
+     */
     public function getObjectID()
     {
         return (string) $this->objectID;
@@ -32,13 +41,22 @@ abstract class AdvancedSearch extends BackendInterfaceController
 
     abstract public function getCurrentSearchBaseURL();
 
+    /**
+     * @since 8.4.1
+     */
     abstract public function getSavedSearchEntity();
 
+    /**
+     * @since 8.2.1
+     */
     public function getAddFieldAction()
     {
         return $this->action('add_field');
     }
 
+    /**
+     * @since 8.2.1
+     */
     public function getSubmitAction()
     {
         return $this->action('submit');
@@ -72,12 +90,18 @@ abstract class AdvancedSearch extends BackendInterfaceController
         return $this->request->request->get('fSearchDefaultSortDirection');
     }
 
+    /**
+     * @since 8.5.0
+     */
     protected function getSearchFieldSelectorElement()
     {
         $element = new SearchFieldSelector($this->getFieldManager(), $this->getAddFieldAction(), $this->getSearchQuery());
         return $element;
     }
 
+    /**
+     * @since 8.2.1
+     */
     protected function getCustomizeResultsElement()
     {
         $provider = $this->getSearchProvider();
@@ -86,6 +110,9 @@ abstract class AdvancedSearch extends BackendInterfaceController
         return $element;
     }
 
+    /**
+     * @since 8.4.1
+     */
     protected function getSearchPresets()
     {
         $searchPresets = [];

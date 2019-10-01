@@ -5,6 +5,9 @@ use Concrete\Core\Application\EditResponse;
 use Concrete\Core\Entity\Search\Query;
 use Concrete\Core\Search\Result\Result as SearchResult;
 
+/**
+ * @since 8.0.0
+ */
 interface ProviderInterface
 {
     function getBaseColumnSet();
@@ -18,5 +21,8 @@ interface ProviderInterface
     function getSearchResultFromQuery(Query $query);
     function getItemList();
 
+    /**
+     * @since 8.2.0
+     */
     function getSavedSearch();
 }

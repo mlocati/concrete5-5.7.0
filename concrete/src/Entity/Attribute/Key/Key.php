@@ -25,6 +25,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     @ORM\Index(name="pkgID", columns={"pkgID"})
  *     }
  * )
+ * @since 8.0.0
  */
 class Key implements AttributeKeyInterface, ExportableInterface, ControlInterface
 {
@@ -254,6 +255,9 @@ class Key implements AttributeKeyInterface, ExportableInterface, ControlInterfac
         return new AttributeKey();
     }
 
+    /**
+     * @since 8.2.0
+     */
     public function getControlView(ContextInterface $context)
     {
         return $this->getController()->getControlView($context);

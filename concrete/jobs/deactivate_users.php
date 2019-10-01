@@ -11,6 +11,9 @@ use Core;
 use Concrete\Core\User\UserInfoRepository;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
+/**
+ * @since 8.4.1
+ */
 class DeactivateUsers extends AbstractJob
 {
 
@@ -18,9 +21,13 @@ class DeactivateUsers extends AbstractJob
      * The event dispatcher we use to report that a user is being deactivated
      *
      * @var \Symfony\Component\EventDispatcher\EventDispatcherInterface
+     * @since 8.5.0
      */
     protected $dispatcher;
 
+    /**
+     * @since 8.5.0
+     */
     public function __construct(EventDispatcherInterface $eventDispatcher)
     {
         $this->dispatcher = $eventDispatcher;
@@ -84,6 +91,9 @@ class DeactivateUsers extends AbstractJob
         }
     }
 
+    /**
+     * @since 8.5.0
+     */
     protected function deactivateUser(User $user, UserInfo $userInfo)
     {
         $event = DeactivateUser::create($user);

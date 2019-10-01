@@ -43,6 +43,9 @@ class Application extends Container
 {
     protected $installed = null;
     protected $environment = null;
+    /**
+     * @since 5.7.5.2
+     */
     protected $packages = [];
 
     /**
@@ -83,6 +86,7 @@ class Application extends Container
 
     /**
      * Utility method for clearing all application caches.
+     * @since 5.7.0.3
      */
     public function clearCaches()
     {
@@ -181,6 +185,7 @@ class Application extends Container
      *
      * @throws \Concrete\Core\System\Mutex\MutexBusyException throws a MutexBusyException exception if there upgrade process is already running
      * @throws \Concrete\Core\Updater\Migrations\MigrationIncompleteException throws a MigrationIncompleteException exception if there's still some migration pending
+     * @since 5.7.2
      */
     public function handleAutomaticUpdates()
     {
@@ -206,6 +211,7 @@ class Application extends Container
 
     /**
      * Register package autoloaders. Has to come BEFORE session calls.
+     * @since 5.7.5.2
      */
     public function setupPackageAutoloaders()
     {
@@ -317,6 +323,7 @@ class Application extends Container
      * If we have redirect to canonical host enabled, we need to honor it here.
      *
      * @return \Concrete\Core\Routing\RedirectResponse|null
+     * @since 5.7.4
      */
     public function handleCanonicalURLRedirection(SymfonyRequest $r, Site $site)
     {
@@ -437,6 +444,7 @@ class Application extends Container
 
     /**
      * @return RuntimeInterface
+     * @since 8.0.0
      */
     public function getRuntime()
     {
@@ -461,6 +469,7 @@ class Application extends Container
      * Get the list of registered aliases.
      *
      * @return string[]
+     * @since 8.3.0
      */
     public function getRegisteredAliases()
     {
@@ -471,6 +480,7 @@ class Application extends Container
      * Get the list of registered instances.
      *
      * @return string[]
+     * @since 8.4.0
      */
     public function getRegisteredInstances()
     {

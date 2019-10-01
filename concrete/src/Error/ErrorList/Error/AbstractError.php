@@ -4,6 +4,9 @@ namespace Concrete\Core\Error\ErrorList\Error;
 
 use Concrete\Core\Error\ErrorList\Field\FieldInterface;
 
+/**
+ * @since 8.0.0
+ */
 abstract class AbstractError implements HtmlAwareErrorInterface
 {
     /**
@@ -16,7 +19,6 @@ abstract class AbstractError implements HtmlAwareErrorInterface
     /**
      * Does the message contain an HTML-formatted string?
      *
-     * @since concrete5 8.5.0a3
      *
      * @var bool
      */
@@ -56,7 +58,7 @@ abstract class AbstractError implements HtmlAwareErrorInterface
      * {@inheritdoc}
      *
      * @see \Concrete\Core\Error\ErrorList\Error\HtmlAwareErrorInterface::messageContainsHtml()
-     * @since concrete5 8.5.0a3
+     * @since 8.4.4
      */
     public function messageContainsHtml()
     {
@@ -70,7 +72,7 @@ abstract class AbstractError implements HtmlAwareErrorInterface
      *
      * @return $this
      *
-     * @since concrete5 8.5.0a3
+     * @since 8.4.4
      */
     public function setMessageContainsHtml($value)
     {

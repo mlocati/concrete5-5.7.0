@@ -24,9 +24,18 @@ class Controller extends BlockController implements TrackableInterface
     protected $btCacheBlockRecord = true;
     protected $btTable = 'btCoreStackDisplay';
     protected $btIsInternal = true;
+    /**
+     * @since 5.7.5.2
+     */
     protected $btCacheSettingsInitialized = false;
 
+    /**
+     * @since 8.0.0
+     */
     public $stID = null;
+    /**
+     * @since 8.0.0
+     */
     protected $stIDNeutral = null;
 
     protected function load()
@@ -67,6 +76,9 @@ class Controller extends BlockController implements TrackableInterface
         return $this->bOriginalID;
     }
 
+    /**
+     * @since 5.7.5.7
+     */
     public function getSearchableContent() 
     {
         $searchableContent = '';
@@ -118,6 +130,9 @@ class Controller extends BlockController implements TrackableInterface
         return $controller->runAction($action, $parameters);
     }
 
+    /**
+     * @since 5.7.0.3
+     */
     public function registerViewAssets($outputContent = '')
     {
         $stack = $this->getStack(true);
@@ -141,6 +156,7 @@ class Controller extends BlockController implements TrackableInterface
      * @param bool $localized Set to true to look for a localized version of the stack (if not found return the neutral version).
      *
      * @return Stack|null
+     * @since 8.0.0
      */
     protected function getStack($localized)
     {
@@ -154,6 +170,9 @@ class Controller extends BlockController implements TrackableInterface
         return $result;
     }
 
+    /**
+     * @since 5.7.4
+     */
     public function findBlockForAction($method, $parameters)
     {
         $stack = $this->getStack(true);
@@ -212,6 +231,9 @@ class Controller extends BlockController implements TrackableInterface
         }
     }
 
+    /**
+     * @since 5.7.5.2
+     */
     protected function setupCacheSettings()
     {
         if ($this->btCacheSettingsInitialized || Page::getCurrentPage()->isEditMode()) {
@@ -283,6 +305,9 @@ class Controller extends BlockController implements TrackableInterface
         return $this->btCacheBlockOutputLifetime;
     }
 
+    /**
+     * @since 8.0.0
+     */
     public function getStackID()
     {
         return $this->stID;

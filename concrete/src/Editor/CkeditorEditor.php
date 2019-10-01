@@ -14,6 +14,9 @@ use stdClass;
 use URL;
 use User;
 
+/**
+ * @since 8.0.0
+ */
 class CkeditorEditor implements EditorInterface
 {
     /**
@@ -240,6 +243,7 @@ EOL;
      * @param string|null $content The initial value of the editor content
      *
      * @return string
+     * @since 8.5.2
      */
     public function outputEditorWithOptions($key, array $options = [], $content = null)
     {

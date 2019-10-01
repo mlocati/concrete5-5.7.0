@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="StyleCustomizerInlineStyleSets")
+ * @since 8.0.0
  */
 class StyleSet
 {
@@ -63,11 +64,13 @@ class StyleSet
 
     /**
      * @ORM\Column(type="string", nullable=true)
+     * @since 8.2.0
      */
     protected $customElementAttribute;
 
     /**
      * @param mixed $customElementAttribute
+     * @since 8.2.0
      */
     public function setCustomElementAttribute($customElementAttribute)
     {
@@ -76,6 +79,7 @@ class StyleSet
 
     /**
      * @return mixed
+     * @since 8.2.0
      */
     public function getCustomElementAttribute()
     {

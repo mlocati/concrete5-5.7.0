@@ -22,9 +22,14 @@ use RedisArray;
  *
  * To add custom handlers, extend this class and for a handler named "custom_test"
  * create a protected method `getCustomTestHandler`
+ * @since 5.7.5.4
  */
 class SessionFactory implements SessionFactoryInterface
 {
+    /**
+     * @since 5.7.5.4 visibility: private
+     * @since 8.5.0 visibility: protected
+     */
     protected $app;
 
     /**
@@ -37,6 +42,8 @@ class SessionFactory implements SessionFactoryInterface
      * @var \Concrete\Core\Session\Request
      *
      * @deprecated
+     * @since 5.7.5.4 visibility: private
+     * @since 8.5.0 visibility: protected
      */
     protected $request;
 
@@ -82,6 +89,7 @@ class SessionFactory implements SessionFactoryInterface
      * @param array $config The `concrete.session` config item
      *
      * @return \Concrete\Core\Session\Storage\Handler\NativeFileSessionHandler
+     * @since 8.5.0
      */
     protected function getFileHandler(array $config)
     {
@@ -96,6 +104,7 @@ class SessionFactory implements SessionFactoryInterface
      * @param array $config The `concrete.session` config item
      *
      * @return \Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler
+     * @since 8.5.0
      */
     protected function getDatabaseHandler(array $config)
     {
@@ -118,6 +127,7 @@ class SessionFactory implements SessionFactoryInterface
      * @param array $config The `concrete.session` config item
      *
      * @return \Symfony\Component\HttpFoundation\Session\Storage\Handler\MemcachedSessionHandler
+     * @since 8.5.0
      */
     protected function getMemcachedHandler(array $config)
     {
@@ -151,6 +161,7 @@ class SessionFactory implements SessionFactoryInterface
      * @param array $config The `concrete.session` config item
      *
      * @return \Concrete\Core\Session\Storage\Handler\NativeFileSessionHandler
+     * @since 8.5.0
      */
     protected function getDefaultHandler(array $config)
     {
@@ -255,6 +266,7 @@ class SessionFactory implements SessionFactoryInterface
      * @param array $config The `concrete.session` config item
      *
      * @return \Concrete\Core\Session\Storage\Handler\RedisSessionHandler
+     * @since 8.5.0
      */
     protected function getRedisHandler(array $config)
     {

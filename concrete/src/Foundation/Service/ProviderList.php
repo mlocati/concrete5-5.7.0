@@ -7,6 +7,7 @@ class ProviderList
 {
     /**
      * @var Application
+     * @since 8.3.0
      */
     protected $app;
 
@@ -31,6 +32,7 @@ class ProviderList
      * @param string $class The class name
      *
      * @return \Concrete\Core\Foundation\Service\Provider
+     * @since 5.7.5.2
      */
     protected function createInstance($class)
     {

@@ -5,6 +5,9 @@ use Concrete\Core\Notification\Alert\Filter\StandardFilter;
 use Concrete\Core\Notification\Subject\SubjectInterface;
 use Concrete\Core\Notification\Subscription\StandardSubscription;
 
+/**
+ * @since 8.0.0
+ */
 class CoreUpdateType extends Type
 {
 
@@ -29,11 +32,17 @@ class CoreUpdateType extends Type
         return array($this->createSubscription());
     }
 
+    /**
+     * @since 8.4.2
+     */
     protected function createFilter()
     {
         return new StandardFilter($this, 'core_update', t('concrete5 Updates'), 'coreupdatenotification');
     }
 
+    /**
+     * @since 8.4.2
+     */
     public function getAvailableFilters()
     {
         return [$this->createFilter()];
