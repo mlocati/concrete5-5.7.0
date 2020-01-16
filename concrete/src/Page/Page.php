@@ -57,6 +57,7 @@ use Environment;
 use Group;
 use Session;
 use Concrete\Core\Attribute\ObjectInterface as AttributeObjectInterface;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
  * The page object in Concrete encapsulates all the functionality used by a typical page and their contents including blocks, page metadata, page permissions.
@@ -132,6 +133,20 @@ class Page extends Collection implements \Concrete\Core\Permission\ObjectInterfa
      * @var int|null
      */
     protected $siteTreeID;
+
+    /**
+     * The custom name of the alias page.
+     *
+     * @var string|null NULL if the page is not an alias, empty string if we should use the name of the aliased page, the custom alias name otherwise.
+     */
+    private $customAliasName;
+
+    /**
+     * The handle of the alias page
+     *
+     * @var string|null NULL if the page is not an alias, the alias handle otherwise.
+     */
+    private $aliasHandle;
 
     /**
      * @deprecated What's deprecated is the public part: use the getSiteTreeObject() method to access this property.
@@ -251,18 +266,22 @@ class Page extends Collection implements \Concrete\Core\Permission\ObjectInterfa
     {
         $db = Database::connection();
 
-        $q0 = 'select Pages.cID, Pages.pkgID, Pages.siteTreeID, Pages.cPointerID, Pages.cPointerExternalLink, Pages.cIsDraft, Pages.cIsActive, Pages.cIsSystemPage, Pages.cPointerExternalLinkNewWindow, Pages.cFilename, Pages.ptID, Collections.cDateAdded, Pages.cDisplayOrder, Collections.cDateModified, cInheritPermissionsFromCID, cInheritPermissionsFrom, cOverrideTemplatePermissions, cCheckedOutUID, cIsTemplate, uID, cPath, cParentID, cChildren, cCacheFullPageContent, cCacheFullPageContentOverrideLifetime, cCacheFullPageContentLifetimeCustom from Pages inner join Collections on Pages.cID = Collections.cID left join PagePaths on (Pages.cID = PagePaths.cID and PagePaths.ppIsCanonical = 1) ';
-        //$q2 = "select cParentID, cPointerID, cPath, Pages.cID from Pages left join PagePaths on (Pages.cID = PagePaths.cID and PagePaths.ppIsCanonical = 1) ";
-
-        $row = $db->fetchAssoc($q0 . $where, [$cInfo]);
+        $fields = 'Pages.cID, Pages.pkgID, Pages.siteTreeID, Pages.cPointerID, Pages.cPointerExternalLink, Pages.cIsDraft, Pages.cIsActive, Pages.cIsSystemPage, Pages.cPointerExternalLinkNewWindow, Pages.cFilename, Pages.ptID, Collections.cDateAdded, Pages.cDisplayOrder, Collections.cDateModified, cInheritPermissionsFromCID, cInheritPermissionsFrom, cOverrideTemplatePermissions, cCheckedOutUID, cIsTemplate, uID, cPath, cParentID, cChildren, cCacheFullPageContent, cCacheFullPageContentOverrideLifetime, cCacheFullPageContentLifetimeCustom, Collections.cHandle';
+        $from = 'Pages INNER JOIN Collections ON Pages.cID = Collections.cID LEFT JOIN PagePaths ON (Pages.cID = PagePaths.cID and PagePaths.ppIsCanonical = 1)';
+        $row = $db->fetchAssoc("SELECT {$fields} FROM {$from} {$where}", [$cInfo]);
         if ($row !== false && $row['cPointerID'] > 0) {
             $originalRow = $row;
-            $row = $db->fetchAssoc($q0 . 'where Pages.cID = ?', [$row['cPointerID']]);
+            $row = $db->fetchAssoc("SELECT ${fields}, CollectionVersions.cvName FROM ${from} LEFT JOIN CollectionVersions ON CollectionVersions.cID = ? WHERE Pages.cID = ? LIMIT 1", [$row['cID'], $row['cPointerID']]);
         } else {
             $originalRow = null;
         }
 
         if ($row !== false) {
+            if ($originalRow !== null) {
+                $this->customAliasName = (string) $row['cvName'];
+                unset($row['cvName']);
+            }
+            unset($row['cHandle']);
             foreach ($row as $key => $value) {
                 $this->{$key} = $value;
             }
@@ -274,6 +293,7 @@ class Page extends Collection implements \Concrete\Core\Permission\ObjectInterfa
                 $this->cPath = $originalRow['cPath'];
                 $this->cParentID = $originalRow['cParentID'];
                 $this->cDisplayOrder = $originalRow['cDisplayOrder'];
+                $this->aliasHandle = (string) $originalRow['cHandle'];
             }
             $this->isMasterCollection = $row['cIsTemplate'];
             $this->loadError(false);
@@ -915,7 +935,7 @@ class Page extends Collection implements \Concrete\Core\Permission\ObjectInterfa
 
         $data = [
             'handle' => $handle,
-            'name' => $this->getCollectionName(),
+            'name' => '',
         ];
         $cobj = parent::addCollection($data);
         $newCID = $cobj->getCollectionID();
@@ -934,6 +954,61 @@ class Page extends Collection implements \Concrete\Core\Permission\ObjectInterfa
         $db->executeQuery($q2, $v2);
 
         return $newCID;
+    }
+
+    /**
+     * Update the alias details.
+     *
+     * @param array $data Supported keys:
+     * <ul>
+     *     <li>string <code>customAliasName</code> empty string to use the name of the aliased page</li>
+     *     <li>string <code>aliasHandle</code> the URL slug of the alias</li>
+     * </ul>
+     */
+    public function updateCollectionAlias(array $data)
+    {
+        if (!$this->isAliasPage()) {
+            return;
+        }
+        $app = Application::getFacadeApplication();
+        $data += [
+            'customAliasName' => null,
+            'aliasHandle' => '',
+        ];
+        $cSet = [];
+        $cvSet = [];
+        if ((string) $data['aliasHandle'] !== '') {
+            $cSet['cHandle'] = $data['aliasHandle'];
+            $cvSet['cvHandle'] = $data['aliasHandle'];
+        }
+        if ($data['customAliasName'] !== null) {
+            $cvSet['cvName'] = $data['customAliasName'];
+        }
+        $db = $app->make(Connection::class);
+        if ($cSet !== []) {
+            $db->update(
+                'Collections',
+                $cSet,
+                ['cID' => $this->getCollectionPointerOriginalID()]
+                );
+        }
+        if ($cvSet !== []) {
+            $db->update(
+                'CollectionVersions',
+                $cvSet,
+                ['cID' => $this->getCollectionPointerOriginalID()]
+                );
+        }
+        if ($data['customAliasName'] !== null) {
+            $this->customAliasName = $data['customAliasName'];
+        }
+        if ((string) $data['aliasHandle'] !== '') {
+            $this->aliasHandle = $data['aliasHandle'];
+            $this->rescanCollectionPath();
+        }
+        $pe = new Event($this);
+        $eventDispatcher = $app->make(EventDispatcherInterface::class);
+        $eventDispatcher->dispatch('on_page_alias_edit', $pe);
     }
 
     /**
@@ -1622,11 +1697,36 @@ class Page extends Collection implements \Concrete\Core\Permission\ObjectInterfa
      */
     public function getCollectionName()
     {
+        $customAliasName = (string) $this->getCustomAliasName();
+        if ($customAliasName !== '') {
+            return $customAliasName;
+        }
+
         if (isset($this->vObj)) {
             return isset($this->vObj->cvName) ? $this->vObj->cvName : null;
         }
 
         return isset($this->cvName) ? $this->cvName : null;
+    }
+
+    /**
+     * Get the custom name of the alias page.
+     *
+     * @return string|null NULL if the page is not an alias, empty string if we should use the name of the aliased page, the custom alias name otherwise.
+     */
+    public function getCustomAliasName()
+    {
+        return $this->customAliasName;
+    }
+
+    /**
+     * Get the handle of the alias page
+     *
+     * @return string|null NULL if the page is not an alias, the alias handle otherwise
+     */
+    public function getAliasHandle()
+    {
+        return $this->aliasHandle;
     }
 
     /**
@@ -3186,9 +3286,11 @@ EOT
         $cID = ($this->getCollectionPointerOriginalID() > 0) ? $this->getCollectionPointerOriginalID() : $this->cID;
         /** @var \Concrete\Core\Utility\Service\Validation\Strings $stringValidator */
         $stringValidator = Core::make('helper/validation/strings');
-        if ($stringValidator->notempty($this->getCollectionHandle())) {
+        if ($stringValidator->notempty($this->getAliasHandle())) {
+            $path .= $this->getAliasHandle();
+        } elseif ($stringValidator->notempty($this->getCollectionHandle())) {
             $path .= $this->getCollectionHandle();
-        } else if (!$this->isHomePage()) {
+        } elseif (!$this->isHomePage()) {
             $path .= $cID;
         } else {
             $path = ''; // This is computing the path for the home page, which has no handle, and so shouldn't have a segment.
