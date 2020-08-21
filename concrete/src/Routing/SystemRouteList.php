@@ -104,6 +104,11 @@ class SystemRouteList implements RouteListInterface
             ->routes('calendar.php')
         ;
         $router->buildGroup()
+            ->setPrefix('/ccm/frontend/conversations')
+            ->setNamespace('Concrete\Controller\Frontend\Conversations')
+            ->routes('conversations.php')
+        ;
+        $router->buildGroup()
             ->routes('misc.php')
         ;
     }
