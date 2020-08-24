@@ -28,7 +28,7 @@ class MessagePage extends Controller
         $this->configureMessageList($conversation, $messageList);
         $this->set('conversation', $conversation);
         $this->set('messageList', $messageList);
-        $this->set('pageIndex', $this->getPageIndex());
+        $this->set('pageIndex', $this->getResultsPageIndex());
         $this->set('displayMode', $this->getDisplayMode());
         $this->set('enablePosting', $this->isPostingEnabled());
 
@@ -89,7 +89,7 @@ class MessagePage extends Controller
         return $this->app->make(Numbers::class)->integer($itemsPerPage, 1) ? (int) $itemsPerPage : null;
     }
 
-    protected function getPageIndex(): int
+    protected function getResultsPageIndex(): int
     {
         $pageID = $this->request->request->get('page');
 
