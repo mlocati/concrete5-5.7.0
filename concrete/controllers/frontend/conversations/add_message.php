@@ -241,7 +241,7 @@ class AddMessage extends FrontendController
                 $em = $this->app->make(EntityManagerInterface::class);
                 foreach ($attachmentIDs as $attachmentID) {
                     $file = $em->find(File::class, $attachmentID);
-                    if ($file === null) {
+                    if ($file === null || !$this->app(Checker::class, [$file])->canViewFile()) {
                         $errors[] = t('Invalid file specified.');
                     } else {
                         $attachments[] = $file;
