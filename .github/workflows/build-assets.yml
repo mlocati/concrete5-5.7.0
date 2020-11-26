@@ -1,0 +1,103 @@
+name: Build assets
+
+on:
+  pull_request:
+    branches:
+      - develop
+    paths:
+      - "build/**.js"
+      - "build/**.json"
+      - "concrete/css/build/**"
+      - "concrete/js/build/**"
+  push:
+    branches:
+      - develop
+    tags-ignore:
+      - "**"
+    paths:
+      - "build/**.js"
+      - "build/**.json"
+      - "concrete/css/build/**"
+      - "concrete/js/build/**"
+  repository_dispatch:
+    types:
+      - build-assets-develop
+
+jobs:
+  build:
+    name: Build CSS and JavaScript assets
+    runs-on: ubuntu-latest
+    env:
+      PUSH_CHANGES: n
+    steps:
+      - name: Checkout (for pull requests)
+        if: github.event_name == 'pull_request'
+        uses: actions/checkout@v2
+      - name: Checkout (branch)
+        if: github.event_name != 'pull_request'
+        uses: actions/checkout@v2
+        with:
+          ref: develop
+      - name: Install Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: "10"
+      - name: Install Grunt
+        run: npm -g install grunt
+      - name: Install dependencies
+        run: cd build && npm ci && cd ..
+      - name: Update bedrock
+        if: github.event_name == 'repository_dispatch'
+        run: cd build && npm update bedrock && cd ..
+      - name: Build assets
+        run: cd build && npm run prod && cd ..
+      - name: Check changes
+        if: github.repository == 'concrete5/concrete5' && github.event_name != 'pull_request'
+        run: |
+          PUSH_CHANGES=n
+          if test "${{ github.event_name }}" = 'repository_dispatch'; then
+            CHECKME='build/composer.json build/composer-lock.json'
+            if test -n "$(git status --porcelain $CHECKME)"; then
+              echo '- changes detected in node packages'
+              git add --all $CHECKME
+              PUSH_CHANGES=y
+            else
+              echo '- no changes in node packages'
+            fi
+          fi
+          CHECKME='concrete/css'
+          if test -n "$(git status --porcelain $CHECKME)"; then
+            echo '- changes detected in CSS assets'
+            git add --all $CHECKME
+            PUSH_CHANGES=y
+          else
+            echo '- no changes in CSS assets'
+          fi
+          CHECKME='concrete/js'
+          if test -n "$(git status --porcelain $CHECKME)"; then
+            echo '- changes detected in JS assets'
+            git add --all $CHECKME
+            PUSH_CHANGES=y
+          else
+            echo '- no changes in JS assets'
+          fi
+          CHECKME='concrete/themes'
+          if test -n "$(git status --porcelain $CHECKME)"; then
+            echo '- changes detected in themes assets'
+            git add --all $CHECKME
+            PUSH_CHANGES=y
+          else
+            echo '- no changes in themes assets'
+          fi
+          printf 'PUSH_CHANGES=%s\n' "$PUSH_CHANGES" >> "$GITHUB_ENV"
+      - name: Commit and push
+        if: env.PUSH_CHANGES == 'y'
+        run: |
+          printf 'Configuring git... '
+          git config --local user.name 'concrete5 bot'
+          git config --local user.email 'concrete5-bot@concrete5.org'
+          echo 'done.'
+          echo 'Committing changes'
+          git commit -m '[skip ci] Automatic assets rebuilding'
+          echo 'Pushing'
+          git push
