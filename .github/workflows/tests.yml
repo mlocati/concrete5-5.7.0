@@ -49,9 +49,11 @@ jobs:
     name: PHP ${{ matrix.php-version }} on ${{ matrix.operating-system }}
     runs-on: ${{ matrix.operating-system }}
     steps:
+      - name: Start MySQL
+        if: startsWith(matrix.operating-system, 'ubuntu')
+        run: sudo systemctl start mysql.service
       - name: Configure MySQL
         run: |
-          sudo systemctl start mysql.service
           mysql --user=root -e "CREATE USER 'concrete5_tester'@'localhost' IDENTIFIED BY '12345';"
           mysql --user=root -e "GRANT ALL PRIVILEGES ON *.* TO 'concrete5_tester'@'localhost' WITH GRANT OPTION; FLUSH PRIVILEGES;"
       - name: Set code coverage
