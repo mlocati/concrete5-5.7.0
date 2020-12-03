@@ -74,7 +74,7 @@ jobs:
         run: composer --no-interaction --ansi --no-cache --optimize-autoloader $EXTRA_COMPOSER_INSTALL_OPTIONS update
       - name: Run tests
         run: |
-          if test "$CODE_COVERAGE" -eq 'y'; then
+          if test "$CODE_COVERAGE" = 'y'; then
             phpdbg -qrr ./concrete/vendor/phpunit/phpunit/phpunit --coverage-clover=coverage.clover $EXTRA_PHPUNUIT_OPTIONS
           else
             composer test -- $EXTRA_PHPUNUIT_OPTIONS
