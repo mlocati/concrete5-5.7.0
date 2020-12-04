@@ -4,6 +4,7 @@ namespace Concrete\Tests\Database;
 
 use Concrete\TestHelpers\Database\ConcreteDatabaseTestCase;
 use Database;
+use Exception;
 use PDOException;
 
 class DatabaseTest extends ConcreteDatabaseTestCase
@@ -23,20 +24,23 @@ class DatabaseTest extends ConcreteDatabaseTestCase
         parent::setUp();
     }
 
-    /**
-     * @expectedException \Doctrine\DBAL\Driver\PDOException
-     * @expectedExceptionMessage /getaddrinfo failed|Unknown MySQL server host 'DB_SERVER'/
-     */
     public function testInvalidConnection()
     {
-        $connection = Database::getFactory()->createConnection(
-            [
-                'database' => md5(mt_rand()),
-                'user' => md5(mt_rand()),
-                'password' => md5(mt_rand()),
-                'host' => 'DB_SERVER',
-            ]);
-        $connection->errorCode();
+        try {
+            $connection = Database::getFactory()->createConnection(
+                [
+                    'database' => md5(mt_rand()),
+                    'user' => md5(mt_rand()),
+                    'password' => md5(mt_rand()),
+                    'host' => 'DB_SERVER',
+                ]);
+            $connection->errorCode();
+            $exception = null;
+        } catch (Exception $x) {
+            $exception = $x;
+        }
+        $this->assertTrue($exception instanceof \Doctrine\DBAL\Driver\PDOException);
+        $this->assertTrue((bool) preg_match("/getaddrinfo failed|Unknown MySQL server host 'DB_SERVER'/", $exception->getMessage()));
     }
 
     public function testValidConnection()
