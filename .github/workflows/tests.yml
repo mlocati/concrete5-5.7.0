@@ -27,25 +27,25 @@ jobs:
           - ubuntu-20.04
         php-version:
           - "5.5"
-          - "5.6"
-          - "7.0"
-          - "7.1"
-          - "7.2"
-          - "7.3"
-          - "7.4"
-        include:
+          #- "5.6"
+          #- "7.0"
+          #- "7.1"
+          #- "7.2"
+          #- "7.3"
+          #- "7.4"
+        #include:
           #- operating-system: windows-latest
           #  php-version: "5.5"
           #- operating-system: windows-latest
           #  php-version: "7.4"
-          - operating-system: ubuntu-20.04
-            php-version: "7.1"
-            env:
-              EXTRA_COMPOSER_INSTALL_OPTIONS: "--prefer-lowest"
-          - operating-system: ubuntu-20.04
-            php-version: "7.2"
-            env:
-              EXTRA_PHPUNUIT_OPTIONS: "--group docker"
+          #- operating-system: ubuntu-20.04
+          #  php-version: "7.1"
+          #  env:
+          #    EXTRA_COMPOSER_INSTALL_OPTIONS: "--prefer-lowest"
+          #- operating-system: ubuntu-20.04
+          #  php-version: "7.2"
+          #  env:
+          #    EXTRA_PHPUNUIT_OPTIONS: "--group docker"
     name: PHP ${{ matrix.php-version }} on ${{ matrix.operating-system }}
     runs-on: ${{ matrix.operating-system }}
     steps:
