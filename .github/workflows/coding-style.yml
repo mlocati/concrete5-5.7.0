@@ -3,7 +3,7 @@ name: Check Coding Style
 on:
   pull_request:
     branches:
-      - 8.5.x
+      - 8.5.x-DISABLED
 
 jobs:
   php:
