@@ -69,9 +69,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Install Composer packages - merger
-        run: composer --no-interaction --ansi --no-cache --optimize-autoloader $EXTRA_COMPOSER_INSTALL_OPTIONS update
+        run: composer --no-interaction --ansi --optimize-autoloader $EXTRA_COMPOSER_INSTALL_OPTIONS update
       - name: Install Composer packages - merged
-        run: composer --no-interaction --ansi --no-cache --optimize-autoloader $EXTRA_COMPOSER_INSTALL_OPTIONS update
+        run: composer --no-interaction --ansi --optimize-autoloader $EXTRA_COMPOSER_INSTALL_OPTIONS update
       - name: Run tests
         run: |
           if test "$CODE_COVERAGE" = 'y'; then
