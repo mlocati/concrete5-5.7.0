@@ -434,7 +434,12 @@ class Text
             $locale = \Localization::activeLocale();
         }
         $language = substr($locale, 0, strcspn($locale, '_'));
-        $text = \URLify::downcode($text, $language);
+        set_error_handler(static function() {}, -1);
+        try {
+            $text = \URLify::downcode($text, $language);
+        } finally {
+            restore_error_handler();
+        }
         if (preg_match('/[^\\t\\r\\n\\x20-\\x7e]/', $text)) {
             if (function_exists('iconv')) {
                 $t = @iconv(APP_CHARSET, 'US-ASCII//IGNORE//TRANSLIT', $text);
