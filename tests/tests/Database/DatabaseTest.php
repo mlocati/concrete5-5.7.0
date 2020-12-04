@@ -25,7 +25,7 @@ class DatabaseTest extends ConcreteDatabaseTestCase
 
     /**
      * @expectedException \Doctrine\DBAL\Driver\PDOException
-     * @expectedExceptionMessage getaddrinfo failed
+     * @expectedExceptionMessage /getaddrinfo failed|Unknown MySQL server host 'DB_SERVER'/
      */
     public function testInvalidConnection()
     {
