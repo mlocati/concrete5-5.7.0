@@ -59,6 +59,9 @@ jobs:
       - name: Set code coverage
         if: matrix.php-version == '7.2' && startsWith(matrix.operating-system, 'ubuntu')
         run: printf 'CODE_COVERAGE=y\n' >> "$GITHUB_ENV"
+      - name: Install system tools
+        if: startsWith(matrix.operating-system, 'ubuntu')
+        run: sudo apt-get install -qy gettext
       - name: Install PHP
         uses: shivammathur/setup-php@v2
         with:
