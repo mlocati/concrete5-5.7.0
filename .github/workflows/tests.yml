@@ -20,7 +20,7 @@ jobs:
       MYSQL_PWD: root
       CODE_COVERAGE: n
       EXTRA_COMPOSER_INSTALL_OPTIONS: ""
-      EXTRA_PHPUNUIT_OPTIONS: ""
+      EXTRA_PHPUNUIT_OPTIONS: "--stop-on-error --stop-on-failure"
     strategy:
       matrix:
         operating-system:
