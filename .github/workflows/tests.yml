@@ -21,6 +21,7 @@ jobs:
       CODE_COVERAGE: n
       EXTRA_COMPOSER_INSTALL_OPTIONS: ""
       EXTRA_PHPUNUIT_OPTIONS: "--stop-on-error --stop-on-failure"
+      TESTS_CAN_FAIL: n
     strategy:
       matrix:
         operating-system:
@@ -32,8 +33,11 @@ jobs:
           #- "7.1"
           #- "7.2"
           #- "7.3"
-          #- "7.4"
-        #include:
+        include:
+          - operating-system: ubuntu-20.04
+            php-version: "7.4"
+            env:
+              TESTS_CAN_FAIL: y
           #- operating-system: windows-latest
           #  php-version: "5.5"
           #- operating-system: windows-latest
@@ -79,9 +83,15 @@ jobs:
       - name: Run tests
         run: |
           if test "$CODE_COVERAGE" = 'y'; then
-            phpdbg -qrr ./concrete/vendor/phpunit/phpunit/phpunit --coverage-clover=coverage.clover $EXTRA_PHPUNUIT_OPTIONS
+            RUNME="phpdbg -qrr ./concrete/vendor/phpunit/phpunit/phpunit --coverage-clover=coverage.clover $EXTRA_PHPUNUIT_OPTIONS"
           else
-            composer test -- $EXTRA_PHPUNUIT_OPTIONS
+            RUNME="composer test -- $EXTRA_PHPUNUIT_OPTIONS"
+          fi
+          if ! $RUNME; then
+            if "$TESTS_CAN_FAIL" != 'y'; then
+              exit 1
+            fi
+            echo "::error file=tests.yml,line=1,col=1::Tests failed (but failure is allowed)"
           fi
       - name: Upload code coverage results
         if: env.CODE_COVERAGE == 'y'
