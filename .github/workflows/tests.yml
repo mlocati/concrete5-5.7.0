@@ -65,6 +65,7 @@ jobs:
           php-version: ${{ matrix.php-version }}
           ini-values: short_open_tag=On
           tools: composer:v1,prestissimo
+          extensions: dom,fileinfo,gd,iconv,json,mbstring,pdo,pdo_mysql,xml
           coverage: none
       - name: Checkout
         uses: actions/checkout@v2
