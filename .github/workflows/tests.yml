@@ -69,10 +69,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Install Composer packages - merger
-        if: env.FILES_TO_CHECK != ''
         run: composer --no-interaction --ansi --no-cache --optimize-autoloader $EXTRA_COMPOSER_INSTALL_OPTIONS update
       - name: Install Composer packages - merged
-        if: env.FILES_TO_CHECK != ''
         run: composer --no-interaction --ansi --no-cache --optimize-autoloader $EXTRA_COMPOSER_INSTALL_OPTIONS update
       - name: Run tests
         run: |
