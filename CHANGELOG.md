@@ -2429,3 +2429,4 @@ Instead of defaulting to the current time/date, form block date/datetime have th
 * Page templates can now be included in a package in a page_templates/ directory, as well as in the application/ folder (thanks Mesuva)
 * ItemList sort API improvements (thanks EC-Joe)
 * Lots of better code comments (thanks EC-Joe, EC-Chris)
+
