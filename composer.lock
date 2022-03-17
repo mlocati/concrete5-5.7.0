@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f41d0cba551fc2f8cff821af4c195c25",
+    "content-hash": "7dc4e68a7d4d51d9cccdd448335bd53e",
     "packages": [
         {
             "name": "anahkiasen/html-object",
@@ -178,16 +178,16 @@
         },
         {
             "name": "concrete5/dependency-patches",
-            "version": "1.7.0",
+            "version": "dev-laminas-core-php8.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/concrete5/dependency-patches.git",
-                "reference": "6716e26f9c7e7bcd548c0e7b7b75a56558015cee"
+                "url": "https://github.com/mlocati/concrete5-dependency-patches.git",
+                "reference": "3b7b798ab8b6f3819086268cdeedaed2136a48f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/concrete5/dependency-patches/zipball/6716e26f9c7e7bcd548c0e7b7b75a56558015cee",
-                "reference": "6716e26f9c7e7bcd548c0e7b7b75a56558015cee",
+                "url": "https://api.github.com/repos/mlocati/concrete5-dependency-patches/zipball/3b7b798ab8b6f3819086268cdeedaed2136a48f8",
+                "reference": "3b7b798ab8b6f3819086268cdeedaed2136a48f8",
                 "shasum": ""
             },
             "require": {
@@ -240,10 +240,12 @@
                     },
                     "league/url:3.3.5": {
                         "Add PHP 8.1 compability to league/url version 3.3.5": "league/url/php8.1-compatibility.patch"
+                    },
+                    "laminas/laminas-code:3.4.1": {
+                        "Add PHP 8.1 compability to league/url version 3.3.5": "laminas/laminas-code/php8.1-compatibility.patch"
                     }
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -251,17 +253,16 @@
                 {
                     "name": "Michele Locati",
                     "email": "michele@locati.it",
-                    "homepage": "https://mlocati.github.io",
-                    "role": "author"
+                    "role": "author",
+                    "homepage": "https://mlocati.github.io"
                 }
             ],
             "description": "Patches required for concrete5 dependencies",
             "homepage": "https://github.com/concrete5/dependency-patches",
             "support": {
-                "issues": "https://github.com/concrete5/dependency-patches/issues",
-                "source": "https://github.com/concrete5/dependency-patches/tree/1.7.0"
+                "source": "https://github.com/mlocati/concrete5-dependency-patches/tree/laminas-core-php8.1"
             },
-            "time": "2022-03-15T17:06:12+00:00"
+            "time": "2022-03-17T08:10:34+00:00"
         },
         {
             "name": "concrete5/doctrine-xml",
@@ -1470,7 +1471,7 @@
                 "doctrine/persistence": "^2.2",
                 "ext-ctype": "*",
                 "ext-pdo": "*",
-                "php": "^7.1 ||^8.0",
+                "php": "^7.1 || ^8.0",
                 "psr/cache": "^1 || ^2 || ^3",
                 "symfony/console": "^3.0 || ^4.0 || ^5.0 || ^6.0",
                 "symfony/polyfill-php72": "^1.23",
@@ -12397,9 +12398,18 @@
             "time": "2021-07-28T10:34:58+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "package": "concrete5/dependency-patches",
+            "version": "dev-laminas-core-php8.1",
+            "alias": "1.7.0",
+            "alias_normalized": "1.7.0.0"
+        }
+    ],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "concrete5/dependency-patches": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
