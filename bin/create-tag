@@ -1,0 +1,305 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+set_error_handler(static function($errno, $errstr, $errfile, $errline) {
+    $message = is_string($errstr) ? trim($errstr) : '';
+    if ($message === '') {
+        $message = "Error {$errno}";
+    }
+    if ((string) $errfile !== '') {
+        $message .= "\nFile: {$errfile}";
+        if ($errline) {
+            $message .= "\nLine: {$errline}";
+        }
+    }
+    throw new RuntimeException($message);
+}, -1);
+
+function main(array $arguments): int
+{
+    define('CONCRETE_ROOT_DIR', rtrim(str_replace(DIRECTORY_SEPARATOR, '/', dirname(__DIR__)), '/'));
+    $configuredVersionParser = new ConfiguredVersionParser();
+    $configuredVersion = $configuredVersionParser->getVersion();
+    $changedFiles = [];
+    switch (count($arguments)) {
+        case 1:
+            $version = $configuredVersion;
+            echo "Using configured version ({$version})\n";
+            break;
+        case 2:
+            $version = $arguments[1];
+            if (in_array($version, ['', '-h', '--help'], true)) {
+                showSyntax($arguments[0]);
+                return 0;
+            }
+            if (!checkVersion($version)) {
+                fwrite(STDERR, "Version not recognized: {$version}\n");
+                return 1;
+            }
+            if ($version === $configuredVersion) {
+                echo "Using version ({$version}) (same as the configured one)\n";
+            } else {
+                echo "Using version ({$version}) (from {$configuredVersion})\n";
+                $configuredVersionParser->setVersion($version);
+                $changedFiles[] = ConfiguredVersionParser::CONFIGURATIONFILE_RELATIVE_PATH;
+            }
+            break;
+        default:
+            showSyntax($arguments[0]);
+            return 1;
+    }
+    echo 'Processing directory ' . CONCRETE_ROOT_DIR . "...\n";
+    $changedFiles = array_merge($changedFiles, processDirectory($version, CONCRETE_ROOT_DIR . '/concrete', 'concrete', $version));
+    $baseGitCommand = 'git -C ' . escapeshellarg(str_replace('/', DIRECTORY_SEPARATOR, CONCRETE_ROOT_DIR));
+    if ($changedFiles === []) {
+        echo "No changed files.\n";
+    } else {
+        echo "Committing changes to these files:\n" . implode("\n- ", $changedFiles) . "\n";
+        $cmd = $baseGitCommand . ' add';
+        foreach ($changedFiles as $changedFile) {
+            $cmd .= ' ' . escapeshellarg($changedFile);
+        }
+        $rc = -1;
+        passthru($cmd, $rc);
+        if ($rc !== 0) {
+            fwrite(STDERR, "git add failed!\n");
+            return 1;
+        }
+        $cmd = $baseGitCommand . ' commit -m ' . escapeshellarg("Prepare version {$version}");
+        $rc = -1;
+        passthru($cmd, $rc);
+        if ($rc !== 0) {
+            fwrite(STDERR, "git commit failed!\n");
+            return 1;
+        }
+    }
+    echo "Creating git tag.\n";
+    $cmd = $baseGitCommand . ' tag ' . escapeshellarg($version);
+    $rc = -1;
+    passthru($cmd, $rc);
+    if ($rc !== 0) {
+        fwrite(STDERR, "git tag failed!\n");
+        return 1;
+    }
+    return 0;
+}
+
+function showSyntax($appPath): void
+{
+    echo <<<EOT
+Syntax: {$appPath} [release]
+   If the release argument is specified, we'll update the version
+   configuration key stored in concrete/config/concrete.php.
+   If it's not specified, we'll read the version configuration key
+   from that file.
+
+EOT
+    ;
+}
+
+class ConfiguredVersionParser
+{
+    public const CONFIGURATIONFILE_RELATIVE_PATH = 'concrete/config/concrete.php';
+    /**
+     * @var string
+     */
+    private $configurationFile;
+
+    /**
+     * @var array
+     */
+    private $tokens;
+
+    /**
+     * @var int
+     */
+    private $versionTokenIndex;
+
+    /**
+     * @var int
+     */
+    private $versionInstalledTokenIndex;
+
+    public function __construct()
+    {
+        $this->configurationFile = CONCRETE_ROOT_DIR . '/' . self::CONFIGURATIONFILE_RELATIVE_PATH;
+        if (!is_file($this->configurationFile)) {
+            throw new RuntimeException("Unable to find the file {$this->configurationFile}");
+        }
+        if (!is_readable($this->configurationFile)) {
+            throw new RuntimeException("The file {$this->configurationFile} is not readable");
+        }
+        $this->tokens = token_get_all(file_get_contents($this->configurationFile));
+        $this->versionTokenIndex = $this->locateToken('version');
+        $this->versionInstalledTokenIndex = $this->locateToken('version_installed');
+    }
+
+    public function getVersion(): string
+    {
+        $token = $this->tokens[$this->versionTokenIndex];
+        return substr($token[1], 1, -1);
+    }
+
+    public function setVersion(string $version): void
+    {
+        $tokens = $this->tokens;
+        $tokens[$this->versionTokenIndex][1] = "'{$version}'";
+        $tokens[$this->versionInstalledTokenIndex][1] = "'{$version}'";
+        $this->saveTokens($tokens);
+        $this->tokens = $tokens;
+    }
+
+    /**
+     * @param int $offset
+     * @param int|null $foundAtIndex [output]
+     * @return string|array|null
+     */
+    private function getNextSignificantToken($offset, &$foundAtIndex = null)
+    {
+        for ($nextTokenIndex = $offset; $nextTokenIndex < count($this->tokens); $nextTokenIndex++) {
+            if (!is_array($this->tokens[$nextTokenIndex]) || !in_array($this->tokens[$nextTokenIndex][0], [T_COMMENT, T_DOC_COMMENT, T_WHITESPACE], true)) {
+                $foundAtIndex = $nextTokenIndex;
+                return $this->tokens[$nextTokenIndex];
+            }
+        }
+        $foundAtIndex = null;
+        return null;
+    }
+
+    private function locateToken(string $key): ?int
+    {
+        $array_depth = 0;
+        $maxTokenIndex = count($this->tokens) - 1;
+        for ($tokenIndex = 0; $tokenIndex <= $maxTokenIndex; $tokenIndex++) {
+            $token = $this->tokens[$tokenIndex];
+            if (is_string($token)) {
+                switch (trim($token)) {
+                    case '[':
+                        $array_depth++;
+                        break;
+                    case ']':
+                    case ')':
+                        $array_depth++;
+                        break;
+                }
+            } else {
+                switch ($token[0]) {
+                    case T_ARRAY:
+                        $nextToken = $this->getNextSignificantToken($tokenIndex + 1, $nextTokenIndex);
+                        if ($nextToken == '(') {
+                            $array_depth++;
+                            $tokenIndex = $nextTokenIndex;
+                        }
+                        break;
+                    case T_CONSTANT_ENCAPSED_STRING:
+                        if ($array_depth === 1 && preg_match('/^["\']' . preg_quote($key, '/') . '["\']$/', $token[1])) {
+                            $nextToken1 = $this->getNextSignificantToken($tokenIndex + 1, $nextTokenIndex1);
+                            if (is_array($nextToken1) && $nextToken1[0] === T_DOUBLE_ARROW) {
+                                $nextToken2 = $this->getNextSignificantToken($nextTokenIndex1 + 1, $nextTokenIndex2);
+                                if (is_array($nextToken2) && $nextToken2[0] === T_CONSTANT_ENCAPSED_STRING) {
+                                    return $nextTokenIndex2;
+                                }
+                            }
+                        }
+                        break;
+                }
+            }
+        }
+        throw new RuntimeException("Unable to find the {$key} token in The file {$this->configurationFile}");
+    }
+
+    private function saveTokens(array $tokens): void
+    {
+        $s = '';
+        foreach ($tokens as $token) {
+            $s .= is_array($token) ? $token[1] : $token;
+        }
+        if (!is_writable($this->configurationFile)) {
+            throw new RuntimeException("The file {$this->configurationFile} is not writable");
+        }
+        file_put_contents($this->configurationFile, $s);
+    }
+}
+
+function checkVersion(string $version): bool
+{
+    return preg_match('/^(0|[1-9][0-9]*)(\.(0|[1-9][0-9]*)){1,2}([a-z\-._][a-z0-9\-._]*)?$/i', $version) === 1;
+}
+
+function processDirectory(string $version, string $absolutePath, string $relativePath): array
+{
+    if (!is_readable($absolutePath)) {
+        throw new RuntimeException("The directory {$absolutePath} is not readable");
+    }
+    $replacedFiles = [];
+    $subdirs = [];
+    foreach (scandir($absolutePath) as $item) {
+        if (in_array($item, ['.', '..'], true)) {
+            continue;
+        }
+        $itemAbsolutePath = $absolutePath . "/{$item}";
+        $itemRelativePath = $relativePath . "/{$item}";
+        if (is_dir($itemAbsolutePath)) {
+            switch ($itemRelativePath) {
+                case 'concrete/vendor':
+                    break;
+                default:
+                    $subdirs[$itemAbsolutePath] = $itemRelativePath;
+                    break;
+            }
+        } elseif (is_file($itemAbsolutePath)) {
+            if (processFile($version, $itemAbsolutePath, $itemRelativePath)) {
+                $replacedFiles[] = $itemRelativePath;
+            }
+        }
+    }
+    foreach ($subdirs as $subdirAbsolutePath => $subdirRelativePath) {
+        $replacedFiles = array_merge($replacedFiles, processDirectory($version, $subdirAbsolutePath, $subdirRelativePath));
+    }
+    return $replacedFiles;
+}
+function processFile(string $version, string $absolutePath, string $relativePath): bool
+{
+    $fileExtension = strtolower(pathinfo($absolutePath, PATHINFO_EXTENSION));
+    $fileContents = null;
+    switch ($fileExtension) {
+        case 'php':
+            break;
+        case '':
+            $fileContents = file_get_contents($absolutePath);
+            if (strpos($fileContents, '<?php') === false) {
+                return false;
+            }
+            break;
+        default:
+            return false;
+    }
+    if ($fileContents === null) {
+        $fileContents = file_get_contents($absolutePath);
+    }
+    $tokens = token_get_all($fileContents);
+    $changed = false;
+    foreach ($tokens as $tokenIndex => $token) {
+        if (!is_array($token) || !in_array($token[0], [T_DOC_COMMENT], true)) {
+            continue;
+        }
+        $newTokenContents = preg_replace('_^(\s*(/?\*+)?\s*@since)\s+@future@?\b_mi', '$1' . $version, $token[1]);
+        if ($token[1] === $newTokenContents) {
+            continue;
+        }
+        $token[1] === $newTokenContents;
+        $tokens[$tokenIndex] = $token;
+        $changed = true;
+    }
+
+    return $changed;
+}
+
+try {
+    return main($_SERVER['argv']);
+} catch (Throwable $x) {
+    fwrite(STDERR, trim($x->getMessage()) . "\n");
+    return 1;
+}

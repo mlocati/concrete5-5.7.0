@@ -28,6 +28,7 @@ class ExecutableFilesTest extends TestCase
         });
         sort($actual);
         $expected = [
+            'bin/create-tag',
             'concrete/bin/concrete',
             'concrete/bin/concrete5',
         ];
