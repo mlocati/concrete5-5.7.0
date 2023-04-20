@@ -1,19 +1,23 @@
 <?php
+
 namespace Concrete\Core\Authentication\Type\Community;
 
-use Concrete\Core\Authentication\Type\Community\Extractor\Community as CommunityExtractor;
-use Concrete\Core\Authentication\Type\Community\Service\Community;
+use Concrete\Core\Foundation\Service\Provider;
 use OAuth\UserData\ExtractorFactory;
 
-class ServiceProvider extends \Concrete\Core\Foundation\Service\Provider
+class ServiceProvider extends Provider
 {
     /**
-     * Register the service provider.
+     * {@inheritdoc}
+     *
+     * @see \Concrete\Core\Foundation\Service\Provider::register()
      */
     public function register()
     {
-        /** @var ExtractorFactory $extractor */
-        $extractor = $this->app->make('oauth/factory/extractor');
-        $extractor->addExtractorMapping(Community::class, CommunityExtractor::class);
+        $this->app->extend('oauth/factory/extractor', static function (ExtractorFactory $factory) {
+            $factory->addExtractorMapping(Service\Community::class, Extractor\Community::class);
+
+            return $factory;
+        });
     }
 }

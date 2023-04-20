@@ -1,24 +1,24 @@
 <?php
+
 namespace Concrete\Core\Authentication\Type\Google;
 
-use Concrete\Core\Application\Application;
-use Concrete\Core\Authentication\Type\Google\Extractor\Google as GoogleExtractor;
-use Config;
-use OAuth\Common\Consumer\Credentials;
-use OAuth\Common\Storage\SymfonySession;
-use OAuth\OAuth2\Service\Google;
-use OAuth\ServiceFactory;
+use Concrete\Core\Foundation\Service\Provider;
+use OAuth\OAuth2\Service\Google as GoogleService;
 use OAuth\UserData\ExtractorFactory;
 
-class ServiceProvider extends \Concrete\Core\Foundation\Service\Provider
+class ServiceProvider extends Provider
 {
     /**
-     * Register the service provider.
+     * {@inheritdoc}
+     *
+     * @see \Concrete\Core\Foundation\Service\Provider::register()
      */
     public function register()
     {
-        /* @var ExtractorFactory $factory */
-        $extractor = $this->app->make('oauth/factory/extractor');
-        $extractor->addExtractorMapping(Google::class, GoogleExtractor::class);
+        $this->app->extend('oauth/factory/extractor', static function (ExtractorFactory $factory) {
+            $factory->addExtractorMapping(GoogleService::class, Extractor\Google::class);
+
+            return $factory;
+        });
     }
 }
