@@ -64,8 +64,8 @@ jobs:
             echo "We won't create a pull request because no change has been detected"
           elif [ '${{ github.event_name }}' != 'push' ]; then
             echo "We won't create a pull request because it's a '${{ github.event_name }}' operation and not a 'push' one"
-          elif [ '${{ github.repository }}' != 'concretecms/concretecms' ]; then
-            echo "We won't create a pull request because the current repository is '${{ github.repository }}' and not 'concretecms/concretecms'"
+          elif [ '${{ github.repository }}' != 'mlocati/concrete5' ]; then
+            echo "We won't create a pull request because the current repository is '${{ github.repository }}' and not 'mlocati/concrete5'"
           else
             echo 'Changes detected and pull request needed!'
             RESULT=yes
