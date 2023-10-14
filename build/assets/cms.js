@@ -6,4 +6,5 @@ import "@concretecms/bedrock/assets/cms/js/base";
 // included in dashboard main.js it fires too early. So we have to separate it out.
 $(function() {
     $('[data-vue]').concreteVue({'context': 'cms'})
+    console.log('Broken);
 })
