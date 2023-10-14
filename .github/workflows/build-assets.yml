@@ -82,7 +82,8 @@ jobs:
           author: GitHub Action <noreply@concretecms.org>
           branch: '${{ steps.pr-test.outputs.branch-name }}'
           delete-branch: true
-          title: Automatic assets rebuilding
+          title: "Automatic assets rebuilding for ${{ github.ref_name }}"
+          body: "Created by ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
       - name: Pull request info
         if: steps.pr-test.outputs.result == 'yes'
         run: printf 'Pull request created:\n%s' "${{ steps.pr-create.outputs.pull-request-url }}"
