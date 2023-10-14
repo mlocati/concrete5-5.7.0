@@ -3,6 +3,10 @@ name: Build assets
 on:
   pull_request:
   push:
+    branches:
+      - "**"      
+    tags-ignore:
+      - "**"
 
 jobs:
   build-assets:
