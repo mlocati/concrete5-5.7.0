@@ -83,6 +83,7 @@ jobs:
           branch: '${{ steps.pr-test.outputs.branch-name }}'
           delete-branch: true
           title: Automatic assets rebuilding
+          body: "Created by ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/job/${{ github.job }}"
       - name: Pull request info
         if: steps.pr-test.outputs.result == 'yes'
         run: printf 'Pull request created:\n%s' "${{ steps.pr-create.outputs.pull-request-url }}"
