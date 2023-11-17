@@ -1,0 +1,31 @@
+name: Check CIF Files
+
+on:
+  pull_request:
+  push:
+    tags-ignore:
+      - "**"
+
+jobs:
+  check-cifs:
+    name: Check CIF Files
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: temurin
+          java-package: jre
+      -
+        name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      -
+        name: Download concrete-cif
+        run: curl -Lf -o /tmp/concrete-cif.jar https://github.com/concrete5-community/concrete-cif/releases/latest/download/concrete-cif.jar
+      -
+        name: Check
+        run: java -jar /tmp/concrete-cif.jar ./concrete
