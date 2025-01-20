@@ -54,7 +54,7 @@ class FileSystemStashDriverTest extends ConcreteDatabaseTestCase
         $this->assertNull($driver->getData(['foobar']));
     }
 
-    private function storeTestData(DriverInterface $driver, mixed $data): void
+    private function storeTestData(DriverInterface $driver, string $data): void
     {
         $driver->storeData(['foobar'], $data, time() + 30);
     }
