@@ -117,7 +117,7 @@ class EntryCacheTest extends ConcreteDatabaseTestCase
         Cache::disableAll();
     }
 
-    public function testReadEntryProductionCacheEnabled()
+    public function testReadEntryProductionCacheEnabled(): void
     {
         Express::buildEntry('person')
             ->setPersonFirstName('Antti')
@@ -129,7 +129,7 @@ class EntryCacheTest extends ConcreteDatabaseTestCase
         $this->assertEquals('Hukkanen', $entry->getPersonLastName());
     }
 
-    public function testReadEntryProductionCacheDisabled()
+    public function testReadEntryProductionCacheDisabled(): void
     {
         // Ensure the temporary expensive cache is disabled
         Core::make('test/cache/expensive')->disable();
