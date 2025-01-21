@@ -64,6 +64,9 @@ class CacheTest extends TestCase
         }
     }
 
+    /**
+     * @after
+     */
     public function afterEach(): void
     {
         $app = ApplicationFacade::getFacadeApplication();
