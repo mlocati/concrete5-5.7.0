@@ -100,7 +100,9 @@ class EntryCacheTest extends ConcreteDatabaseTestCase
         // Clear the loaded metadata for it to load again with the caching
         // layer. There is no other way doing this than through ReflectionClass.
         $reflectionClass = new \ReflectionClass('Doctrine\Persistence\Mapping\AbstractClassMetadataFactory');
-        $reflectionClass->getProperty('loadedMetadata')->setValue($mdf, []);
+        $prop = $reflectionClass->getProperty('loadedMetadata');
+        $prop->setAccessible(true); // needed for PHP 7
+        $prop->setValue($mdf, []);
     }
 
     public function tearDown(): void
